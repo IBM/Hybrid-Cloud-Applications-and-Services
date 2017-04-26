@@ -24,7 +24,7 @@ This tutorial teaches you how to deploy your on-premises IBM WebSphere Liberty V
 
 2. Then, go to the defaultServer folder (i.e `cd defaultServer`) and put your **.war** API application in the **apps** folder and config the **server.xml** file. For this example, we will use the airline API application.
 
-	Now, build your server and run it on your local host.
+	Now, in your defaultServer folder, build your server and run it on your local host.
 
     ```bash
    	docker build -t api-connect .
