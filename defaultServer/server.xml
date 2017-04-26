@@ -1,0 +1,18 @@
+<server description="Liberty beta">
+	<keyStore id="defaultKeyStore" password="AirlineSample"/>
+    <quickStartSecurity userName="user" userPassword="demo"/>
+    <!-- Enable features -->
+    <featureManager>
+        <feature>webProfile-7.0</feature>
+        <feature>apiDiscovery-1.0</feature>
+        <feature>jaxrs-2.0</feature>
+        <feature>jsonp-1.0</feature>
+    </featureManager>
+
+    <!-- To access this server from a remote client add a host attribute to the
+         httpEndpoint element, e.g. host="*" -->
+    <httpEndpoint host="*" httpPort="9085" httpsPort="9448" id="defaultHttpEndpoint"/>
+
+    <webApplication id="airlines" location="airlines.war" name="airlines"/>
+    <webApplication id="swagger-sample-application" location="swagger-sample-application.war" name="swagger-sample-application"/>
+</server>
