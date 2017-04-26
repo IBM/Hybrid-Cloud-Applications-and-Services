@@ -31,7 +31,7 @@ This tutorial teaches you how to deploy your on-premises IBM WebSphere Liberty V
     docker run -d -p 9085:9085 -p 9448:9448 api-connect
     ```
 
-3. To reach the API Discovery user interface, go to `localhost:9085/ibm/api/explorer`. Since docker only expose tcp port and api-connect is using https port, we need to authenticate the website. Then, use the credentials from your server.xml to login (For this example, the **username** is `user` and the **password** is `demo`).
+3. To reach the API Discovery user interface, go to `<your IP>:9085/ibm/api/explorer`. Since docker only expose tcp port and api-connect is using https port, we need to authenticate the website. Then, use the credentials from your server.xml to login (For this example, the **username** is `user` and the **password** is `demo`).
 
 	You should see something like this in your API Discovery user interface.
 
@@ -81,7 +81,7 @@ This tutorial teaches you how to deploy your on-premises IBM WebSphere Liberty V
 
 ## 3.1 Push WebSphere Liberty APIs into API Connect
 
-1. Go to `localhost:9085/ibm/api/explorer/`
+1. Go to `<your IP>:9085/ibm/api/explorer/`
 
 2. Click **POST** for the apiconnect endpoint
 
@@ -115,15 +115,13 @@ Now you can go to your API and try it out at the API Connect Developer Portal.
 
 ## 3.2 Pull WebSphere Liberty APIs from API Connect
 
->Note: The pull method require you to expose your docker container to the public. We will add instructions for how to push your docker images on kubernetes soon. For now, you can go to [websphere-api-connect](https://github.com/IBM/websphere-api-connect) and learn about how to host your API application on IBM Cloud Foundry.
-
 1. From the main API Connect dashboard in Bluemix, click the menu icon and select **Drafts**. Click **APIs**, click **Add**, and select **Import API from a file or URL**.
 
 	![import](images/import.png)
 
 2. In the **Import API from a file or URL** window, click **Or import from URL**.
 
-	For the URL, type the Liberty URL that you want to use to import the Swagger document. For this example, you can use `<your api-connect website>/ibm/api/docs/apiconnect`
+	For the URL, type the Liberty URL that you want to use to import the Swagger document. For this example, you can use `https://<your IP>:9448/ibm/api/docs/apiconnect`
 
 3. Click **All APIs** to go back into the main Drafts page, Click **Products**, and then click **Add > New Product**. In the Add a new product window, type in a title (could be anything) and then click **Add**.
 
