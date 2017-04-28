@@ -60,7 +60,7 @@ This tutorial teaches you how to deploy your on-premises IBM WebSphere Liberty V
     acl allow :9448
     ```
 
-	Now your Gateway is able to access the APIs in your docker container.
+	Now your Gateway is able to access the your API Discovery Server.
 
 5. Now let's create the destination for our gateway. First, select **On-Premises** at Guided Setup and click next. 
 
@@ -73,7 +73,7 @@ This tutorial teaches you how to deploy your on-premises IBM WebSphere Liberty V
 7. Next, select **TCP** for your protocol and click next. Then, select **None** for your authentication and click next. Then, do not put anything on your IP table rules. Lastly, name your destination and click **Add Destination**.
 
 
-8. Now, you can access your docker container via the secure gateway cloud host. You can view your cloud host by clicking on the **gear icon** on your destination. 
+8. Now, you can access your API Discovery Server via the secure gateway cloud host. You can view your cloud host by clicking on the **gear icon** on your destination. 
 
 	![cloud-host](images/cloud-host.png)
 
