@@ -9,6 +9,7 @@ This tutorial teaches you how to deploy your on-premises IBM WebSphere Liberty V
 
 - [WebSphere Liberty](https://developer.ibm.com/wasdev/websphere-liberty/)
 - [API Connect](http://www-03.ibm.com/software/products/en/api-connect)
+- [Secure Gateway](https://console.ng.bluemix.net/docs/services/SecureGateway/sg_overview.html)
 
 
 ## Steps
