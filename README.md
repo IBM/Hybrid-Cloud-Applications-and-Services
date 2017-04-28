@@ -22,6 +22,8 @@ This tutorial teaches you how to deploy your on-premises IBM WebSphere Liberty V
 
 # 1. Run a WebSphere Liberty API Discovery Server using Docker
 
+In this step, we want to put all our APIs in one place. Then, we will build our own WebSphere Liberty API Discovery Server docker image with all those APIs and run it on docker. At the end of this step, you should able to call your APIs via your localhost.
+
 1. First install [Docker CLI](https://www.docker.com/community-edition#/download).
 
 2. Then, go to the defaultServer folder (i.e `cd defaultServer`) and put your **.war** API application in the **apps** folder and config the **server.xml** file. For this example, we will use the airline API application.
@@ -45,6 +47,8 @@ This tutorial teaches you how to deploy your on-premises IBM WebSphere Liberty V
     
     
 # 2. Create Secure Gateway to securely expose your APIs.
+
+In this step, we will create a secure gateway to expose our localhost APIs on cloud host. At the end of this step, you should able to access and call your localhost APIs on any device via cloud host.
 
 1. First, create your [secure gateway service](https://console.ng.bluemix.net/catalog/services/secure-gateway?taxonomyNavigation=apis) from bluemix.
 
@@ -83,6 +87,8 @@ This tutorial teaches you how to deploy your on-premises IBM WebSphere Liberty V
 
 
 # 3. Create an API Connect service in Bluemix
+
+In this step, we will setup API Connect service to help us distribute our APIs.
 
 1. To add API Connect as a Bluemix service, go to the bluemix [API Connect service](https://console.ng.bluemix.net/catalog/services/api-connect?taxonomyNavigation=services)
 
