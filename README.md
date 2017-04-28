@@ -33,13 +33,13 @@ This tutorial teaches you how to deploy your on-premises IBM WebSphere Liberty V
     docker run -d -p 9085:9085 -p 9448:9448 api-connect
     ```
 
-3. To reach the API Discovery user interface, go to `<your IP>:9085/ibm/api/explorer`. Since docker only expose tcp port and api-connect is using https port, we need to authenticate the website. Then, use the credentials from your server.xml to login (For this example, the **username** is `user` and the **password** is `demo`).
+3. To reach the API Discovery user interface, go to `https://<your IP>:9448/ibm/api/explorer`. Since docker only expose tcp port and api-connect is using https port, we need to authenticate the website. Then, use the credentials from your server.xml to login (For this example, the **username** is `user` and the **password** is `demo`).
 
 	You should see something like this in your API Discovery user interface.
 
 	![discovery](images/discovery.png)
 
-4. As shown in the following screen capture, you can click the **Try it out** button, which starts your application, running on the cloud.
+4. As shown in the following screen capture, you can click the **Try it out** button, which starts your application, running on Docker
 
 	![try it out](images/try-it-out.png)
     
