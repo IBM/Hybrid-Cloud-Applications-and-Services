@@ -60,7 +60,7 @@ This tutorial teaches you how to deploy your on-premises IBM WebSphere Liberty V
     acl allow :9448
     ```
 
-	Now your Gateway is able to access the your API Discovery Server.
+	Now your Gateway is able to access your API Discovery Server.
 
 5. Now let's create the destination for our gateway. First, select **On-Premises** at Guided Setup and click next. 
 
