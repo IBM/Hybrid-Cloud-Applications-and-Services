@@ -13,8 +13,9 @@ This tutorial teaches you how to deploy your on-premises IBM WebSphere Liberty V
 
 ## Steps
 1. [Run a WebSphere Liberty API Discovery Server using Docker](#1-run-a-websphere-liberty-api-discovery-server-using-docker)
-2. [Create an API Connect service in Bluemix](#2-create-an-api-connect-service-in-bluemix)
-3. [Integrate WebSphere Liberty and API Connect: push and pull](#3-integrate-websphere-liberty-and-api-connect-push-and-pull)
+2. [Create Secure Gateway to securely expose your APIs](#2-create-secure-gateway-to-securely-expose-your-apis)
+3. [Create an API Connect service in Bluemix](#3-create-an-api-connect-service-in-bluemix)
+4. [Integrate WebSphere Liberty and API Connect: push and pull](#4-integrate-websphere-liberty-and-api-connect-push-and-pull)
 
 [Troubleshooting](#troubleshooting)
 
@@ -40,8 +41,47 @@ This tutorial teaches you how to deploy your on-premises IBM WebSphere Liberty V
 4. As shown in the following screen capture, you can click the **Try it out** button, which starts your application, running on the cloud.
 
 	![try it out](images/try-it-out.png)
+    
+    
+# 2. Create Secure Gateway to securely expose your APIs.
 
-# 2. Create an API Connect service in Bluemix
+1. First, create your [secure gateway service](https://console.ng.bluemix.net/catalog/services/secure-gateway?taxonomyNavigation=apis) from bluemix.
+
+2. Then, follow this [Getting started with the Secure Gateway](https://console.ng.bluemix.net/docs/services/SecureGateway/secure_gateway.html) tutorial to setup your gateway.
+
+3. When you setup your secure gateway client, install **IBM Installer** and run it on your local machine.
+
+	![installer](images/installer.png)
+    
+4. After you open the secure gateway client with your Gateway ID and Security Token, click enter and run the following commands.
+
+	```
+    acl allow :9448
+    ```
+
+	Now your Gateway is able to access the APIs in your docker container.
+
+5. Now let's create the destination for our gateway. First, select **On-Premises** at Guided Setup and click next. 
+
+	![on-premises](images/on-premises.png)
+    
+6. Next, put down **127.0.0.1** for your resource hostname and **9448** for your port and click next.
+
+	![hostname](images/hostname.png)
+    
+7. Next, select **TCP** for your protocol and click next. Then, select **None** for your authentication and click next. Then, do not put anything on your IP table rules. Lastly, name your destination and click **Add Destination**.
+
+
+8. Now, you can access your docker container via the secure gateway cloud host. You can view your cloud host by clicking on the **gear icon** on your destination. 
+
+	![cloud-host](images/cloud-host.png)
+
+
+9. Now, go to `https://<Cloud Host:Port>/ibm/api/explorer/` and varify the secure gateway is working. Remember, your default username is **user** and password is **demo**. 
+
+
+
+# 3. Create an API Connect service in Bluemix
 
 1. To add API Connect as a Bluemix service, go to the bluemix [API Connect service](https://console.ng.bluemix.net/catalog/services/api-connect?taxonomyNavigation=services)
 
@@ -76,12 +116,12 @@ This tutorial teaches you how to deploy your on-premises IBM WebSphere Liberty V
 
 	This is where enterprise developers go to find the products (for example, an API or a group of APIs) that are exposed in the API catalog. Developers also can interact with each other through the Blogs and Forums links.
 
-# 3. Integrate WebSphere Liberty and API Connect: push and pull
-> Choose either [push](#31-push-websphere-liberty-apis-into-api-connect) or [pull](#32-pull-websphere-liberty-apis-from-api-connect) WebSphere Liberty APIs from API Connect. Also, push won't work on IBMer's account due to federated reasons.
+# 4. Integrate WebSphere Liberty and API Connect: push and pull
+> Choose either [push](#41-push-websphere-liberty-apis-into-api-connect) or [pull](#42-pull-websphere-liberty-apis-from-api-connect) WebSphere Liberty APIs from API Connect. Also, push won't work on IBMer's account due to federated reasons.
 
-## 3.1 Push WebSphere Liberty APIs into API Connect
+## 4.1 Push WebSphere Liberty APIs into API Connect
 
-1. Go to `<your IP>:9085/ibm/api/explorer/`
+1. Go to `https://<Cloud Host:Port>/ibm/api/explorer/`
 
 2. Click **POST** for the apiconnect endpoint
 
@@ -113,7 +153,7 @@ Now you can go to your API and try it out at the API Connect Developer Portal.
 
 ![api-connect](images/api-connect.png)
 
-## 3.2 Pull WebSphere Liberty APIs from API Connect
+## 4.2 Pull WebSphere Liberty APIs from API Connect
 
 1. From the main API Connect dashboard in Bluemix, click the menu icon and select **Drafts**. Click **APIs**, click **Add**, and select **Import API from a file or URL**.
 
@@ -121,7 +161,7 @@ Now you can go to your API and try it out at the API Connect Developer Portal.
 
 2. In the **Import API from a file or URL** window, click **Or import from URL**.
 
-	For the URL, type the Liberty URL that you want to use to import the Swagger document. For this example, you can use `https://<your IP>:9448/ibm/api/docs/apiconnect`
+	For the URL, type the Liberty URL that you want to use to import the Swagger document. For this example, you can use `https://<Cloud Host:Port>/ibm/api/docs/apiconnect`
 
 3. Click **All APIs** to go back into the main Drafts page, Click **Products**, and then click **Add > New Product**. In the Add a new product window, type in a title (could be anything) and then click **Add**.
 
@@ -166,4 +206,3 @@ This WebSphere API Connect example is based on this developerWorks [article](htt
 # License
 
 [Apache 2.0](LICENSE)
-
