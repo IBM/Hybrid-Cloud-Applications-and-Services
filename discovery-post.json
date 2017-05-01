@@ -1,0 +1,59 @@
+{
+  "product": "1.0.0",
+  "info": {
+    "name": "pushed-product",
+    "title": "A Product that encapsulates Liberty APIs",
+    "version": "1.0.0"
+  },
+  "visibility": {
+    "view": {
+      "enabled": true,
+      "type": "public",
+      "tags": [
+        "string"
+      ],
+      "orgs": [
+        "string"
+      ]
+    },
+    "subscribe": {
+      "enabled": true,
+      "type": "authenticated",
+      "tags": [
+        "string"
+      ],
+      "orgs": [
+        "string"
+      ]
+    }
+  },
+  "apis": {
+    "liberty": {
+      "name": "liberty-api:1.0.0",
+      "x-ibm-configuration": {
+        "assembly": {
+          "execute": [
+            {
+              "invoke": {
+                "target-url": "https://cap-sg-prd-1.integration.ibmcloud.com:16557$(request.path)",
+                "title": "Invocation"
+              }
+            }
+          ]
+        }
+      }
+    }
+  },
+  "plans": {
+    "default": {
+      "title": "Default Plan",
+      "rate-limit": {
+        "value": "100/hour",
+        "hard-limit": false
+      },
+      "approval": false
+    }
+  },
+  "createdAt": "2017-05-01T16:13:05.912Z",
+  "createdBy": "string"
+}

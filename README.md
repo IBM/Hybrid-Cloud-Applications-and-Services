@@ -142,8 +142,68 @@ In this step, we will setup API Connect service to help us distribute our APIs.
 
 	![mypassword](images/mypassword.png)
 
-5. The best part about using the Swagger user interface in Liberty to push your APIs into API Connect is that you can use a fully working product.json sample JSON file. Click the sample JSON file under Model Schema, and that JSON file is automatically transferred into the body input box, as shown in the following screen capture:
-
+5. Since we are running our APIs on our local machine, we do not want to use the sample JSON file because that will set the APIs target URL to our local machine. Instead, we want to change the `<cloud host:port>` part in **target-url** (line 38) from the following JSON file (you can also get it from the **discovery-post.json** file) to your cloud host : port (e.g. `"https://cap-sg-prd-1.integration.ibmcloud.com:16666$(request.path)"`). Then copy and paste it into the body input box.
+	```JSON
+	{
+	  "product": "1.0.0",
+	  "info": {
+	    "name": "pushed-product",
+	    "title": "A Product that encapsulates Liberty APIs",
+	    "version": "1.0.0"
+	  },
+	  "visibility": {
+	    "view": {
+	      "enabled": true,
+	      "type": "public",
+	      "tags": [
+	        "string"
+	      ],
+	      "orgs": [
+	        "string"
+	      ]
+	    },
+	    "subscribe": {
+	      "enabled": true,
+	      "type": "authenticated",
+	      "tags": [
+	        "string"
+	      ],
+	      "orgs": [
+	        "string"
+	      ]
+	    }
+	  },
+	  "apis": {
+	    "liberty": {
+	      "name": "liberty-api:1.0.0",
+	      "x-ibm-configuration": {
+	        "assembly": {
+	          "execute": [
+	            {
+	              "invoke": {
+	                "target-url": "<cloud host:port>$(request.path)",
+	                "title": "Invocation"
+	              }
+	            }
+	          ]
+	        }
+	      }
+	    }
+	  },
+	  "plans": {
+	    "default": {
+	      "title": "Default Plan",
+	      "rate-limit": {
+	        "value": "100/hour",
+	        "hard-limit": false
+	      },
+	      "approval": false
+	    }
+	  },
+	  "createdAt": "2017-05-01T16:13:05.912Z",
+	  "createdBy": "string"
+	}
+	```
 	![json](images/json.png)
 
 6. Now you're ready to publish these APIs. Click **Try it out!**
@@ -168,7 +228,11 @@ Now you can go to your API and try it out at the API Connect Developer Portal.
 
 2. In the **Import API from a file or URL** window, click **Or import from URL**.
 
-	For the URL, type the Liberty URL that you want to use to import the Swagger document. For this example, you can use `https://<Cloud Host:Port>/ibm/api/docs/apiconnect`
+	For the URL, type the Liberty URL that you want to use to import the Swagger document. For this example, you can use `https://<Cloud Host:Port>/ibm/api/docs/apiconnect`. Remember the username for this example is **user** and password is **demo**.
+    
+3. After you imported your API, go to **source**. Then go to the bottom of the page (around line 532) and change the **target-url**'s value to `'<cloud host:port>$(request.path)'` (replace `<cloud host:port>` to your own cloud host:port). Then click the **save icon** on the top right corner.
+
+    ![target-url](images/target-url.png)
 
 3. Click **All APIs** to go back into the main Drafts page, Click **Products**, and then click **Add > New Product**. In the Add a new product window, type in a title (could be anything) and then click **Add**.
 
