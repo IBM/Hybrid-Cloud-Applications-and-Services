@@ -35,7 +35,7 @@
           "execute": [
             {
               "invoke": {
-                "target-url": "https://cap-sg-prd-1.integration.ibmcloud.com:16557$(request.path)",
+                "target-url": "<cloud host:port>$(request.path)",
                 "title": "Invocation"
               }
             }
