@@ -146,7 +146,7 @@ In this step, we will learn about how to use the post request on API discovery t
 
 	![mypassword](images/mypassword.png)
 
-5. Since we are running our APIs on our local machine, we do not want to use the sample JSON file because that will set the APIs target URL to our local machine. Instead, we want to change the `<cloud host:port>` part in **target-url** (line 38) from the following JSON file (you can also get it from the **discovery-post.json** file) to your cloud host : port (e.g. `"https://cap-sg-prd-1.integration.ibmcloud.com:16666$(request.path)"`). Then copy and paste it into the body input box.
+5. Since we are running our APIs on our local machine, we do not want to use the sample JSON file because that will set the APIs target URL to our local machine. Instead, we want to change the `<cloud host:port>` part in **target-url** (line 38) from the following JSON file (you can also get it from the **discovery-post.json** file) to your cloud host : port (e.g. `"https://cap-sg-prd-1.integration.ibmcloud.com:16218$(request.path)"`). Then copy and paste it into the body input box.
 	```JSON
 	{
 	  "product": "1.0.0",
@@ -274,6 +274,8 @@ docker ps
 docker kill <container ID>
 docker rm <container ID>
 ```
+
+To remove your API connect and Secure Gateway service, go to your IBM Bluemix dashboard. Then click the menu icon and then select Delete Service.
 
 # References
 
