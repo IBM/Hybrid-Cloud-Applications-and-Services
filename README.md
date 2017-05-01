@@ -234,25 +234,25 @@ Now you can go to your API and try it out at the API Connect Developer Portal.
 
     ![target-url](images/target-url.png)
 
-3. Click **All APIs** to go back into the main Drafts page, Click **Products**, and then click **Add > New Product**. In the Add a new product window, type in a title (could be anything) and then click **Add**.
+4. Click **All APIs** to go back into the main Drafts page, Click **Products**, and then click **Add > New Product**. In the Add a new product window, type in a title (could be anything) and then click **Add**.
 
-4. The design view opens for the Product. Scroll down to the APIs section and click on the + icon. 
+5. The design view opens for the Product. Scroll down to the APIs section and click on the + icon. 
 
 	![api](images/api.png)
 
-5. Select the API you just imported, and click **Apply**.
+6. Select the API you just imported, and click **Apply**.
 
-6. In the Plans section, you can create different plans with different rate limits, to control which methods from each API are exposed. For this example, please use the default plan.
+7. In the Plans section, you can create different plans with different rate limits, to control which methods from each API are exposed. For this example, please use the default plan.
 
 	Click the **save icon** to save your changes.
 
-7. Now you are ready to stage your Product into a catalog. Click the **cloud icon** and select the catalog where you want to stage the APIs.
+8. Now you are ready to stage your Product into a catalog. Click the **cloud icon** and select the catalog where you want to stage the APIs.
 
-8. To go back into the catalog, click the menu icon , and select **Dashboard**. Then click the menu icon for your staged product and select **Publish**.
+9. To go back into the catalog, click the menu icon , and select **Dashboard**. Then click the menu icon for your staged product and select **Publish**.
 
 	![publish](images/publish.png)
 
-9. In the new window that opens, you can edit who can view your APIs and who can subscribe to your API Plans. For this example, use the defaults and click **Publish**.
+10. In the new window that opens, you can edit who can view your APIs and who can subscribe to your API Plans. For this example, use the defaults and click **Publish**.
 
 Congratulation. You API is published. Now explore the API Connect Developer Portal like consumers of your API do. Go to your **Portal URL** and click **API Products**.
 
