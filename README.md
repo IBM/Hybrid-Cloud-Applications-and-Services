@@ -17,6 +17,8 @@ This tutorial teaches you how to deploy your on-premises IBM WebSphere Liberty V
 2. [Create Secure Gateway to securely expose your APIs](#2-create-secure-gateway-to-securely-expose-your-apis)
 3. [Create an API Connect service in Bluemix](#3-create-an-api-connect-service-in-bluemix)
 4. [Integrate WebSphere Liberty and API Connect: push and pull](#4-integrate-websphere-liberty-and-api-connect-push-and-pull)
+- 4.1 [Push WebSphere Liberty APIs into API Connect](#41-push-websphere-liberty-apis-into-api-connect)
+- 4.2 [Pull WebSphere Liberty APIs from API Connect](#42-pull-websphere-liberty-apis-from-api-connect)
 
 [Troubleshooting](#troubleshooting)
 
