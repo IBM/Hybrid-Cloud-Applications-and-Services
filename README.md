@@ -216,7 +216,7 @@ In this step, we will setup API Connect service to help us distribute our APIs.
 
 Congratulation. You API is published. Now explore the API Connect Developer Portal like consumers of your API do. Go to your **Portal URL** and click **API Products**.
 
-Now you can go to your API and try it out at the API Connect Developer Portal.
+Now you can go to your API and try it at the API Connect Developer Portal. Click any API call and try it using the **call operation** button.
 
 ![api-connect](images/api-connect.png)
 
@@ -256,7 +256,7 @@ Now you can go to your API and try it out at the API Connect Developer Portal.
 
 Congratulation. You API is published. Now explore the API Connect Developer Portal like consumers of your API do. Go to your **Portal URL** and click **API Products**.
 
-Now you can go to your API and try it out at the API Connect Developer Portal.
+Now you can go to your API and try it at the API Connect Developer Portal. Click any API call and try it using the **call operation** button.
 
 ![api-connect](images/api-connect.png)
 
