@@ -3,7 +3,7 @@
 
 With IBM® WebSphere® Connect, you can connect your IBM WebSphere Application Server apps and data to the cloud in minutes without rewriting apps or acquiring new data. Designed specifically for your WebSphere Application Server environment, these capabilities give you the flexibility to respond to business changes at scale by using your apps and data wherever they are located, whether on-premises or on the cloud.
 
-This tutorial teaches you how to deploy your on-premises IBM WebSphere Liberty V9 workloads onto the cloud, creating a highly available and sharable API environment. It also discusses in detail how to expose those APIs through IBM API Connect, available free on IBM Bluemix, allowing you to further manage and secure your API assets. You learn the end-to-end process, starting with pushing a WebSphere Liberty package into IBM Bluemix and setting up the API Connect service on IBM Bluemix.
+This tutorial teaches you how to deploy your on-premises IBM WebSphere Liberty on Docker. Then use IBM Secure Gateway service to create a secure, highly available, and sharable API environment. It also discusses in detail how to expose those APIs through IBM API Connect, available free on IBM Bluemix, allowing you to further manage and secure your API assets. You learn the end-to-end process, starting with pushing a WebSphere Liberty package into IBM Bluemix and setting up the API Connect service on IBM Bluemix.
 
 ## Included Components
 
@@ -130,6 +130,8 @@ In this step, we will setup API Connect service to help us distribute our APIs.
 
 ## 4.1 Push WebSphere Liberty APIs into API Connect
 
+In this step, we will learn about how to use the post request on API discovery to push our APIs into API Connect.
+
 1. Go to `https://<Cloud Host:Port>/ibm/api/explorer/`
 
 2. Click **POST** for the apiconnect endpoint
@@ -223,6 +225,8 @@ Now you can go to your API and try it at the API Connect Developer Portal. Click
 ![api-connect](images/api-connect.png)
 
 ## 4.2 Pull WebSphere Liberty APIs from API Connect
+
+In this step, we will learn about how to create and manage new APIs and products on API connect using API connect's user interface.
 
 1. From the main API Connect dashboard in Bluemix, click the menu icon and select **Drafts**. Click **APIs**, click **Add**, and select **Import API from a file or URL**.
 
