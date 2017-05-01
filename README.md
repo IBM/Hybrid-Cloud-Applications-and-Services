@@ -1,4 +1,4 @@
-# Publish your WebSphere Liberty APIs Via API Connect
+# Publish your On-promises WebSphere Liberty APIs Via API Connect
 
 
 With IBM® WebSphere® Connect, you can connect your IBM WebSphere Application Server apps and data to the cloud in minutes without rewriting apps or acquiring new data. Designed specifically for your WebSphere Application Server environment, these capabilities give you the flexibility to respond to business changes at scale by using your apps and data wherever they are located, whether on-premises or on the cloud.
@@ -28,7 +28,7 @@ In this step, we want to put all our APIs in one place. Then, we will build our 
 
 1. First install [Docker CLI](https://www.docker.com/community-edition#/download).
 
-2. Then, go to the defaultServer folder (i.e `cd defaultServer`) and put your **.war** API application in the **apps** folder and config the **server.xml** file. For this example, we will use the airline API application.
+2. Then, go to the defaultServer folder (i.e `cd defaultServer`). If you want to deploy your own APIs, put your **.war** API application in the **apps** folder and configure the **server.xml** file. For this example, we will use the airline API application.
 
 	Now, in your defaultServer folder, build your server and run it on your local host.
 
@@ -275,7 +275,7 @@ docker kill <container ID>
 docker rm <container ID>
 ```
 
-To remove your API connect and Secure Gateway service, go to your IBM Bluemix dashboard. Then click the menu icon and then select Delete Service.
+To remove your API connect and Secure Gateway service, go to your IBM Bluemix dashboard. Then click the **menu icon** and then select **Delete Service**.
 
 # References
 
