@@ -3,7 +3,7 @@
 
 With IBM® WebSphere® Connect, you can connect your IBM WebSphere Application Server apps and data to the cloud in minutes without rewriting apps or acquiring new data. Designed specifically for your WebSphere Application Server environment, these capabilities give you the flexibility to respond to business changes at scale by using your apps and data wherever they are located, whether on-premises or on the cloud.
 
-This tutorial teaches you how to deploy your on-premises IBM WebSphere Liberty on Docker. Then use IBM Secure Gateway service to create a secure, highly available, and sharable API environment. It also discusses in detail how to expose those APIs through IBM API Connect, available free on IBM Bluemix, allowing you to further manage and secure your API assets. You learn the end-to-end process, starting with pushing a WebSphere Liberty package into IBM Bluemix and setting up the API Connect service on IBM Bluemix.
+This tutorial teaches you how to deploy your on-premises IBM WebSphere Liberty on Docker. Then use IBM Secure Gateway service to create a secure, highly available, and sharable API environment. It also discusses in detail how to expose those APIs through IBM API Connect, available free on IBM Bluemix, allowing you to further manage and secure your API assets. You learn the end-to-end process, starting with building a personal WebSphere Liberty docker image, creating a Secure Gateway and setting up the API Connect service on IBM Bluemix.
 
 ## Included Components
 
@@ -28,7 +28,7 @@ In this step, we want to put all our APIs in one place. Then, we will build our 
 
 1. First install [Docker CLI](https://www.docker.com/community-edition#/download).
 
-2. Then, go to the defaultServer folder (i.e `cd defaultServer`). If you want to deploy your own APIs, put your **.war** API application in the **apps** folder and configure the **server.xml** file. For this example, we will use the airline API application.
+2. Then, go to the defaultServer folder (i.e `cd defaultServer`). If you want to deploy your own APIs, put your **.war** API application in the **apps** folder and configure the **server.xml** file. For this example, we will use the airlines and swagger-sample API application.
 
 	Now, in your defaultServer folder, build your server and run it on your local host.
 
