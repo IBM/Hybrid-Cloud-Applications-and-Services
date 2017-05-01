@@ -63,7 +63,7 @@ In this step, we will create a secure gateway to expose our localhost APIs on cl
 4. After you open the secure gateway client with your Gateway ID and Security Token, click enter and run the following commands.
 
 	```
-    acl allow :9448
+    acl allow 127.0.0.1:9448
     ```
 
 	Now your Gateway is able to access your API Discovery Server.
