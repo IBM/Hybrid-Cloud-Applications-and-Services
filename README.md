@@ -13,8 +13,8 @@ This tutorial teaches you how to deploy your on-premises IBM WebSphere Liberty o
 
 
 ## Steps
-1. [Run a WebSphere Liberty API Discovery Server using Docker](#1-run-a-websphere-liberty-api-discovery-server-using-docker)
-2. [Create Secure Gateway to securely expose your APIs](#2-create-secure-gateway-to-securely-expose-your-apis)
+1. [Run a On-promise Server using Docker](#1-run-a-on-promise-server-using-docker)
+2. [Create a Tunnel to expose your On-promise APIs](#2-create-a-tunnel-to-expose-your-on-promise-apis)
 3. [Create an API Connect service in Bluemix](#3-create-an-api-connect-service-in-bluemix)
 4. [Integrate WebSphere Liberty and API Connect: push and pull](#4-integrate-websphere-liberty-and-api-connect-push-and-pull)
 - 4.1 [Push WebSphere Liberty APIs into API Connect](#41-push-websphere-liberty-apis-into-api-connect)
@@ -22,13 +22,13 @@ This tutorial teaches you how to deploy your on-premises IBM WebSphere Liberty o
 
 [Troubleshooting](#troubleshooting)
 
-# 1. Run a WebSphere Liberty API Discovery Server using Docker
+# 1. Run a On-promise Server using Docker
 
-In this step, we want to put all our APIs in one place. Then, we will build our own WebSphere Liberty API Discovery Server docker image with all those APIs and run it on docker. At the end of this step, you should able to call your APIs via your localhost.
+In this step, we want to put all our APIs in one place. Then, we will build our own On-promise Server docker image with all those APIs and run it on docker. In this example, we will use WebSphere Liberty for our server. At the end of this step, you should able to call your APIs via your localhost.
 
 1. First install [Docker CLI](https://www.docker.com/community-edition#/download).
 
-2. Then, go to the defaultServer folder (i.e `cd defaultServer`). If you want to deploy your own APIs, put your **.war** API application in the **apps** folder and configure the **server.xml** file. For this example, we will use the airlines and swagger-sample API application.
+2. Then, go to the defaultServer folder (i.e `cd defaultServer`). If you want to deploy your own APIs, put your **.war** API application in the **apps** folder and configure the **server.xml** file. For this example, we will use the airlines API application.
 
 	Now, in your defaultServer folder, build your server and run it on your local host.
 
@@ -48,9 +48,9 @@ In this step, we want to put all our APIs in one place. Then, we will build our 
 	![try it out](images/try-it-out.png)
     
     
-# 2. Create Secure Gateway to securely expose your APIs.
+# 2. Create a Tunnel to expose your On-promise APIs
 
-In this step, we will create a secure gateway to expose our localhost APIs on cloud host. At the end of this step, you should able to access and call your localhost APIs on any device via cloud host.
+In this step, we will create a tunnel to expose our localhost APIs to the public. For this example, we will use the secure gateway as our tunnel to expose our APIs to the cloud host. At the end of this step, you should able to access and call your localhost APIs on any device via cloud host.
 
 1. First, create your [secure gateway service](https://console.ng.bluemix.net/catalog/services/secure-gateway?taxonomyNavigation=apis) from bluemix.
 
