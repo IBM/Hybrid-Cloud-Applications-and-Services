@@ -1,0 +1,15 @@
+microservices/api/sample/app/JAXRSApp.class
+microservices/api/sample/DatabaseAccess.class
+microservices/api/sample/HttpHelper.class
+microservices/api/sample/model/Booking.class
+microservices/api/sample/model/Airline.class
+microservices/api/sample/HttpHelper$1.class
+microservices/api/sample/resources/BookingResource.class
+microservices/api/sample/Controller.class
+microservices/api/sample/resources/AirlinesResource.class
+microservices/api/sample/resources/AvailabilityResource.class
+microservices/api/sample/HttpHelper$2.class
+microservices/api/sample/model/CreditCard.class
+microservices/api/sample/model/Flight.class
+microservices/api/sample/model/Airport.class
+microservices/api/sample/model/Weather.class
