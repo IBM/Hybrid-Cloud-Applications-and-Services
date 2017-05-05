@@ -1,0 +1,15 @@
+version: "3"
+services:
+  airlines:
+    restart: always
+    image: tomcli/airlines:latest
+    links:
+      - couchdb:couchdb
+    ports:
+      - "9080:9080"
+      - "9443:9443"
+  couchdb:
+    restart: always
+    image: couchdb:latest
+    ports: 
+      - "5984:5984"
