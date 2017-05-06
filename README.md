@@ -13,28 +13,54 @@ This tutorial teaches you how to deploy your on-premises IBM WebSphere Liberty o
 
 
 ## Steps
-1. [Run a On-promise Server using Docker](#1-run-a-on-promise-server-using-docker)
-2. [Create a Tunnel to expose your On-promise APIs](#2-create-a-tunnel-to-expose-your-on-promise-apis)
-3. [Create an API Connect service in Bluemix](#3-create-an-api-connect-service-in-bluemix)
-4. [Integrate WebSphere Liberty and API Connect: push and pull](#4-integrate-websphere-liberty-and-api-connect-push-and-pull)
-- 4.1 [Push WebSphere Liberty APIs into API Connect](#41-push-websphere-liberty-apis-into-api-connect)
-- 4.2 [Pull WebSphere Liberty APIs from API Connect](#42-pull-websphere-liberty-apis-from-api-connect)
+1. [Build Your Sample API Application](#1-build-your-sample-api-application)
+2. [Run a On-promise Server using Docker](#2-run-a-on-promise-server-using-docker)
+3. [Create a Tunnel to expose your On-promise APIs](#3-create-a-tunnel-to-expose-your-on-promise-apis)
+4. [Create an API Connect service in Bluemix](#4-create-an-api-connect-service-in-bluemix)
+5. [Integrate WebSphere Liberty and API Connect: push and pull](#5-integrate-websphere-liberty-and-api-connect-push-and-pull)
+- 5.1 [Push WebSphere Liberty APIs into API Connect](#51-push-websphere-liberty-apis-into-api-connect)
+- 5.2 [Pull WebSphere Liberty APIs from API Connect](#52-pull-websphere-liberty-apis-from-api-connect)
 
 [Troubleshooting](#troubleshooting)
 
-# 1. Run a On-promise Server using Docker
+
+# 1. Build Your Sample API Application
+
+> Note: Details of this application will be updated on Monday. 
+
+1. First, Create your [Weather API service](https://console.ng.bluemix.net/catalog/services/weather-company-data?taxonomyNavigation=data).
+
+
+2. Go to your **Service credentials** and mark down your username and password. Then go to **flight-booking/src/main/java/microservices/api/sample** folder (`cd flight-booking/src/main/java/microservices/api/sample`). Now, add your username and password credential in the **DatabaseAccess.java** file.
+
+	![credential](images/credential.png)
+
+3. Now go back to the **flight-booking** folder, run `mvn package`
+
+
+4. Then go to the **deployment_artifacts** folder and move your airlines.war to the main directory's **apps** folder.
+
+
+# 2. Run a On-promise Server using Docker
 
 In this step, we want to put all our APIs in one place. Then, we will build our own On-promise Server docker image with all those APIs and run it on docker. In this example, we will use WebSphere Liberty for our server. At the end of this step, you should able to call your APIs via your localhost.
 
 1. First install [Docker CLI](https://www.docker.com/community-edition#/download).
 
-2. Then, go to the defaultServer folder (i.e `cd defaultServer`). If you want to deploy your own APIs, put your **.war** API application in the **apps** folder and configure the **server.xml** file. For this example, we will use the airlines API application.
+2. If you want to deploy your own APIs, put your **.war** API application in the **apps** folder and configure the **server.xml** file. For this example, we will use the airlines API application.
 
-	Now, in your defaultServer folder, build your server and run it on your local host.
+	Now, in this main directory, build your server and run it on your local host.
 
     ```bash
-   	docker build -t api-connect .
-    docker run -d -p 9085:9085 -p 9448:9448 api-connect
+   	docker build -t hybrid/airlines .
+    docker-compose up
+    ```
+   	Now you current terminal will execute all the logs from your app.
+    
+    If you are running with our example app, after you have your server and database running, run the following commands to initiate couchDB.
+    
+    ```bash
+    bash database_init.sh
     ```
 
 3. To reach the API Discovery user interface, go to `https://localhost:9448/ibm/api/explorer`. Since docker only expose tcp port and api-connect is using https port, we need to authenticate the website. Then, use the credentials from your server.xml to login (For this example, the **username** is `user` and the **password** is `demo`).
@@ -48,7 +74,7 @@ In this step, we want to put all our APIs in one place. Then, we will build our 
 	![try it out](images/try-it-out.png)
     
     
-# 2. Create a Tunnel to expose your On-promise APIs
+# 3. Create a Tunnel to expose your On-promise APIs
 
 In this step, we will create a tunnel to expose our localhost APIs to the public. For this example, we will use the secure gateway as our tunnel to expose our APIs to the cloud host. At the end of this step, you should able to access and call your localhost APIs on any device via cloud host.
 
@@ -88,7 +114,7 @@ In this step, we will create a tunnel to expose our localhost APIs to the public
 
 
 
-# 3. Create an API Connect service in Bluemix
+# 4. Create an API Connect service in Bluemix
 
 In this step, we will setup API Connect service to help us distribute our APIs.
 
@@ -125,10 +151,10 @@ In this step, we will setup API Connect service to help us distribute our APIs.
 
 	This is where enterprise developers go to find the products (for example, an API or a group of APIs) that are exposed in the API catalog. Developers also can interact with each other through the Blogs and Forums links.
 
-# 4. Integrate WebSphere Liberty and API Connect: push and pull
+# 5. Integrate WebSphere Liberty and API Connect: push and pull
 > Choose either [push](#41-push-websphere-liberty-apis-into-api-connect) or [pull](#42-pull-websphere-liberty-apis-from-api-connect) WebSphere Liberty APIs from API Connect. Also, push won't work on IBMer's account due to federated reasons.
 
-## 4.1 Push WebSphere Liberty APIs into API Connect
+## 5.1 Push WebSphere Liberty APIs into API Connect
 
 In this step, we will learn about how to use the post request on API discovery to push our APIs into API Connect.
 
@@ -224,7 +250,7 @@ Now you can go to your API and try it at the API Connect Developer Portal. Click
 
 ![api-connect](images/api-connect.png)
 
-## 4.2 Pull WebSphere Liberty APIs from API Connect
+## 5.2 Pull WebSphere Liberty APIs from API Connect
 
 In this step, we will learn about how to create and manage new APIs and products on API connect using API connect's user interface.
 
