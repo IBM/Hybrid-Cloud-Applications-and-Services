@@ -33,7 +33,7 @@ This tutorial teaches you how to deploy your on-premises IBM WebSphere Liberty o
 
 2. Go to your **Service credentials** and mark down your username and password. Then go to **flight-booking/src/main/java/microservices/api/sample** folder (`cd flight-booking/src/main/java/microservices/api/sample`). Now, add your username and password credential in the **DatabaseAccess.java** file.
 
-	![credential](images/credential.png)
+	![credential](images/credentials.png)
 
 3. Now go back to the **flight-booking** folder, run `mvn package`
 
