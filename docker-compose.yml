@@ -2,7 +2,7 @@ version: "3"
 services:
   airlines:
     restart: always
-    image: tomcli/airlines:latest
+    image: hybrid/airlines:latest
     links:
       - couchdb:couchdb
     ports:

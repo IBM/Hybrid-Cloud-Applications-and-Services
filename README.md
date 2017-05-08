@@ -1,15 +1,16 @@
-# Publish your On-promises WebSphere Liberty APIs Via API Connect
+# Publish your On-promises APIs Via API Connect
 
 
-With IBM® WebSphere® Connect, you can connect your IBM WebSphere Application Server apps and data to the cloud in minutes without rewriting apps or acquiring new data. Designed specifically for your WebSphere Application Server environment, these capabilities give you the flexibility to respond to business changes at scale by using your apps and data wherever they are located, whether on-premises or on the cloud.
+This project teaches you how to deploy your on-premises Database and/or Server using Docker. Then use a secure tunnel and expose those APIs through API Connect to create a secure, highly available, and sharable API environment. API Connect also allows you to further manage and secure your API assets. You learn the end-to-end process, starting with building your personal Database and Server docker images. Then creating a Secure Gateway and setting up the API Connect service on IBM Bluemix to expose your APIs in a highly protected and scalable way.
 
-This tutorial teaches you how to deploy your on-premises IBM WebSphere Liberty on Docker. Then use IBM Secure Gateway service to create a secure, highly available, and sharable API environment. It also discusses in detail how to expose those APIs through IBM API Connect, available free on IBM Bluemix, allowing you to further manage and secure your API assets. You learn the end-to-end process, starting with building a personal WebSphere Liberty docker image, creating a Secure Gateway and setting up the API Connect service on IBM Bluemix.
+With API Connect, you can connect your Server apps and data to the cloud in minutes without rewriting apps or acquiring new data. Designed specifically for your Server environment, these capabilities give you the flexibility to respond to business changes at scale by using your apps and data wherever they are located, whether on-premises or on the cloud.
 
 ## Included Components
 
 - [WebSphere Liberty](https://developer.ibm.com/wasdev/websphere-liberty/)
 - [API Connect](http://www-03.ibm.com/software/products/en/api-connect)
 - [Secure Gateway](https://console.ng.bluemix.net/docs/services/SecureGateway/sg_overview.html)
+- [Insights for Weather](https://console.ng.bluemix.net/docs/services/Weather/weather_overview.html#about_weather)
 
 
 ## Steps
@@ -26,19 +27,24 @@ This tutorial teaches you how to deploy your on-premises IBM WebSphere Liberty o
 
 # 1. Build Your Sample API Application
 
-> Note: Details of this application will be updated on Monday. 
+Our sample API application is an airline booking application that demonstrates how API application can store its data using on-promise database and enhance its API features using Bluemix's Data Analytic Service.
 
-1. First, Create your [Weather API service](https://console.ng.bluemix.net/catalog/services/weather-company-data?taxonomyNavigation=data).
+In this step, we will add our own Weather API credential for our application and build our own .war file using Maven.
+
+1. First, install [Maven](https://maven.apache.org/install.html) to build and package our application into *.war* format.
 
 
-2. Go to your **Service credentials** and mark down your username and password. Then go to **flight-booking/src/main/java/microservices/api/sample** folder (`cd flight-booking/src/main/java/microservices/api/sample`). Now, add your username and password credential in the **DatabaseAccess.java** file.
+2. Create your [Weather API service](https://console.ng.bluemix.net/catalog/services/weather-company-data?taxonomyNavigation=data). The Weather API can provide the airport location and weather condition for clients. 
+
+
+3. Go to your **Service credentials** and mark down your username and password. Then go to **flight-booking/src/main/java/microservices/api/sample** folder (`cd flight-booking/src/main/java/microservices/api/sample`). Now, add your username and password credential in the **DatabaseAccess.java** file.
 
 	![credential](images/credentials.png)
 
-3. Now go back to the **flight-booking** folder, run `mvn package`
+4. Now go back to the **flight-booking** folder, run `mvn package` to build your .war file.
 
 
-4. Then go to the **deployment_artifacts** folder and move your airlines.war to the main directory's **apps** folder.
+5. Then go to the **deployment_artifacts** folder and move your **airlines.war** file to your **~/hybrid-connectivity/airline_app/apps** folder.
 
 
 # 2. Run a On-promise Server using Docker
@@ -47,7 +53,7 @@ In this step, we want to put all our APIs in one place. Then, we will build our 
 
 1. First install [Docker CLI](https://www.docker.com/community-edition#/download).
 
-2. If you want to deploy your own APIs, put your **.war** API application in the **apps** folder and configure the **server.xml** file. For this example, we will use the airlines API application.
+2. If you want to deploy your own APIs, put your **.war** API application in your **airline_app/apps** folder and configure the **server.xml** file. For this example, we will use the airlines API application.
 
 	Now, in this main directory, build your server and run it on your local host.
 
@@ -63,7 +69,7 @@ In this step, we want to put all our APIs in one place. Then, we will build our 
     bash database_init.sh
     ```
 
-3. To reach the API Discovery user interface, go to `https://localhost:9448/ibm/api/explorer`. Since docker only expose tcp port and api-connect is using https port, we need to authenticate the website. Then, use the credentials from your server.xml to login (For this example, the **username** is `user` and the **password** is `demo`).
+3. To reach the API Discovery user interface, go to `https://localhost:9448/ibm/api/explorer`. Since docker only expose tcp port and api-connect is using https port, we need to authenticate the website. Then, use the credentials from your server.xml to login (For this example, the **username** is `admin` and the **password** is `admin`).
 
 	You should see something like this in your API Discovery user interface.
 
@@ -110,7 +116,7 @@ In this step, we will create a tunnel to expose our localhost APIs to the public
 	![cloud-host](images/cloud-host.png)
 
 
-9. Now, go to `https://<Cloud Host:Port>/ibm/api/explorer/` and varify the secure gateway is working. Remember, your default username is **user** and password is **demo**. 
+9. Now, go to `https://<Cloud Host:Port>/ibm/api/explorer/` and varify the secure gateway is working. Remember, your default username is **admin** and password is **admin**. 
 
 
 
@@ -260,7 +266,7 @@ In this step, we will learn about how to create and manage new APIs and products
 
 2. In the **Import API from a file or URL** window, click **Or import from URL**.
 
-	For the URL, type the Liberty URL that you want to use to import the Swagger document. For this example, you can use `https://<Cloud Host:Port>/ibm/api/docs/apiconnect`. Remember the username for this example is **user** and password is **demo**.
+	For the URL, type the Liberty URL that you want to use to import the Swagger document. For this example, you can use `https://<Cloud Host:Port>/ibm/api/docs/apiconnect`. Remember for this example the username is **admin** and password is **admin**.
     
 3. After you imported your API, go to **source**. Then go to the bottom of the page (around line 532) and change the **target-url**'s value to `'<cloud host:port>$(request.path)'` (replace `<cloud host:port>` to your own cloud host:port). Then click the **save icon** on the top right corner.
 
