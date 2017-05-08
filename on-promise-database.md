@@ -101,7 +101,7 @@ In this step, we will add our own Weather API credential for our application and
     
     ![discovery](images/discovery.png)
     
-10. As shown in the following screen capture, you can click the **Try it out** button, which starts your application, running on Docker
+10. As shown in the following screen capture, you can click the **Try it out** button, which calls your application that runs on Cloud Foundry with your on-promise database.
 
     ![try it out](images/try-it-out.png)
     
