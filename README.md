@@ -12,6 +12,14 @@ With API Connect, you can connect your Server apps and data to the cloud in minu
 - [Secure Gateway](https://console.ng.bluemix.net/docs/services/SecureGateway/sg_overview.html)
 - [Insights for Weather](https://console.ng.bluemix.net/docs/services/Weather/weather_overview.html#about_weather)
 
+## Implementations
+
+**On-promise Server and Database**: Please follow step 1, 2, 3, 4, 5
+
+**On-promise Database and Cloud Server**: Please follow the on-promise-database.md and come back for step 4 and 5.
+
+**Cloud Server and Database**: Please follow the cloud.md and come back for step 4 and 5.
+
 
 ## Steps
 1. [Build Your Sample API Application](#1-build-your-sample-api-application)
@@ -44,7 +52,7 @@ In this step, we will add our own Weather API credential for our application and
 4. Now go back to the **flight-booking** folder, run `mvn package` to build your .war file.
 
 
-5. Then go to the **deployment_artifacts** folder and move your **airlines.war** file to your **~/hybrid-connectivity/airline_app/apps** folder.
+5. Then go to the **deployment_artifacts** folder and move your **airlines.war** file to your main directory's **airline_app/apps** folder.
 
 
 # 2. Run a On-promise Server using Docker
