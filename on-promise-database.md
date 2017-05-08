@@ -76,6 +76,8 @@ In this step, we will add our own Weather API credential for our application and
     
 4. You also need to change the database address to your cloud host:port. (e.g. `DATABASE_CORE_ADDRESS = "http://cap-sg-prd-4.integration.ibmcloud.com:17638/";`
 
+    ![cloud-host2](images/cloud-host2.png)
+
 
 5. Now go back to the **flight-booking** folder, run `mvn package` to build your .war file.
 
