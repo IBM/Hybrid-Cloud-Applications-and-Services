@@ -90,7 +90,7 @@ In this step, we want to put all our APIs in one place. Then, we will build our 
     
 # 3. Create a Tunnel to expose your On-promise APIs
 
-In this step, we will create a tunnel to expose our localhost APIs to the public. For this example, we will use the secure gateway as our tunnel to expose our APIs to the cloud host. At the end of this step, you should able to access and call your localhost APIs on any device via cloud host.
+In this step, we will use the secure gateway as our tunnel to expose our APIs to the cloud host. At the end of this step, you should able to access and call your localhost APIs on any device via cloud host.
 
 1. First, create your [secure gateway service](https://console.ng.bluemix.net/catalog/services/secure-gateway?taxonomyNavigation=apis) from bluemix.
 
