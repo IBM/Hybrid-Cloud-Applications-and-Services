@@ -61,12 +61,14 @@ public class DatabaseAccess {
 	}
 
 	public static Weather getLocWeather(String date, String airportTo) {
+		//enable basic login
 		HttpHelper.setAuth(USERNAME,PASSWORD);
 		HttpHelper.enableAuth(true);
 		JsonNode response = HttpHelper.connect("https://twcservice.mybluemix.net/api/weather/v3/location/point?iataCode="+ airportTo +"&language=en-US", "GET", null);
 		if (response == null) {
 			return null;
 		}
+		//query the data and get its lat and lon
 		String city = response.path("location").path("city").asText();
 		double lat = response.path("location").path("latitude").asDouble();
 		String latitude = Double.toString(lat);
@@ -76,6 +78,7 @@ public class DatabaseAccess {
 		HttpHelper.enableAuth(false);
 		JsonNode d10 = response2.get("forecasts");
 		try{
+			//query data and reformat it to match the Weather class
 			DateFormat dates = new SimpleDateFormat("yyyy-MM-dd");
 			Date future = dates.parse(date);
 			for (JsonNode day : d10) {
@@ -92,6 +95,7 @@ public class DatabaseAccess {
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
+		//If we can't find the matching day, return null
 		return null;
 	}
 	
