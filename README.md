@@ -75,7 +75,7 @@ In this step, we want to put all our APIs in one place. Then, we will build our 
     bash database_init.sh
     ```
 
-3. To reach the API Discovery user interface, go to `https://localhost:9448/ibm/api/explorer`. Since docker only expose tcp port and api-connect is using https port, we need to authenticate the website. Then, use the credentials from your server.xml to login (For this example, the **username** is `admin` and the **password** is `admin`).
+3. To reach the API Discovery user interface, go to `https://localhost:9443/ibm/api/explorer`. Since docker only expose tcp port and api-connect is using https port, we need to authenticate the website. Then, use the credentials from your server.xml to login (For this example, the **username** is `admin` and the **password** is `admin`).
 
 	You should see something like this in your API Discovery user interface.
 
