@@ -16,7 +16,7 @@ With API Connect, you can connect your Server apps and data to the cloud in minu
 
 **On-promise Server and Database**: Please follow step 1, 2, 3, 4, 5
 
-**On-promise Database and Cloud Server**: Please follow the on-promise-database.md and come back for step 4 and 5.
+**On-promise Database and Cloud Server**: Please follow the [on-promise-database.md](on-promise-database.md) and come back for step 4 and 5.
 
 **Cloud Server and Database**: Please follow the cloud.md and come back for step 4 and 5.
 
