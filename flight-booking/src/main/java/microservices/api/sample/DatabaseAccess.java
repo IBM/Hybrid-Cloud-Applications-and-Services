@@ -76,6 +76,7 @@ public class DatabaseAccess {
 		String longitude = Double.toString(lon);
 		JsonNode response2 = HttpHelper.connect("https://twcservice.mybluemix.net/api/weather/v1/geocode/" + latitude + "/" + longitude + "/forecast/daily/10day.json", "GET", null);
 		HttpHelper.enableAuth(false);
+		HttpHelper.setAuth(null,null);
 		JsonNode d10 = response2.get("forecasts");
 		try{
 			//query data and reformat it to match the Weather class
