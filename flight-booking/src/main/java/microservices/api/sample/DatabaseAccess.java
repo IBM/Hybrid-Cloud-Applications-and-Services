@@ -29,27 +29,14 @@ public class DatabaseAccess {
 	private static String USERNAME = "username";
 	private static String PASSWORD = "password";
 
+	//Please change your database address to the cloud host if you are hosting your Server on the cloud.
+	private static String DATABASE_CORE_ADDRESS = "http://couchdb:5984/";
 
-	private static String DATABASE_CORE_ADDRESS;
-	private static String AIRLINES_DATABASE;
-	private static String BOOKINGS_DATABASE;
+	private static String AIRLINES_DATABASE = DATABASE_CORE_ADDRESS + "airlines";
+	private static String BOOKINGS_DATABASE = DATABASE_CORE_ADDRESS + "bookings";
 	private static final String ALL_QUERY = "/_all_docs";
 	private static final ObjectMapper mapper = new ObjectMapper();
 
-	
-	static {
-		Properties props = new Properties();
-		try {
-			props.load(DatabaseAccess.class.getClassLoader().getResourceAsStream("config.properties"));
-			DATABASE_CORE_ADDRESS = "http://couchdb:5984/";
-			AIRLINES_DATABASE = DATABASE_CORE_ADDRESS + "airlines";
-			BOOKINGS_DATABASE = DATABASE_CORE_ADDRESS + "bookings";
-			System.out.println("loaded config. Database: " + DATABASE_CORE_ADDRESS);
-		} catch (IOException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-	}
 	
 	public static Collection<Airline> getAllAirlines() {
 		JsonNode response = HttpHelper.connect(AIRLINES_DATABASE + ALL_QUERY, "GET", null);

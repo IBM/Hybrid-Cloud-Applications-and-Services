@@ -103,7 +103,7 @@ In this step, we will create a tunnel to expose our localhost APIs to the public
 4. After you open the secure gateway client with your Gateway ID and Security Token, click enter and run the following commands.
 
 	```
-    acl allow 127.0.0.1:9448
+    acl allow 127.0.0.1:9443
     ```
 
 	Now your Gateway is able to access your API Discovery Server.
@@ -112,7 +112,7 @@ In this step, we will create a tunnel to expose our localhost APIs to the public
 
 	![on-premises](images/on-premises.png)
     
-6. Next, put down **127.0.0.1** for your resource hostname and **9448** for your port and click next.
+6. Next, put down **127.0.0.1** for your resource hostname and **9443** for your port and click next.
 
 	![hostname](images/hostname.png)
     
