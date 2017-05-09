@@ -3,11 +3,13 @@
 
 # Extend your on-premise applications and services to public cloud, and vice versa
 
-A hybrid cloud model blends elements of both the private and the public cloud, and gives users choice and flexibility to run apps and services across on-premises systems and the cloud.I n the simplest terms, the hybrid model is primarily a private cloud that allows an organization to tap into a public cloud when and where it makes sense. This code shows you how to expose your on-premise applications and services to public cloud, and vice versa.
+A hybrid cloud model blends elements of both the private and the public cloud, and gives users choice and flexibility to run apps and services across on-premises systems and the cloud. In the simplest terms, the hybrid model is primarily a private cloud that allows an organization to tap into a public cloud when and where it makes sense. This code shows you how to expose your on-premise applications and services to public cloud, and vice versa.
 
-We first deploy an on-premise sample airline application and database on local machine. This simulates an on-premise environment behind a firewall. Thereafter we leverage public cloud services to create a  secure tunnel and expose the application APIs. Moving beyond, we show how the on-premise application can leverage public cloud application services. 
+We first deploy an on-premise application and database on local machine. This simulates an on-prem environment behind a firewall. Thereafter we leverage public cloud services to create a  secure tunnel and expose the application APIs. Moving beyond, we show how the on-prem application can leverage public cloud application services. 
 
-You learn the end-to-end process, starting with building your personal application server and database docker images leveraging WebSphere Liberty and CouchDB, creating a Secure Gateway and setting up the API Connect service on IBM Bluemix to expose your application APIs, and then leveraging Weather service on Bluemix to tie into the airline application.
+You learn the end-to-end process, starting with building your personal application server and database docker images leveraging WebSphere Liberty and CouchDB, deploying the sample Airline application and creating a Secure Gateway and setting up the API Connect service on IBM Bluemix to expose your application APIs. We then show how we can leverage our publi Weather service API on Bluemix to tie into the on-premise airline application.
+
+In the second scenario, we move the sample Airline application to public Bluemix, and then show how your application running on public cloud can acccess your on-premise resources like database etc.
 
 ## Included Components
 
