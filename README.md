@@ -20,8 +20,8 @@ In the second scenario, we move the sample Airline application to public Bluemix
 
 ## Implementations
 
-Scenario One: **[Application and Database On-Premise, consuming a Public Cloud service](#steps)**
-Scenario Two: **[Database On-Premise, Application and service on Public Cloud ](on-promise-database.md) )**
+- Scenario One: **[Application and Database On-Premise, consuming a Public Cloud service](#steps)**
+- Scenario Two: **[Database On-Premise, Application and service on Public Cloud ](on-promise-database.md) )**
 
 ## Steps
 1. [Build Your Sample API Application](#1-build-your-sample-api-application)
