@@ -1,7 +1,7 @@
 [![Build Status](https://travis-ci.org/IBM/hybrid-connectivity.svg?branch=master)](https://travis-ci.org/IBM/hybrid-connectivity)
 
 
-# Publish your On-promises APIs Via API Connect
+# Extend your on-premise applications and services to public cloud, and vice versa
 
 
 This project teaches you how to deploy your on-premises Database and/or Server using Docker. Then use a secure tunnel and expose those APIs through API Connect to create a secure, highly available, and sharable API environment. API Connect also allows you to further manage and secure your API assets. You learn the end-to-end process, starting with building your personal Database and Server docker images. Then creating a Secure Gateway and setting up the API Connect service on IBM Bluemix to expose your APIs in a highly protected and scalable way.
