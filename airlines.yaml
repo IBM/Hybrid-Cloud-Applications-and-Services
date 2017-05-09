@@ -35,7 +35,7 @@ spec:
         tier: api
     spec:
       containers:
-      - image: registry.ng.bluemix.net/tommy_chaoping/airlines
+      - image: docker.io/tomcli/airlines
         name: airlines
         ports:
         - containerPort: 9080

@@ -1,3 +1,6 @@
+[![Build Status](https://travis-ci.org/IBM/hybrid-connectivity.svg?branch=master)](https://travis-ci.org/IBM/hybrid-connectivity)
+
+
 # Publish your On-promises APIs Via API Connect
 
 

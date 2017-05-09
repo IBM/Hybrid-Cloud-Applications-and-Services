@@ -26,8 +26,8 @@ public class DatabaseAccess {
 	}
 
 	//Please add your Weather API's USERNAME and PASSWORD here.
-	private static String USERNAME = "username";
-	private static String PASSWORD = "password";
+	private static String USERNAME = "ca644e50-5e1c-4542-bec4-2314b1e6d539";
+	private static String PASSWORD = "k9Ri1xbVlx";
 
 	//Please change your database address to the cloud host if you are hosting your Server on the cloud.
 	private static String DATABASE_CORE_ADDRESS = "http://couchdb:5984/";

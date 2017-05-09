@@ -1,0 +1,8 @@
+language: java
+sudo: required
+script:
+- bash install.sh
+group: stable
+dist: trusty
+sudo: required
+os: linux
