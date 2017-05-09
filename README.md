@@ -56,9 +56,9 @@ We will also add our own Weather API credential from public Bluemix for the appl
 5. Go to the **deployment_artifacts** folder and move your **airlines.war** file to your main directory's **airline_app/apps** folder.
 
 
-# 2. Run the Application and Database on-premise using WebSphere, CouchDB and Docker
+# 2. Run the application and database on-premise using WebSphere, CouchDB and Docker
 
-In this step we will build our application server docker image with run it on docker. In this example, we will use WebSphere Liberty for our server. We will also deploy a local CouchDB database
+In this example, we will use WebSphere Liberty for our application server, and local CouchDB for our database. We will first build our application server docker image. 
 
 At the end of this step, you should able to call your application APIs via localhost. 
 
@@ -133,7 +133,7 @@ In this step, we will use the secure gateway as our tunnel to expose our applica
 
 # 4. Create an API Connect service in Bluemix
 
-In this step, we will setup API Connect service to help us distribute our APIs.
+In this step, we will setup API Connect service to help us expose our application APIs to public.
 
 1. To add API Connect as a Bluemix service, go to the bluemix [API Connect service](https://console.ng.bluemix.net/catalog/services/api-connect?taxonomyNavigation=services)
 
