@@ -12,7 +12,7 @@ You learn the end-to-end process, starting with building your application server
 In the second scenario, we move the sample Airline application to public Bluemix, and then show how your application running on public cloud can acccess your on-premise resources like database etc.
 
 ## Included Components
-
+- [CouchDB](http://couchdb.apache.org)
 - [WebSphere Liberty](https://developer.ibm.com/wasdev/websphere-liberty/)
 - [API Connect](http://www-03.ibm.com/software/products/en/api-connect)
 - [Secure Gateway](https://console.ng.bluemix.net/docs/services/SecureGateway/sg_overview.html)
@@ -25,8 +25,8 @@ In the second scenario, we move the sample Airline application to public Bluemix
 
 ## Steps
 1. [Build sample application to use local database and public service](#1-build-sample-application-to-use-local-database-and-public-service)
-2. [Run the Application and Database on-premise using WebSphere, CouchDB and Docker](#2-run-the-application-and-database-on-premise-using-websphere-couchdb-docker)
-3. [Create a Tunnel to expose your On-promise APIs](#3-create-a-tunnel-to-expose-your-on-promise-apis)
+2. [Run the application and database on-premise using WebSphere, CouchDB and Docker](#2-run-the-application-and-database-on-premise-using-websphere-couchdb-and-docker)
+3. [Create a secure tunnel to connect to Public Cloud](#3-create-a-secure-tunnel-to-connect-to-public-cloud)
 4. [Create an API Connect service in Bluemix](#4-create-an-api-connect-service-in-bluemix)
 5. [Integrate WebSphere Liberty and API Connect: push and pull](#5-integrate-websphere-liberty-and-api-connect-push-and-pull)
 - 5.1 [Push WebSphere Liberty APIs into API Connect](#51-push-websphere-liberty-apis-into-api-connect)
@@ -91,9 +91,9 @@ At the end of this step, you should able to call your application APIs via local
 	![try it out](images/try-it-out.png)
     
     
-# 3. Create a Tunnel to expose your On-promise APIs
+# 3. Create a secure tunnel to connect to Public Cloud
 
-In this step, we will use the secure gateway as our tunnel to expose our APIs to the cloud host. At the end of this step, you should able to access and call your localhost APIs on any device via cloud host.
+In this step, we will use the secure gateway as our tunnel to expose our application to the public cloud host. At the end of this step, you should able to access and call your local application APIs on any device on internet via public cloud host
 
 1. First, create your [secure gateway service](https://console.ng.bluemix.net/catalog/services/secure-gateway?taxonomyNavigation=apis) from bluemix.
 
