@@ -24,8 +24,8 @@ In the second scenario, we move the sample Airline application to public Bluemix
 - Scenario Two: **[Database On-Premise, Application and service on Public Cloud ](on-promise-database.md)**
 
 ## Steps
-1. [Build Your Sample API Application](#1-build-your-sample-api-application)
-2. [Run a On-promise Server using Docker](#2-run-a-on-promise-server-using-docker)
+1. [Build Your Sample Airline API Application](#1-build-sample-airline-api-application)
+2. [Run the Application and Database on-premise using WebSphere, CouchDB and Docker](#2-run-the-application-and-database-on-premise-using-docker)
 3. [Create a Tunnel to expose your On-promise APIs](#3-create-a-tunnel-to-expose-your-on-promise-apis)
 4. [Create an API Connect service in Bluemix](#4-create-an-api-connect-service-in-bluemix)
 5. [Integrate WebSphere Liberty and API Connect: push and pull](#5-integrate-websphere-liberty-and-api-connect-push-and-pull)
@@ -35,37 +35,38 @@ In the second scenario, we move the sample Airline application to public Bluemix
 [Troubleshooting](#troubleshooting)
 
 
-# 1. Build Your Sample API Application
+# 1. Build sample Airline API Application
 
-Our sample API application is an airline booking application that demonstrates how API application can store its data using on-promise database and enhance its API features using Bluemix's Data Analytic Service.
+Our sample Airline API application is an airline booking application that demonstrates how API application can store its data using on-promise database and enhance its API features using Bluemix's Data Analytic Service.
 
-In this step, we will add our own Weather API credential for our application and build our own .war file using Maven.
+In this step, we will add our own Weather API credential for the application and build a .war file using Maven. The Weather API will provide the weather condition for destination airports selected by clients. 
 
 1. First, install [Maven](https://maven.apache.org/install.html) to build and package our application into *.war* format.
 
 
-2. Create your [Weather API service](https://console.ng.bluemix.net/catalog/services/weather-company-data?taxonomyNavigation=data). The Weather API can provide the airport location and weather condition for clients. 
-
+2. Create [Weather API service](https://console.ng.bluemix.net/catalog/services/weather-company-data?taxonomyNavigation=data) in Bluemix. 
 
 3. Go to your **Service credentials** and mark down your username and password. Then go to **flight-booking/src/main/java/microservices/api/sample** folder (`cd flight-booking/src/main/java/microservices/api/sample`). Now, add your username and password credential in the **DatabaseAccess.java** file.
 
 	![credential](images/credentials.png)
 
-4. Now go back to the **flight-booking** folder, run `mvn package` to build your .war file.
+4. Go to the **flight-booking** folder, run `mvn package` to build the .war file.
 
 
-5. Then go to the **deployment_artifacts** folder and move your **airlines.war** file to your main directory's **airline_app/apps** folder.
+5. Go to the **deployment_artifacts** folder and move your **airlines.war** file to your main directory's **airline_app/apps** folder.
 
 
-# 2. Run a On-promise Server using Docker
+# 2. Run the Application and Database on-premise using WebSphere, CouchDB and Docker
 
-In this step, we want to put all our APIs in one place. Then, we will build our own On-promise Server docker image with all those APIs and run it on docker. In this example, we will use WebSphere Liberty for our server. At the end of this step, you should able to call your APIs via your localhost.
+In this step we will build our application server docker image with run it on docker. In this example, we will use WebSphere Liberty for our server. We will also deploy a local CouchDB database
 
-1. First install [Docker CLI](https://www.docker.com/community-edition#/download).
+At the end of this step, you should able to call your application APIs via localhost. 
 
-2. If you want to deploy your own APIs, put your **.war** API application in your **airline_app/apps** folder and configure the **server.xml** file. For this example, we will use the airlines API application.
+1. Install [Docker CLI](https://www.docker.com/community-edition#/download).
 
-	Now, in this main directory, build your server and run it on your local host.
+2. To deploy the Airline API application, put the **.war** file in **airline_app/apps** folder and configure the **server.xml** file. For this example, we are using airlines API application, but you can also add your own application.
+
+	In this main directory, build your server and run it on your local host.
 
     ```bash
    	docker build -t hybrid/airlines .
@@ -79,13 +80,13 @@ In this step, we want to put all our APIs in one place. Then, we will build our 
     bash database_init.sh
     ```
 
-3. To reach the API Discovery user interface, go to `https://localhost:9443/ibm/api/explorer`. Since docker only expose tcp port and api-connect is using https port, we need to authenticate the website. Then, use the credentials from your server.xml to login (For this example, the **username** is `admin` and the **password** is `admin`).
+3. To reach the WebSphere Liberty API Discovery user interface, go to `https://localhost:9443/ibm/api/explorer`. Since docker only exposes tcp port and api-connect is using https port, we need to authenticate the website. Then, use the credentials from your server.xml to login (For this example, the **username** is `admin` and the **password** is `admin`).
 
 	You should see something like this in your API Discovery user interface.
 
 	![discovery](images/discovery.png)
 
-4. As shown in the following screen capture, you can click the **Try it out** button, which starts your application, running on Docker
+4. As shown in the following screen capture, you can click the **Try it out** button, which starts the sample Airline application, running on Docker
 
 	![try it out](images/try-it-out.png)
     
