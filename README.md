@@ -24,8 +24,8 @@ In the second scenario, we move the sample Airline application to public Bluemix
 - Scenario Two: **[Database On-Premise, Application and service on Public Cloud ](on-promise-database.md)**
 
 ## Steps
-1. [Build Your Sample Airline API Application](#1-build-sample-airline-api-application)
-2. [Run the Application and Database on-premise using WebSphere, CouchDB and Docker](#2-run-the-application-and-database-on-premise-using-docker)
+1. [Build sample application to use local database and public service](#1-build-sample-application-to-use-local-database-and-public service)
+2. [Run the Application and Database on-premise using WebSphere, CouchDB and Docker](#2-run-the-application-and-database-on-premise-using-websphere-couchdb-docker)
 3. [Create a Tunnel to expose your On-promise APIs](#3-create-a-tunnel-to-expose-your-on-promise-apis)
 4. [Create an API Connect service in Bluemix](#4-create-an-api-connect-service-in-bluemix)
 5. [Integrate WebSphere Liberty and API Connect: push and pull](#5-integrate-websphere-liberty-and-api-connect-push-and-pull)
@@ -35,11 +35,11 @@ In the second scenario, we move the sample Airline application to public Bluemix
 [Troubleshooting](#troubleshooting)
 
 
-# 1. Build sample Airline API Application
+# 1. Build sample application to use local database and public service
 
-Our sample Airline API application is an airline booking application that demonstrates how API application can store its data using on-promise database and enhance its API features using Bluemix's Data Analytic Service.
+Our sample Airline API application is an airline booking application that demonstrates how API application can store its data using on-prem database. 
 
-In this step, we will add our own Weather API credential for the application and build a .war file using Maven. The Weather API will provide the weather condition for destination airports selected by clients. 
+We will also add our own Weather API credential from public Bluemix for the application and build a .war file using Maven. The Weather API will provide the weather condition for destination airports selected by clients. 
 
 1. First, install [Maven](https://maven.apache.org/install.html) to build and package our application into *.war* format.
 
