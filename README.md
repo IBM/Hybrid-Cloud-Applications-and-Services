@@ -3,10 +3,11 @@
 
 # Extend your on-premise applications and services to public cloud, and vice versa
 
+A hybrid cloud model blends elements of both the private and the public cloud, and gives users choice and flexibility to run apps and services across on-premises systems and the cloud.I n the simplest terms, the hybrid model is primarily a private cloud that allows an organization to tap into a public cloud when and where it makes sense. This code shows you how to expose your on-premise applications and services to public cloud, and vice versa.
 
-This project teaches you how to deploy your on-premises Database and/or Server using Docker. Then use a secure tunnel and expose those APIs through API Connect to create a secure, highly available, and sharable API environment. API Connect also allows you to further manage and secure your API assets. You learn the end-to-end process, starting with building your personal Database and Server docker images. Then creating a Secure Gateway and setting up the API Connect service on IBM Bluemix to expose your APIs in a highly protected and scalable way.
+We first deploy an on-premise sample airline application and database on local machine. This simulates an on-premise environment behind a firewall. Thereafter we leverage public cloud services to create a  secure tunnel and expose the application APIs. Moving beyond, we show how the on-premise application can leverage public cloud application services. 
 
-With API Connect, you can connect your Server apps and data to the cloud in minutes without rewriting apps or acquiring new data. Designed specifically for your Server environment, these capabilities give you the flexibility to respond to business changes at scale by using your apps and data wherever they are located, whether on-premises or on the cloud.
+You learn the end-to-end process, starting with building your personal application server and database docker images leveraging WebSphere Liberty and CouchDB, creating a Secure Gateway and setting up the API Connect service on IBM Bluemix to expose your application APIs, and then leveraging Weather service on Bluemix to tie into the airline application.
 
 ## Included Components
 
