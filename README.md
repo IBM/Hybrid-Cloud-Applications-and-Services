@@ -7,7 +7,7 @@ A hybrid cloud model blends elements of both the private and the public cloud, a
 
 We first deploy an on-premise application and database on local machine. This simulates an on-prem environment behind a firewall. Thereafter we leverage public cloud services to create a  secure tunnel and expose the application APIs. Moving beyond, we show how the on-prem application can leverage public cloud application services. 
 
-You learn the end-to-end process, starting with building your personal application server and database docker images leveraging WebSphere Liberty and CouchDB, deploying the sample Airline application and creating a Secure Gateway and setting up the API Connect service on IBM Bluemix to expose your application APIs. We then show how we can leverage our publi Weather service API on Bluemix to tie into the on-premise airline application.
+You learn the end-to-end process, starting with building your application server and database docker images leveraging WebSphere Liberty and CouchDB, deploying the sample Airline application and creating a Secure Gateway and setting up the API Connect service on IBM Bluemix to expose your application APIs. We then show how we can leverage our publi Weather service API on Bluemix to tie into the on-premise airline application.
 
 In the second scenario, we move the sample Airline application to public Bluemix, and then show how your application running on public cloud can acccess your on-premise resources like database etc.
 
@@ -20,10 +20,8 @@ In the second scenario, we move the sample Airline application to public Bluemix
 
 ## Implementations
 
-**On-promise Server and Database**: Please follow these [Steps](#steps)
-
-**On-promise Database and Cloud Server**: Please follow the [On-promise database instructions](on-promise-database.md) and come back for step 4 and 5.
-
+Scenario One: **[Application and Database On-Premise, consuming a Public Cloud service](#steps)**
+Scenario Two: **[Database On-Premise, Application and service on Public Cloud ](on-promise-database.md) )**
 
 ## Steps
 1. [Build Your Sample API Application](#1-build-your-sample-api-application)
