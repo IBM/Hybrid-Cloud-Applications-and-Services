@@ -24,7 +24,7 @@ In the second scenario, we move the sample Airline application to public Bluemix
 - Scenario Two: **[Database On-Premise, Application and service on Public Cloud ](on-promise-database.md)**
 
 ## Steps
-1. [Build sample application to use local database and public service](#1-build-sample-application-to-use-local-database-and-public service)
+1. [Build sample application to use local database and public service](#1-build-sample-application-to-use-local-database-and-public-service)
 2. [Run the Application and Database on-premise using WebSphere, CouchDB and Docker](#2-run-the-application-and-database-on-premise-using-websphere-couchdb-docker)
 3. [Create a Tunnel to expose your On-promise APIs](#3-create-a-tunnel-to-expose-your-on-promise-apis)
 4. [Create an API Connect service in Bluemix](#4-create-an-api-connect-service-in-bluemix)
