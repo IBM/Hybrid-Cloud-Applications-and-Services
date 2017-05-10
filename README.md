@@ -24,9 +24,9 @@ In the second scenario, we move the sample Airline application to public Bluemix
 - Scenario Two: **[Database On-Premise, Application and service on Public Cloud ](on-promise-database.md)**
 
 ## Steps
-1. [Build sample application to use local database and public service](#1-build-sample-application-to-use-local-database-and-public-service)
-2. [Run the application and database on-premise using WebSphere, CouchDB and Docker](#2-run-the-application-and-database-on-premise-using-websphere-couchdb-and-docker)
-3. [Create a secure tunnel to connect to Public Cloud](#3-create-a-secure-tunnel-to-connect-to-public-cloud)
+1. [Create a secure tunnel to connect your on-premise environment to public cloud](#3-create-a-secure-tunnel-to-connect-your-on-premise-enviroment-to-public-cloud)
+2. [Build sample application to use local database and public service](#1-build-sample-application-to-use-local-database-and-public-service)
+3. [Run the application and database on-premise using WebSphere, CouchDB and Docker](#2-run-the-application-and-database-on-premise-using-websphere-couchdb-and-docker)
 4. [Create an API Connect service in Bluemix](#4-create-an-api-connect-service-in-bluemix)
 5. [Integrate WebSphere Liberty and API Connect: push and pull](#5-integrate-websphere-liberty-and-api-connect-push-and-pull)
 - 5.1 [Push WebSphere Liberty APIs into API Connect](#51-push-websphere-liberty-apis-into-api-connect)
@@ -34,8 +34,47 @@ In the second scenario, we move the sample Airline application to public Bluemix
 
 [Troubleshooting](#troubleshooting)
 
+1 3. Create a secure tunnel to connect your on-premise environment to public cloud
 
-# 1. Build sample application to use local database and public service
+In this step, we will use the secure gateway as our tunnel to expose our application to the public cloud host. At the end of this step, you should able to access and call your local application APIs on any device on internet via public cloud host
+
+1. First, create your [secure gateway service](https://console.ng.bluemix.net/catalog/services/secure-gateway?taxonomyNavigation=apis) from bluemix.
+
+2. Then, follow this [Getting started with the Secure Gateway](https://console.ng.bluemix.net/docs/services/SecureGateway/secure_gateway.html) tutorial to setup your gateway.
+
+3. When you setup your secure gateway client, install **IBM Installer** and run it on your local machine.
+
+	![installer](images/installer.png)
+    
+4. After you open the secure gateway client with your Gateway ID and Security Token, click enter and run the following commands.
+
+	```
+    acl allow 127.0.0.1:9443
+    ```
+
+	Now your Gateway is able to access your API Discovery Server.
+
+5. Now let's create the destination for our gateway. First, select **On-Premises** at Guided Setup and click next. 
+
+	![on-premises](images/on-premises.png)
+    
+6. Next, put down **127.0.0.1** for your resource hostname and **9443** for your port and click next.
+
+	![hostname](images/hostname.png)
+    
+7. Next, select **TCP** for your protocol and click next. Then, select **None** for your authentication and click next. Then, do not put anything on your IP table rules. Lastly, name your destination and click **Add Destination**.
+
+------------
+
+8. View and note your cloud host by clicking on the **gear icon** on your destination. 
+
+	![cloud-host](images/cloud-host.png)
+
+--------
+9. Now, go to `https://<Cloud Host:Port>/ibm/api/explorer/` and varify the secure gateway is working. Remember, your default username is **admin** and password is **admin**. 
+
+
+# 2. Build sample application to use local database and public service
 
 Our sample Airline API application is an airline booking application that demonstrates how API application can store its data using on-prem database. 
 
@@ -56,7 +95,7 @@ We will also add our own Weather API credential from public Bluemix for the appl
 5. Go to the **deployment_artifacts** folder and move your **airlines.war** file to your main directory's **airline_app/apps** folder.
 
 
-# 2. Run the application and database on-premise using WebSphere, CouchDB and Docker
+# 3. Run the application and database on-premise using WebSphere, CouchDB and Docker
 
 In this example, we will use WebSphere Liberty for our application server, and local CouchDB for our database. We will first build our application server docker image. 
 
@@ -91,44 +130,6 @@ At the end of this step, you should able to call your application APIs via local
 	![try it out](images/try-it-out.png)
     
     
-# 3. Create a secure tunnel to connect to Public Cloud
-
-In this step, we will use the secure gateway as our tunnel to expose our application to the public cloud host. At the end of this step, you should able to access and call your local application APIs on any device on internet via public cloud host
-
-1. First, create your [secure gateway service](https://console.ng.bluemix.net/catalog/services/secure-gateway?taxonomyNavigation=apis) from bluemix.
-
-2. Then, follow this [Getting started with the Secure Gateway](https://console.ng.bluemix.net/docs/services/SecureGateway/secure_gateway.html) tutorial to setup your gateway.
-
-3. When you setup your secure gateway client, install **IBM Installer** and run it on your local machine.
-
-	![installer](images/installer.png)
-    
-4. After you open the secure gateway client with your Gateway ID and Security Token, click enter and run the following commands.
-
-	```
-    acl allow 127.0.0.1:9443
-    ```
-
-	Now your Gateway is able to access your API Discovery Server.
-
-5. Now let's create the destination for our gateway. First, select **On-Premises** at Guided Setup and click next. 
-
-	![on-premises](images/on-premises.png)
-    
-6. Next, put down **127.0.0.1** for your resource hostname and **9443** for your port and click next.
-
-	![hostname](images/hostname.png)
-    
-7. Next, select **TCP** for your protocol and click next. Then, select **None** for your authentication and click next. Then, do not put anything on your IP table rules. Lastly, name your destination and click **Add Destination**.
-
-
-8. Now, you can access your API Discovery Server via the secure gateway cloud host. You can view your cloud host by clicking on the **gear icon** on your destination. 
-
-	![cloud-host](images/cloud-host.png)
-
-
-9. Now, go to `https://<Cloud Host:Port>/ibm/api/explorer/` and varify the secure gateway is working. Remember, your default username is **admin** and password is **admin**. 
-
 
 
 # 4. Create an API Connect service in Bluemix
