@@ -34,7 +34,53 @@ In the second scenario, we move the sample Airline application to public Bluemix
 ### Scenario Two: Application on Public Cloud and Database On-Premise
 
 4. [Build sample application to run on Public Cloud and use On-Premise database](#2-build-sample-application-to-run-on-public-cloud-and-use-on-premise-database)
+
+Our sample API application is an airline booking application that demonstrates how API application can store its data using on-promise database and enhance its API features using Bluemix's Data Analytic Service.
+
+In this step, we will add our own Weather API credential for our application and build our own .war file using Maven.
+
+1. First, install [Maven](https://maven.apache.org/install.html) to build and package our application into *.war* format.
+
+
+2. Create your [Weather API service](https://console.ng.bluemix.net/catalog/services/weather-company-data?taxonomyNavigation=data). The Weather API can provide the airport location and weather condition for clients. 
+
+
+3. Go to your **Service credentials** and mark down your username and password. Then go to **flight-booking/src/main/java/microservices/api/sample** folder (`cd flight-booking/src/main/java/microservices/api/sample`). Now, add your username and password credential in the **DatabaseAccess.java** file.
+
+    ![credential](images/credentials.png)
+    
+4. You also need to change the database address to your cloud host:port. (e.g. `DATABASE_CORE_ADDRESS = "http://cap-sg-prd-4.integration.ibmcloud.com:17638/";`
+
+    ![cloud-host2](images/cloud-host2.png)
+
+
+5. Go back to the **flight-booking** folder, run `mvn package` to build your .war file.
+
+
+6. Then go to the **deployment_artifacts** folder and move your **airlines.war** file to your main directory's **airline_app/apps** folder.
+
 5. [Run the application on Public Cloud using Bluemix and database On-Premise using CouchDB and Docker](#3-run-the-application-on-public-cloud-using-bluemix-and-database-on-premise-using-couchdb-and-docker)
+
+1. Now, you can go back to the main directory and push your app to the cloud. For this example, we will push our app to the IBM Cloud Foundry. So we need to install the [Cloud Foundry CLI](https://docs.cloudfoundry.org/cf-cli/install-go-cli.html).
+
+2. Use the following commands to login to Cloud Foundry and push your application to the cloud.
+
+    >Note: Replace <app_name> with an unique application name within your Bluemix region. This application name is the name of your API container.
+    
+    ```bash
+    cf login -a https://api.ng.bluemix.net
+    cf push <app_name> -p airline_app
+    ```
+    
+3. To reach the API Discovery user interface, go to https://<app_name>.mybluemix.net/ibm/api/explorer. Then, use the credentials from your server.xml to login (For this example, the **username** is `admin` and the **password** is `admin`).
+    
+    You should see something like this in your API Discovery user interface.
+    
+    ![discovery](images/discovery.png)
+    
+4. As shown in the following screen capture, you can click the **Try it out** button, which calls your application that runs on Cloud Foundry with your on-promise database.
+
+    ![try it out](images/try-it-out.png)
 
 ### Expose Application APIs using API Connect
 
