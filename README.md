@@ -34,7 +34,6 @@ In the second scenario, we move the sample Airline application to public Bluemix
 ### Scenario Two: Application on Public Cloud and Database On-Premise
 
 4. [Build sample application to run on Public Cloud and use On-Premise database](#2-build-sample-application-to-run-on-public-cloud-and-use-on-premise-database)
-
 5. [Run the application on Public Cloud using Bluemix and database On-Premise using CouchDB and Docker](#3-run-the-application-on-public-cloud-using-bluemix-and-database-on-premise-using-couchdb-and-docker)
 
 ### Expose Application APIs using API Connect
@@ -163,6 +162,7 @@ In this step, we will add our own Weather API credential for our application and
 6. Then go to the **deployment_artifacts** folder and move your **airlines.war** file to your main directory's **airline_app/apps** folder.
 
 # 5. Run the application on Public Cloud using Bluemix and database On-Premise using CouchDB and Docker
+
 1. Now, you can go back to the main directory and push your app to the cloud. For this example, we will push our app to the IBM Cloud Foundry. So we need to install the [Cloud Foundry CLI](https://docs.cloudfoundry.org/cf-cli/install-go-cli.html).
 
 2. Use the following commands to login to Cloud Foundry and push your application to the cloud.
