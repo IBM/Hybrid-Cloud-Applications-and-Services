@@ -34,11 +34,11 @@ In the second scenario, we move the sample Airline application to public Bluemix
 
 [Troubleshooting](#troubleshooting)
 
-1 3. Create a secure tunnel to connect your on-premise environment to public cloud
+# 1. Create a secure tunnel to connect your on-premise environment to public cloud
 
-In this step, we will use the secure gateway as our tunnel to expose our application to the public cloud host. At the end of this step, you should able to access and call your local application APIs on any device on internet via public cloud host
+In this step, we will use the secure gateway service from Bluemix to create a tunnel from on-premise environment to public cloud host. 
 
-1. First, create your [secure gateway service](https://console.ng.bluemix.net/catalog/services/secure-gateway?taxonomyNavigation=apis) from bluemix.
+1. First, create your [secure gateway service](https://console.ng.bluemix.net/catalog/services/secure-gateway?taxonomyNavigation=apis) from Bluemix.
 
 2. Then, follow this [Getting started with the Secure Gateway](https://console.ng.bluemix.net/docs/services/SecureGateway/secure_gateway.html) tutorial to setup your gateway.
 
@@ -69,10 +69,6 @@ In this step, we will use the secure gateway as our tunnel to expose our applica
 8. View and note your cloud host by clicking on the **gear icon** on your destination. 
 
 	![cloud-host](images/cloud-host.png)
-
---------
-9. Now, go to `https://<Cloud Host:Port>/ibm/api/explorer/` and varify the secure gateway is working. Remember, your default username is **admin** and password is **admin**. 
-
 
 # 2. Build sample application to use local database and public service
 
@@ -128,9 +124,8 @@ At the end of this step, you should able to call your application APIs via local
 4. As shown in the following screen capture, you can click the **Try it out** button, which starts the sample Airline application, running on Docker
 
 	![try it out](images/try-it-out.png)
-    
-    
-
+	
+5. Now, go to `https://<Cloud Host:Port>/ibm/api/explorer/` and varify your local server interface can be accessed from public cloud host gateway. Remember, 'Cloud Host' is the Secure gateway server information we noted down at the end of [Step 1], and your default username is **admin** and password is **admin**.
 
 # 4. Create an API Connect service in Bluemix
 
