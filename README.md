@@ -20,8 +20,10 @@ In the second scenario, we move the sample Airline application to public Bluemix
 
 ## Scenarios
 
-- **Scenario One: Application and Database On-Premise, consuming a Public Cloud service**
-- **Scenario Two: Database On-Premise, Application and service on Public Cloud**
+- **Scenario One: Application and Database On-Premise:**
+Both application and database run on-premise, and application also consumes a public cloud service.
+- **Scenario Two: Database On-Premise, Application and service on Public Cloud:**
+Database runs on-premise, and application runs on public cloud, and also consumes a public cloud service.
 
 ## Steps
 1. [Create a secure tunnel to connect your on-premise environment to public cloud](#1-create-a-secure-tunnel-to-connect-your-on-premise-environment-to-public-cloud)
@@ -33,8 +35,8 @@ In the second scenario, we move the sample Airline application to public Bluemix
 
 ### Scenario Two: Application on Public Cloud and Database On-Premise
 
-4. [Build sample application to run on Public Cloud and use On-Premise database](#2-build-sample-application-to-run-on-public-cloud-and-use-on-premise-database)
-5. [Run the application on Public Cloud using Bluemix and database On-Premise using CouchDB and Docker](#3-run-the-application-on-public-cloud-using-bluemix-and-database-on-premise-using-couchdb-and-docker)
+4. [Build sample application to run on Public Cloud and use On-Premise database](#4-build-sample-application-to-run-on-public-cloud-and-use-on-premise-database)
+5. [Run the application on Public Cloud using Bluemix and database On-Premise using CouchDB and Docker](#5-run-the-application-on-public-cloud-using-bluemix-and-database-on-premise-using-couchdb-and-docker)
 
 ### Expose Application APIs using API Connect
 
