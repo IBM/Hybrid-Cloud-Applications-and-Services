@@ -20,17 +20,28 @@ In the second scenario, we move the sample Airline application to public Bluemix
 
 ## Scenarios
 
-- Scenario One: **[Application and Database On-Premise, consuming a Public Cloud service](#steps)**
-- Scenario Two: **[Database On-Premise, Application and service on Public Cloud ](on-promise-database.md)**
+- **Scenario One: Application and Database On-Premise, consuming a Public Cloud service**
+- **Scenario Two: Database On-Premise, Application and service on Public Cloud**
 
 ## Steps
 1. [Create a secure tunnel to connect your on-premise environment to public cloud](#1-create-a-secure-tunnel-to-connect-your-on-premise-environment-to-public-cloud)
-2. [Build sample application to use on-premise CouchDB database and Weather data service from Bluemix](#2-build-sample-application-to-use-on-premise-couchdb-database-and-weather-data-service-from-bluemix)
-3. [Run the application and database on-premise using WebSphere Liberty, CouchDB and Docker](#3-run-the-application-and-database-on-premise-using-websphere-liberty-couchdb-and-docker)
-4. [Create an API Connect service in Bluemix](#4-create-an-api-connect-service-in-bluemix)
-5. [Integrate WebSphere Liberty and API Connect: push and pull](#5-integrate-websphere-liberty-and-api-connect-push-and-pull)
-- 5.1 [Push WebSphere Liberty APIs into API Connect](#51-push-websphere-liberty-apis-into-api-connect)
-- 5.2 [Pull WebSphere Liberty APIs from API Connect](#52-pull-websphere-liberty-apis-from-api-connect)
+
+### Scenario One: Application and Database On-Premise
+
+2. [Build sample application to run on-premise and use On-Premise database](#2-build-sample-application-to-run-on-premise-and-use-on-premise-database)
+3. [Run the application and database On-Premise using WebSphere Liberty, CouchDB and Docker](#3-run-the-application-and-database-on-premise-using-websphere-liberty-couchdb-and-docker)
+
+### Scenario Two: Application on Public Cloud and Database On-Premise
+
+4. [Build sample application to run on Public Cloud and use On-Premise database](#2-build-sample-application-to-run-on-public-cloud-and-use-on-premise-database)
+5. [Run the application on Public Cloud using Bluemix and database On-Premise using CouchDB and Docker](#3-run-the-application-on-public-cloud-using-bluemix-and-database-on-premise-using-couchdb-and-docker)
+
+### Expose Application APIs using API Connect
+
+6. [Create an API Connect service in Bluemix](#4-create-an-api-connect-service-in-bluemix)
+7. [Integrate WebSphere Liberty and API Connect: push and pull](#5-integrate-websphere-liberty-and-api-connect-push-and-pull)
+- 7.1 [Push WebSphere Liberty APIs into API Connect](#51-push-websphere-liberty-apis-into-api-connect)
+- 7.2 [Pull WebSphere Liberty APIs from API Connect](#52-pull-websphere-liberty-apis-from-api-connect)
 
 [Troubleshooting](#troubleshooting)
 
@@ -68,7 +79,7 @@ In this step, we will use the secure gateway service from Bluemix to create a tu
 
 	![cloud-host](images/cloud-host.png)
 
-# 2. Build sample application to use on-premise CouchDB database and Weather data service from Bluemix
+# 2. Build sample application to run on-premise and use On-Premise database
 
 Our sample Airline API application is an airline booking application that demonstrates how API application can store its data using on-prem database. 
 
@@ -124,7 +135,12 @@ At the end of this step, you should able to call your application APIs via local
 	
 5. Now, go to `https://<Cloud Host:Port>/ibm/api/explorer/` and varify your local server interface can be accessed from public 'Cloud Host' gateway server. Remember, 'Cloud Host' is the Secure gateway server information we noted down at the end of [Step 1](#1-create-a-secure-tunnel-to-connect-your-on-premise-enviroment-to-public-cloud), and your default username is **admin** and password is **admin**.
 
-# 4. Create an API Connect service in Bluemix
+# 4. Build sample application to run on Public Cloud and use On-Premise database
+
+
+# 5. Run the application on Public Cloud using Bluemix and database On-Premise using CouchDB and Docker
+
+# 6. Create an API Connect service in Bluemix
 
 In this step, we will setup API Connect service to help us expose our application APIs to public.
 
@@ -161,10 +177,10 @@ In this step, we will setup API Connect service to help us expose our applicatio
 
 	This is where enterprise developers go to find the products (for example, an API or a group of APIs) that are exposed in the API catalog. Developers also can interact with each other through the Blogs and Forums links.
 
-# 5. Integrate WebSphere Liberty and API Connect: push and pull
+# 7. Integrate WebSphere Liberty and API Connect: push and pull
 > Choose either [push](#41-push-websphere-liberty-apis-into-api-connect) or [pull](#42-pull-websphere-liberty-apis-from-api-connect) WebSphere Liberty APIs from API Connect. Also, push won't work on IBMer's account due to federated reasons.
 
-## 5.1 Push WebSphere Liberty APIs into API Connect
+## 7.1 Push WebSphere Liberty APIs into API Connect
 
 In this step, we will learn about how to use the post request on API discovery to push our APIs into API Connect.
 
@@ -260,7 +276,7 @@ Now you can go to your API and try it at the API Connect Developer Portal. Click
 
 ![api-connect](images/api-connect.png)
 
-## 5.2 Pull WebSphere Liberty APIs from API Connect
+## 7.2 Pull WebSphere Liberty APIs from API Connect
 
 In this step, we will learn about how to create and manage new APIs and products on API connect using API connect's user interface.
 
