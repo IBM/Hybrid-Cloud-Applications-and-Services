@@ -165,6 +165,19 @@ In this step, we will add our own Weather API credential for our application and
 
 # 5. Run the application on Public Cloud using Bluemix and database On-Premise using CouchDB and Docker
 
+1. Install [Docker CLI](https://www.docker.com/community-edition#/download) and create an on-promise database using Docker. Run the following commands to use the community's CouchDB Docker image.
+    
+    ```bash
+    docker pull couchdb:latest
+    docker run -p 5984:5984 couchdb
+    ```
+    
+    Then, initiate couchDB with the following script.
+    
+    ```bash
+    bash database_init.sh
+    ```
+
 1. Now, you can go back to the main directory and push your app to the cloud. For this example, we will push our app to the IBM Cloud Foundry. So we need to install the [Cloud Foundry CLI](https://docs.cloudfoundry.org/cf-cli/install-go-cli.html).
 
 2. Use the following commands to login to Cloud Foundry and push your application to the cloud.
@@ -176,7 +189,7 @@ In this step, we will add our own Weather API credential for our application and
     cf push <app_name> -p airline_app
     ```
     
-3. To reach the API Discovery user interface, go to https://<app_name>.mybluemix.net/ibm/api/explorer. Then, use the credentials from your server.xml to login (For this example, the **username** is `admin` and the **password** is `admin`).
+3. To reach the application API Discovery user interface, go to https://<app_name>.mybluemix.net/ibm/api/explorer. Then, use the credentials from your server.xml to login (For this example, the **username** is `admin` and the **password** is `admin`).
     
     You should see something like this in your API Discovery user interface.
     
