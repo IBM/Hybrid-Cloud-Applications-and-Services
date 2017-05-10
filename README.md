@@ -1,4 +1,4 @@
-[![Build Status](https://travis-ci.org/IBM/hybrid-connectivity.svg?branch=master)](https://travis-ci.org/IBM/hybrid-connectivity)
+[![Build Status](https://travis-ci.org/IBM/Hybrid-Cloud-Applications-and-Services.svg?branch=master)](https://travis-ci.org/IBM/Hybrid-Cloud-Applications-and-Services)
 
 
 # Extend your on-premise applications and services to public cloud, and vice versa
