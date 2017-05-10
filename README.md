@@ -24,8 +24,8 @@ In the second scenario, we move the sample Airline application to public Bluemix
 - Scenario Two: **[Database On-Premise, Application and service on Public Cloud ](on-promise-database.md)**
 
 ## Steps
-1. [Create a secure tunnel to connect your on-premise environment to public cloud](1-create-a-secure-tunnel-to-connect-your-on-premise-environment-to-public-cloud)
-2. [Build sample application to use CouchDB database and Weather data service from Bluemix](#2-build-sample-application-to-use-local-couchdb-database-and-weather-data-service-from-bluemix)
+1. [Create a secure tunnel to connect your on-premise environment to public cloud](#1-create-a-secure-tunnel-to-connect-your-on-premise-environment-to-public-cloud)
+2. [Build sample application to use on-premise CouchDB database and Weather data service from Bluemix](#2-build-sample-application-to-use-on-premise-couchdb-database-and-weather-data-service-from-bluemix)
 3. [Run the application and database on-premise using WebSphere Liberty, CouchDB and Docker](#3-run-the-application-and-database-on-premise-using-websphere-liberty-couchdb-and-docker)
 4. [Create an API Connect service in Bluemix](#4-create-an-api-connect-service-in-bluemix)
 5. [Integrate WebSphere Liberty and API Connect: push and pull](#5-integrate-websphere-liberty-and-api-connect-push-and-pull)
@@ -68,7 +68,7 @@ In this step, we will use the secure gateway service from Bluemix to create a tu
 
 	![cloud-host](images/cloud-host.png)
 
-# 2. Build sample application to use CouchDB database and Weather data service from Bluemix
+# 2. Build sample application to use on-premise CouchDB database and Weather data service from Bluemix
 
 Our sample Airline API application is an airline booking application that demonstrates how API application can store its data using on-prem database. 
 
