@@ -59,11 +59,8 @@ In this step, we will use the secure gateway service from Bluemix to create a tu
 
 	![installer](images/installer.png)
     
-4. After you open the secure gateway client with your Gateway ID and Security Token, click enter and run the following commands.
-
-	```
-    acl allow 127.0.0.1:9443
-    ```
+4. After you open the secure gateway client with your Gateway ID and Security Token, if you are doing Scenario One: Application and Database On-Premise, run `acl allow 127.0.0.1:9443` on your secure gateway client to enable access to your APIs. If you are doing Scenario Two: Application on Public Cloud and Database On-Premise, run `acl allow 127.0.0.1:5984` to enable access to your database.
+	
 
 	Now your Gateway is able to access your API Discovery Server.
 
@@ -80,6 +77,8 @@ In this step, we will use the secure gateway service from Bluemix to create a tu
 8. View and note your cloud host by clicking on the **gear icon** on your destination. 
 
 	![cloud-host](images/cloud-host.png)
+	
+    If you are doing Scenario One, continue to [step 2](#2-build-sample-application-to-run-on-premise-and-use-on-premise-database). Otherwise continue to [step 4](#4-build-sample-application-to-run-on-public-cloud-and-use-on-premise-database).
 
 # 2. Build sample application to run on-premise and use On-Premise database
 
@@ -139,7 +138,7 @@ At the end of this step, you should able to call your application APIs via local
 
 # 4. Build sample application to run on Public Cloud and use On-Premise database
 
-Our sample API application is an airline booking application that demonstrates how API application can store its data using on-promise database and enhance its API features using Bluemix's Data Analytic Service.
+Our sample API application is an airline booking application that demonstrates how API application can store its data using on-premise database and enhance its API features using Bluemix's Data Analytic Service.
 
 In this step, we will add our own Weather API credential for our application and build our own .war file using Maven.
 
@@ -165,7 +164,7 @@ In this step, we will add our own Weather API credential for our application and
 
 # 5. Run the application on Public Cloud using Bluemix and database On-Premise using CouchDB and Docker
 
-1. Install [Docker CLI](https://www.docker.com/community-edition#/download) and create an on-promise database using Docker. Run the following commands to use the community's CouchDB Docker image.
+1. Install [Docker CLI](https://www.docker.com/community-edition#/download) and create an on-premise database using Docker. Run the following commands to use the community's CouchDB Docker image.
     
     ```bash
     docker pull couchdb:latest
@@ -195,7 +194,7 @@ In this step, we will add our own Weather API credential for our application and
     
     ![discovery](images/discovery.png)
     
-4. As shown in the following screen capture, you can click the **Try it out** button, which calls your application that runs on Cloud Foundry with your on-promise database.
+4. As shown in the following screen capture, you can click the **Try it out** button, which calls your application that runs on Cloud Foundry with your on-premise database.
 
     ![try it out](images/try-it-out.png)
 
