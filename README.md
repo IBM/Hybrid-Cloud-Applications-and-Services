@@ -78,7 +78,7 @@ In this step, we will use the secure gateway service from Bluemix to create a tu
 
 	![cloud-host](images/cloud-host.png)
 	
-    If you are doing Scenario One, continue to [step 2](#2-build-sample-application-to-run-on-premise-and-use-on-premise-database). Otherwise continue to [step 4](#4-build-sample-application-to-run-on-public-cloud-and-use-on-premise-database).
+    If you are doing Scenario One, continue to [step 2](#2-build-sample-application-to-run-on-premise-and-use-on-premise-database). Otherwise jump to [step 4](#4-build-sample-application-to-run-on-public-cloud-and-use-on-premise-database).
 
 # 2. Build sample application to run on-premise and use On-Premise database
 
@@ -135,6 +135,8 @@ At the end of this step, you should able to call your application APIs via local
 	![try it out](images/try-it-out.png)
 	
 5. Now, go to `https://<Cloud Host:Port>/ibm/api/explorer/` and varify your local server interface can be accessed from public 'Cloud Host' gateway server. Remember, 'Cloud Host' is the Secure gateway server information we noted down at the end of [Step 1](#1-create-a-secure-tunnel-to-connect-your-on-premise-enviroment-to-public-cloud), and your default username is **admin** and password is **admin**.
+
+    Now jump to [step 6](#6-create-an-api-connect-service-in-bluemix) to set up your API Connect.
 
 # 4. Build sample application to run on Public Cloud and use On-Premise database
 
