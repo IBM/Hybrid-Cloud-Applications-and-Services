@@ -24,9 +24,9 @@ In the second scenario, we move the sample Airline application to public Bluemix
 - Scenario Two: **[Database On-Premise, Application and service on Public Cloud ](on-promise-database.md)**
 
 ## Steps
-1. [Create a secure tunnel to connect your on-premise environment to public cloud](#3-create-a-secure-tunnel-to-connect-your-on-premise-enviroment-to-public-cloud)
-2. [Build sample application to use local database and public service](#1-build-sample-application-to-use-local-database-and-public-service)
-3. [Run the application and database on-premise using WebSphere, CouchDB and Docker](#2-run-the-application-and-database-on-premise-using-websphere-couchdb-and-docker)
+1. [Create a secure tunnel to connect your on-premise environment to public cloud](#1-create-a-secure-tunnel-to-connect-your-on-premise-enviroment-to-public-cloud)
+2. [Build sample application to use local database and public service](#2-build-sample-application-to-use-local-database-and-public-service)
+3. [Run the application and database on-premise using WebSphere Liberty, CouchDB and Docker](#3-run-the-application-and-database-on-premise-using-websphere-liberty-couchdb-and-docker)
 4. [Create an API Connect service in Bluemix](#4-create-an-api-connect-service-in-bluemix)
 5. [Integrate WebSphere Liberty and API Connect: push and pull](#5-integrate-websphere-liberty-and-api-connect-push-and-pull)
 - 5.1 [Push WebSphere Liberty APIs into API Connect](#51-push-websphere-liberty-apis-into-api-connect)
@@ -64,8 +64,6 @@ In this step, we will use the secure gateway service from Bluemix to create a tu
     
 7. Next, select **TCP** for your protocol and click next. Then, select **None** for your authentication and click next. Then, do not put anything on your IP table rules. Lastly, name your destination and click **Add Destination**.
 
-------------
-
 8. View and note your cloud host by clicking on the **gear icon** on your destination. 
 
 	![cloud-host](images/cloud-host.png)
@@ -91,7 +89,7 @@ We will also add our own Weather API credential from public Bluemix for the appl
 5. Go to the **deployment_artifacts** folder and move your **airlines.war** file to your main directory's **airline_app/apps** folder.
 
 
-# 3. Run the application and database on-premise using WebSphere, CouchDB and Docker
+# 3. Run the application and database on-premise using WebSphere Liberty, CouchDB and Docker
 
 In this example, we will use WebSphere Liberty for our application server, and local CouchDB for our database. We will first build our application server docker image. 
 
@@ -125,7 +123,7 @@ At the end of this step, you should able to call your application APIs via local
 
 	![try it out](images/try-it-out.png)
 	
-5. Now, go to `https://<Cloud Host:Port>/ibm/api/explorer/` and varify your local server interface can be accessed from public cloud host gateway. Remember, 'Cloud Host' is the Secure gateway server information we noted down at the end of [Step 1], and your default username is **admin** and password is **admin**.
+5. Now, go to `https://<Cloud Host:Port>/ibm/api/explorer/` and varify your local server interface can be accessed from public 'Cloud Host' gateway server. Remember, 'Cloud Host' is the Secure gateway server information we noted down at the end of [Step 1](#1-create-a-secure-tunnel-to-connect-your-on-premise-enviroment-to-public-cloud), and your default username is **admin** and password is **admin**.
 
 # 4. Create an API Connect service in Bluemix
 
