@@ -235,13 +235,13 @@ In this step, we will setup API Connect service to help us expose our applicatio
 	This is where enterprise developers go to find the products (for example, an API or a group of APIs) that are exposed in the API catalog. Developers also can interact with each other through the Blogs and Forums links.
 
 # 7. Integrate WebSphere Liberty and API Connect: push and pull
-> Choose either [push](#41-push-websphere-liberty-apis-into-api-connect) or [pull](#42-pull-websphere-liberty-apis-from-api-connect) WebSphere Liberty APIs from API Connect. Also, push won't work on IBMer's account due to federated reasons.
+> Choose either [push](#71-push-websphere-liberty-apis-into-api-connect) or [pull](#72-pull-websphere-liberty-apis-from-api-connect) WebSphere Liberty APIs from API Connect. Also, push won't work on IBMer's account due to federated reasons.
 
 ## 7.1 Push WebSphere Liberty APIs into API Connect
 
 In this step, we will learn about how to use the post request on API discovery to push our APIs into API Connect.
 
-1. Go to `https://<Cloud Host:Port>/ibm/api/explorer/`
+1. Go to `https://<Cloud Host:Port/app_name>/ibm/api/explorer/`
 
 2. Click **POST** for the apiconnect endpoint
 
@@ -254,8 +254,11 @@ In this step, we will learn about how to use the post request on API discovery t
 4. You want to publish this API product, not just stage it, so leave the stageOnly parameter as false. The X-APIM-Authorization parameter represents the credentials that Liberty uses to log into API Connect. The description on the right side provides details on the accepted format. The following example uses: apimanager/arthurdm@ca.ibm.com:myPassword.
 
 	![mypassword](images/mypassword.png)
+    
+    
+5. For Scenario Two, we can click the sample JSON file on your right and publish your APIs.
 
-5. Since we are running our APIs on our local machine, we do not want to use the sample JSON file because that will set the APIs target URL to our local machine. Instead, we want to change the `<cloud host:port>` part in **target-url** (line 38) from the following JSON file (you can also get it from the **discovery-post.json** file) to your cloud host : port (e.g. `"https://cap-sg-prd-1.integration.ibmcloud.com:16218$(request.path)"`). Then copy and paste it into the body input box.
+	For Scenario One, since we are running our APIs on our local machine, we do not want to use the sample JSON file because that will set the APIs target URL to our local machine. Instead, we want to change the `<cloud host:port>` part in **target-url** (line 38) from the following JSON file (you can also get it from the **discovery-post.json** file) to your cloud host:port (e.g. `"https://cap-sg-prd-1.integration.ibmcloud.com:16218$(request.path)"`). Then copy and paste it into the body input box.
 	```JSON
 	{
 	  "product": "1.0.0",
@@ -343,9 +346,11 @@ In this step, we will learn about how to create and manage new APIs and products
 
 2. In the **Import API from a file or URL** window, click **Or import from URL**.
 
-	For the URL, type the Liberty URL that you want to use to import the Swagger document. For this example, you can use `https://<Cloud Host:Port>/ibm/api/docs/apiconnect`. Remember for this example the username is **admin** and password is **admin**.
+	For the URL, type the Liberty URL that you want to use to import the Swagger document. For this example, you can use `https://<Cloud Host:Port/app_name>/ibm/api/docs/apiconnect`. Remember for this example the username is **admin** and password is **admin**.
     
-3. After you imported your API, go to **source**. Then go to the bottom of the page (around line 532) and change the **target-url**'s value to `'<cloud host:port>$(request.path)'` (replace `<cloud host:port>` to your own cloud host:port). Then click the **save icon** on the top right corner.
+3. For Scenario Two, you do not have to do anything.
+
+	For Scenario One, since your APIs are hosted on our local machine, you need to set the APIs target URL to your cloud host. Therefore, after you imported your API, go to **source**. Then go to the bottom of the page (around line 532) and change the **target-url**'s value to `'<cloud host:port>$(request.path)'` (replace `<cloud host:port>` to your own cloud host:port). Then click the **save icon** on the top right corner.
 
     ![target-url](images/target-url.png)
 
