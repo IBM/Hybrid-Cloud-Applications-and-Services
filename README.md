@@ -4,13 +4,13 @@
 
 A hybrid cloud model blends elements of both the private and the public cloud, and gives users choice and flexibility to run apps and services across on-premises systems and the cloud. In the simplest terms, the hybrid model is primarily a private cloud that allows an organization to tap into a public cloud when and where it makes sense. This code shows you how to expose your on-premise applications and services to public cloud, and vice versa.
 
-We first deploy an on-premise application and database in private cloud. This represents an on-prem environment behind a firewall. Thereafter we leverage public cloud services to create a  secure tunnel and expose your on-premise application outside your coporate firewall. Moving beyond, we show how the on-prem application can leverage public cloud application services. 
+In this code we have an on-premise Java application using JAX-RS and Swagger annotations, and database using CouchDB, both running in private cloud behind a firewall. We demonstrate how by leveraging public cloud services like Secure Gateway and API Connect we can create a secure tunnel and expose the private cloud application and APIs outside the corporate firewall. 
 
-In the second scenario, we move the sample Airline application to a public cloud, in this case Bluemix, and then show how your application running on public cloud can acccess your on-premise resources like database etc.
+Moving beyond, we move application to a public cloud, and then guide how your application running on public cloud can access on-premise resources like database etc. 
 
 ## Scenarios
-- [Scenario One: Enable your Application running On-Premise to be accessed externally outside the corporate firewall, and consume a public cloud service](#scenario-one-enable-your-application-running-on-premise-to-be-accessed-externally-outside-the-corporate-firewall-and-consume-a-public-cloud-service)
-- [Scenario Two: Enable your Application on Public Cloud to connect to On-Premise Database](#scenario-two-enable-your-application-on-public-cloud-to-connect-to-on-premise-database)
+- [Scenario One: Enable your application running in private cloud to be accessed externally outside the corporate firewall](#scenario-one-enable-your-application-running-on-premise-in-private-cloud-to-be-accessed-externally-outside-the-corporate-firewall)
+- [Scenario Two: Enable your application on Public Cloud to connect to Database running in private cloud](#scenario-two-enable-your-application-on-public-cloud-to-connect-to-database-running-in-private-cloud)
 
 ![Scenarios](images/hybrid-cloud.png)
 
@@ -32,12 +32,12 @@ Since we need [Maven](https://maven.apache.org/install.html) to build our sample
 ### Connect your On-Premise environment to Public Cloud
 1. [Create a secure tunnel to connect your on-premise environment to public cloud](#1-create-a-secure-tunnel-to-connect-your-on-premise-environment-to-public-cloud)
 
-### Scenario One: Enable your Application running On-Premise to be accessed externally outside the corporate firewall, and consume a public cloud service
+### Scenario One: Enable your Application running in private cloud to be accessed externally outside the corporate firewall
 
 2. [Build sample application to run on-premise and use On-Premise database](#2-build-sample-application-to-run-on-premise-and-use-on-premise-database)
 3. [Run the application and database On-Premise using WebSphere Liberty, CouchDB and Docker](#3-run-the-application-and-database-on-premise-using-websphere-liberty-couchdb-and-docker)
 
-### Scenario Two: Enable your Application on Public Cloud to connect to On-Premise Database
+### Scenario Two: Scenario Two: Enable your Application on Public Cloud to connect to Database running in private cloud
 
 4. [Build sample application to run on Public Cloud and use On-Premise database](#4-build-sample-application-to-run-on-public-cloud-and-use-on-premise-database)
 5. [Run the application on Public Cloud using Bluemix and database On-Premise using CouchDB and Docker](#5-run-the-application-on-public-cloud-using-bluemix-and-database-on-premise-using-couchdb-and-docker)
@@ -62,7 +62,7 @@ In this step, we will use the secure gateway service from Bluemix to create a tu
 
 	![installer](images/installer.png)
     
-4. After you open the secure gateway client with your Gateway ID and Security Token, if you are doing [Scenario One: Application and Database On-Premise](#scenario-one-enable-your-application-running-on-premise-to-be-accessed-externally-outside-the-corporate-firewall-and-consume-a-public-cloud-service), run `acl allow 127.0.0.1:9443` on your secure gateway client to enable access to your application server. If you are doing [Scenario Two: Application on Public Cloud and Database On-Premise](#scenario-two-enable-your-application-on-public-cloud-to-connect-to-on-premise-database), run `acl allow 127.0.0.1:5984` to enable access to your database.
+4. After you open the secure gateway client with your Gateway ID and Security Token, if you are doing [Scenario One: Application and Database On-Premise](#scenario-one-enable-your-application-running-on-premise-in-private-cloud-to-be-accessed-externally-outside-the-corporate-firewall), run `acl allow 127.0.0.1:9443` on your secure gateway client to enable access to your application server. If you are doing [Scenario Two: Application on Public Cloud and Database On-Premise](#scenario-two-enable-your-application-on-public-cloud-to-connect-to-database-running-in-private-cloud), run `acl allow 127.0.0.1:5984` to enable access to your database.
 	
 5. Now go back to your bluemix's secure gateway page and create your destination. First, select **On-Premises** at Guided Setup and click next. 
 
