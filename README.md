@@ -60,7 +60,7 @@ In this step, we will use the secure gateway service from Bluemix to create a tu
     
 4. After you open the secure gateway client with your Gateway ID and Security Token, if you are doing [Scenario One: Application and Database On-Premise](#scenario-one-enable-your-application-running-on-premise-to-be-accessed-externally-outside-the-corporate-firewall-and-consume-a-public-cloud-service), run `acl allow 127.0.0.1:9443` on your secure gateway client to enable access to your application server. If you are doing [Scenario Two: Application on Public Cloud and Database On-Premise](#scenario-two-enable-your-application-on-public-cloud-to-connect-to-on-premise-database), run `acl allow 127.0.0.1:5984` to enable access to your database.
 	
-5. Create the destination for gateway. First, select **On-Premises** at Guided Setup and click next. 
+5. Now go back to your bluemix's secure gateway page and create your destination. First, select **On-Premises** at Guided Setup and click next. 
 
 	![on-premises](images/on-premises.png)
     
@@ -86,7 +86,7 @@ We will also add our own Weather API credential from public Bluemix for the appl
 
 2. Create [Weather API service](https://console.ng.bluemix.net/catalog/services/weather-company-data?taxonomyNavigation=data) in Bluemix. 
 
-3. Go to your Weather API's **Service credentials** and mark down your username and password. Then go to *flight-booking/src/main/java/microservices/api/sample* folder (`cd flight-booking/src/main/java/microservices/api/sample`). Now, add your username and password credential in the **WeatherAPI.java** file.
+3. Go to your Weather API's **Service credentials** and mark down your username and password. Then go to *flight-booking/src/main/java/microservices/api/sample* folder (`cd flight-booking/src/main/java/microservices/api/sample`). Now, add your username and password credential to your **WeatherAPI.java** file.
 
 	![credential](images/credentials.png)
 
@@ -132,6 +132,8 @@ At the end of this step, you should able to call your application APIs via local
 	
 5. Now, go to `https://<Cloud Host:Port>/ibm/api/explorer/` and varify your local server interface can be accessed from public 'Cloud Host' gateway server. Remember, 'Cloud Host' is the Secure gateway server information we noted down at the end of [Step 1](#1-create-a-secure-tunnel-to-connect-your-on-premise-enviroment-to-public-cloud), and your default username is **admin** and password is **admin**.
 
+Jump to [Step 6](#6-create-an-api-connect-service-in-bluemix) to expose your application APIs via API Connect
+
 # 4. Build sample application to run on Public Cloud and use On-Premise database
 
 Our sample API application is an airline booking application that demonstrates how API application can store its data using on-premise database and enhance its API features using Bluemix's Data Analytic Service.
@@ -144,7 +146,7 @@ In this step, we will add our own Weather API credential for our application and
 2. Create your [Weather API service](https://console.ng.bluemix.net/catalog/services/weather-company-data?taxonomyNavigation=data). The Weather API can provide the airport location and weather condition for clients. 
 
 
-3. Go to your Weather API's **Service credentials** and mark down your username and password. Then go to *flight-booking/src/main/java/microservices/api/sample* folder (`cd flight-booking/src/main/java/microservices/api/sample`). Now, add your username and password credential in the **WeatherAPI.java** file.
+3. Go to your Weather API's **Service credentials** and mark down your username and password. Then go to *flight-booking/src/main/java/microservices/api/sample* folder (`cd flight-booking/src/main/java/microservices/api/sample`). Now, add your username and password credential to your **WeatherAPI.java** file.
 
     ![credential](images/credentials.png)
     
@@ -158,7 +160,6 @@ In this step, we will add our own Weather API credential for our application and
 
 6. Then go to the **deployment_artifacts** folder and move your **airlines.war** file to your main directory's **airline_app/apps** folder.
 
-Jump to [Step 7](#7-integrate-websphere-liberty-and-api-connect-push-and-pull) to expose your application APIs via API Connect
 
 # 5. Run the application on Public Cloud using Bluemix and database On-Premise using CouchDB and Docker
 
@@ -376,14 +377,21 @@ Now you can go to your API and try it at the API Connect Developer Portal. Click
 
 # Troubleshooting
 
-To remove your docker container, run
+To stop your Docker-compose services, in this main directory, run
+
 ```bash
-docker ps
-docker kill <container ID>
+docker-compose down
+```
+
+To remove your Docker container, run
+
+```bash
+docker ps --all
+docker kill <container ID> #run this command if your container is still running
 docker rm <container ID>
 ```
 
-To remove your API connect and Secure Gateway service, go to your IBM Bluemix dashboard. Then click the **menu icon** and then select **Delete Service**.
+To remove your Insights for Weather, API connect and Secure Gateway service, go to your IBM Bluemix dashboard. Then click the **menu icon** and then select **Delete Service**.
 
 # References
 
