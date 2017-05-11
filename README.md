@@ -258,7 +258,7 @@ In this step, we will learn about how to use the post request on API discovery t
     
 5. For Scenario Two, we can click the sample JSON file on your right and publish your APIs.
 
-	For Scenario One, since we are running our APIs on our private cloud, we do not want to use the sample JSON file because that will set the APIs target URL to our private cloud. Instead, we want to change the `<cloud host:port>` part in **target-url** (line 38) from the following JSON file (you can also get it from the **discovery-post.json** file) to your cloud host:port (e.g. `"https://cap-sg-prd-1.integration.ibmcloud.com:16218$(request.path)"`). Then copy and paste it into the body input box.
+	For Scenario One, since we are running our APIs on the private cloud, we do not want to use the sample JSON file because that will set the APIs target URL to the private cloud. Instead, we want to change the `<cloud host:port>` part in **target-url** (line 38) from the following JSON file (you can also get it from the **discovery-post.json** file) to your cloud host:port (e.g. `"https://cap-sg-prd-3.integration.ibmcloud.com:16218$(request.path)"`). Then copy and paste it into the body input box.
 	```JSON
 	{
 	  "product": "1.0.0",
