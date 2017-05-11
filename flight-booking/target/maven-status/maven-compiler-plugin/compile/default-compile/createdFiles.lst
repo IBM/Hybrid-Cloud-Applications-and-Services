@@ -1,3 +1,4 @@
+microservices/api/sample/WeatherAPI.class
 microservices/api/sample/app/JAXRSApp.class
 microservices/api/sample/DatabaseAccess.class
 microservices/api/sample/HttpHelper.class

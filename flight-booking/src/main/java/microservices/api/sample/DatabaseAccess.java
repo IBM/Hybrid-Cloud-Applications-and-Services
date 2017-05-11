@@ -25,11 +25,8 @@ public class DatabaseAccess {
 		getAllAirlines();
 	}
 
-	//Please add your Weather API's USERNAME and PASSWORD here.
-	private static String USERNAME = "username";
-	private static String PASSWORD = "password";
 
-	//Please change your database address to the cloud host if you are hosting your Server on the cloud.
+	//Please change your database address to your cloud host if you are hosting your Server on the cloud.
 	private static String DATABASE_CORE_ADDRESS = "http://couchdb:5984/";
 
 	private static String AIRLINES_DATABASE = DATABASE_CORE_ADDRESS + "airlines";
@@ -60,9 +57,9 @@ public class DatabaseAccess {
 		return allAirlines;
 	}
 
-	public static Weather getLocWeather(String date, String airportTo) {
+	public static Weather getAirportWeather(String date, String airportTo, String username, String password) {
 		//enable basic login
-		HttpHelper.setAuth(USERNAME,PASSWORD);
+		HttpHelper.setAuth(username,password);
 		HttpHelper.enableAuth(true);
 		JsonNode response = HttpHelper.connect("https://twcservice.mybluemix.net/api/weather/v3/location/point?iataCode="+ airportTo +"&language=en-US", "GET", null);
 		if (response == null) {
