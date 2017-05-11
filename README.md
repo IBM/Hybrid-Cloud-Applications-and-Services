@@ -24,6 +24,8 @@ The scenarios are accomplished by using:
 - [Insights for Weather](https://console.ng.bluemix.net/docs/services/Weather/weather_overview.html#about_weather)
 
 ## Steps
+
+### Connect your On-Premise environment to Public Cloud
 1. [Create a secure tunnel to connect your on-premise environment to public cloud](#1-create-a-secure-tunnel-to-connect-your-on-premise-environment-to-public-cloud)
 
 ### Scenario One: Application and Database On-Premise
@@ -31,17 +33,17 @@ The scenarios are accomplished by using:
 2. [Build sample application to run on-premise and use On-Premise database](#2-build-sample-application-to-run-on-premise-and-use-on-premise-database)
 3. [Run the application and database On-Premise using WebSphere Liberty, CouchDB and Docker](#3-run-the-application-and-database-on-premise-using-websphere-liberty-couchdb-and-docker)
 
+##### Expose Application APIs using API Connect
+4. [Create an API Connect service in Bluemix](#4-create-an-api-connect-service-in-bluemix)
+5. [Integrate WebSphere Liberty and API Connect: push and pull](#5-integrate-websphere-liberty-and-api-connect-push-and-pull)
+- 5.1 [Push WebSphere Liberty APIs into API Connect](#51-push-websphere-liberty-apis-into-api-connect)
+- 5.2 [Pull WebSphere Liberty APIs from API Connect](#52-pull-websphere-liberty-apis-from-api-connect)
+
 ### Scenario Two: Application on Public Cloud and Database On-Premise
 
-4. [Build sample application to run on Public Cloud and use On-Premise database](#4-build-sample-application-to-run-on-public-cloud-and-use-on-premise-database)
-5. [Run the application on Public Cloud using Bluemix and database On-Premise using CouchDB and Docker](#5-run-the-application-on-public-cloud-using-bluemix-and-database-on-premise-using-couchdb-and-docker)
+6. [Build sample application to run on Public Cloud and use On-Premise database](#6-build-sample-application-to-run-on-public-cloud-and-use-on-premise-database)
+7. [Run the application on Public Cloud using Bluemix and database On-Premise using CouchDB and Docker](#7-run-the-application-on-public-cloud-using-bluemix-and-database-on-premise-using-couchdb-and-docker)
 
-### Expose Application APIs using API Connect
-
-6. [Create an API Connect service in Bluemix](#4-create-an-api-connect-service-in-bluemix)
-7. [Integrate WebSphere Liberty and API Connect: push and pull](#5-integrate-websphere-liberty-and-api-connect-push-and-pull)
-- 7.1 [Push WebSphere Liberty APIs into API Connect](#51-push-websphere-liberty-apis-into-api-connect)
-- 7.2 [Pull WebSphere Liberty APIs from API Connect](#52-pull-websphere-liberty-apis-from-api-connect)
 
 [Troubleshooting](#troubleshooting)
 
@@ -49,7 +51,7 @@ The scenarios are accomplished by using:
 
 In this step, we will use the secure gateway service from Bluemix to create a tunnel from on-premise environment to public cloud host. 
 
-1. First, create your [secure gateway service](https://console.ng.bluemix.net/catalog/services/secure-gateway?taxonomyNavigation=apis) from Bluemix.
+1. Create your [secure gateway service](https://console.ng.bluemix.net/catalog/services/secure-gateway?taxonomyNavigation=apis) from Bluemix.
 
 2. Then, follow this [Getting started with the Secure Gateway](https://console.ng.bluemix.net/docs/services/SecureGateway/secure_gateway.html) tutorial to setup your gateway.
 
@@ -57,12 +59,9 @@ In this step, we will use the secure gateway service from Bluemix to create a tu
 
 	![installer](images/installer.png)
     
-4. After you open the secure gateway client with your Gateway ID and Security Token, if you are doing Scenario One: Application and Database On-Premise, run `acl allow 127.0.0.1:9443` on your secure gateway client to enable access to your APIs. If you are doing Scenario Two: Application on Public Cloud and Database On-Premise, run `acl allow 127.0.0.1:5984` to enable access to your database.
+4. After you open the secure gateway client with your Gateway ID and Security Token, if you are doing [Scenario One: Application and Database On-Premise](#scenario-one-application-and-database-on-premise), run `acl allow 127.0.0.1:9443` on your secure gateway client to enable access to your application server. If you are doing [Scenario Two: Application on Public Cloud and Database On-Premise](#scenario-two-application-on-public-cloud-and-database-on-premise), run `acl allow 127.0.0.1:5984` to enable access to your database.
 	
-
-	Now your Gateway is able to access your API Discovery Server.
-
-5. Now let's create the destination for our gateway. First, select **On-Premises** at Guided Setup and click next. 
+5. Create the destination for gateway. First, select **On-Premises** at Guided Setup and click next. 
 
 	![on-premises](images/on-premises.png)
     
@@ -134,72 +133,7 @@ At the end of this step, you should able to call your application APIs via local
 	
 5. Now, go to `https://<Cloud Host:Port>/ibm/api/explorer/` and varify your local server interface can be accessed from public 'Cloud Host' gateway server. Remember, 'Cloud Host' is the Secure gateway server information we noted down at the end of [Step 1](#1-create-a-secure-tunnel-to-connect-your-on-premise-enviroment-to-public-cloud), and your default username is **admin** and password is **admin**.
 
-    Now jump to [step 6](#6-create-an-api-connect-service-in-bluemix) to set up your API Connect.
-
-# 4. Build sample application to run on Public Cloud and use On-Premise database
-
-Our sample API application is an airline booking application that demonstrates how API application can store its data using on-premise database and enhance its API features using Bluemix's Data Analytic Service.
-
-In this step, we will add our own Weather API credential for our application and build our own .war file using Maven.
-
-1. First, install [Maven](https://maven.apache.org/install.html) to build and package our application into *.war* format.
-
-
-2. Create your [Weather API service](https://console.ng.bluemix.net/catalog/services/weather-company-data?taxonomyNavigation=data). The Weather API can provide the airport location and weather condition for clients. 
-
-
-3. Go to your **Service credentials** and mark down your username and password. Then go to **flight-booking/src/main/java/microservices/api/sample** folder (`cd flight-booking/src/main/java/microservices/api/sample`). Now, add your username and password credential in the **DatabaseAccess.java** file.
-
-    ![credential](images/credentials.png)
-    
-4. You also need to change the database address to your cloud host:port. (e.g. `DATABASE_CORE_ADDRESS = "http://cap-sg-prd-4.integration.ibmcloud.com:17638/";`
-
-    ![cloud-host2](images/cloud-host2.png)
-
-
-5. Go back to the **flight-booking** folder, run `mvn package` to build your .war file.
-
-
-6. Then go to the **deployment_artifacts** folder and move your **airlines.war** file to your main directory's **airline_app/apps** folder.
-
-# 5. Run the application on Public Cloud using Bluemix and database On-Premise using CouchDB and Docker
-
-1. Install [Docker CLI](https://www.docker.com/community-edition#/download) and create an on-premise database using Docker. Run the following commands to use the community's CouchDB Docker image.
-    
-    ```bash
-    docker pull couchdb:latest
-    docker run -p 5984:5984 couchdb
-    ```
-    
-    Then, initiate couchDB with the following script.
-    
-    ```bash
-    bash database_init.sh
-    ```
-
-1. Now, you can go back to the main directory and push your app to the cloud. For this example, we will push our app to the IBM Cloud Foundry. So we need to install the [Cloud Foundry CLI](https://docs.cloudfoundry.org/cf-cli/install-go-cli.html).
-
-2. Use the following commands to login to Cloud Foundry and push your application to the cloud.
-
-    >Note: Replace <app_name> with an unique application name within your Bluemix region. This application name is the name of your API container.
-    
-    ```bash
-    cf login -a https://api.ng.bluemix.net
-    cf push <app_name> -p airline_app
-    ```
-    
-3. To reach the application API Discovery user interface, go to https://<app_name>.mybluemix.net/ibm/api/explorer. Then, use the credentials from your server.xml to login (For this example, the **username** is `admin` and the **password** is `admin`).
-    
-    You should see something like this in your API Discovery user interface.
-    
-    ![discovery](images/discovery.png)
-    
-4. As shown in the following screen capture, you can click the **Try it out** button, which calls your application that runs on Cloud Foundry with your on-premise database.
-
-    ![try it out](images/try-it-out.png)
-
-
-# 6. Create an API Connect service in Bluemix
+# 4. Create an API Connect service in Bluemix
 
 In this step, we will setup API Connect service to help us expose our application APIs to public.
 
@@ -236,10 +170,10 @@ In this step, we will setup API Connect service to help us expose our applicatio
 
 	This is where enterprise developers go to find the products (for example, an API or a group of APIs) that are exposed in the API catalog. Developers also can interact with each other through the Blogs and Forums links.
 
-# 7. Integrate WebSphere Liberty and API Connect: push and pull
+# 5. Integrate WebSphere Liberty and API Connect: push and pull
 > Choose either [push](#41-push-websphere-liberty-apis-into-api-connect) or [pull](#42-pull-websphere-liberty-apis-from-api-connect) WebSphere Liberty APIs from API Connect. Also, push won't work on IBMer's account due to federated reasons.
 
-## 7.1 Push WebSphere Liberty APIs into API Connect
+## 5.1 Push WebSphere Liberty APIs into API Connect
 
 In this step, we will learn about how to use the post request on API discovery to push our APIs into API Connect.
 
@@ -335,7 +269,7 @@ Now you can go to your API and try it at the API Connect Developer Portal. Click
 
 ![api-connect](images/api-connect.png)
 
-## 7.2 Pull WebSphere Liberty APIs from API Connect
+## 5.2 Pull WebSphere Liberty APIs from API Connect
 
 In this step, we will learn about how to create and manage new APIs and products on API connect using API connect's user interface.
 
@@ -376,6 +310,68 @@ Congratulation. You API is published. Now explore the API Connect Developer Port
 Now you can go to your API and try it at the API Connect Developer Portal. Click any API call and try it using the **call operation** button.
 
 ![api-connect](images/api-connect.png)
+
+# 6. Build sample application to run on Public Cloud and use On-Premise database
+
+Our sample API application is an airline booking application that demonstrates how API application can store its data using on-premise database and enhance its API features using Bluemix's Data Analytic Service.
+
+In this step, we will add our own Weather API credential for our application and build our own .war file using Maven.
+
+1. First, install [Maven](https://maven.apache.org/install.html) to build and package our application into *.war* format.
+
+
+2. Create your [Weather API service](https://console.ng.bluemix.net/catalog/services/weather-company-data?taxonomyNavigation=data). The Weather API can provide the airport location and weather condition for clients. 
+
+
+3. Go to your **Service credentials** and mark down your username and password. Then go to **flight-booking/src/main/java/microservices/api/sample** folder (`cd flight-booking/src/main/java/microservices/api/sample`). Now, add your username and password credential in the **DatabaseAccess.java** file.
+
+    ![credential](images/credentials.png)
+    
+4. You also need to change the database address to your cloud host:port. (e.g. `DATABASE_CORE_ADDRESS = "http://cap-sg-prd-4.integration.ibmcloud.com:17638/";`
+
+    ![cloud-host2](images/cloud-host2.png)
+
+
+5. Go back to the **flight-booking** folder, run `mvn package` to build your .war file.
+
+
+6. Then go to the **deployment_artifacts** folder and move your **airlines.war** file to your main directory's **airline_app/apps** folder.
+
+# 7. Run the application on Public Cloud using Bluemix and database On-Premise using CouchDB and Docker
+
+1. Install [Docker CLI](https://www.docker.com/community-edition#/download) and create an on-premise database using Docker. Run the following commands to use the community's CouchDB Docker image.
+    
+    ```bash
+    docker pull couchdb:latest
+    docker run -p 5984:5984 couchdb
+    ```
+    
+    Then, initiate couchDB with the following script.
+    
+    ```bash
+    bash database_init.sh
+    ```
+
+1. Now, you can go back to the main directory and push your app to the cloud. For this example, we will push our app to the IBM Cloud Foundry. So we need to install the [Cloud Foundry CLI](https://docs.cloudfoundry.org/cf-cli/install-go-cli.html).
+
+2. Use the following commands to login to Cloud Foundry and push your application to the cloud.
+
+    >Note: Replace <app_name> with an unique application name within your Bluemix region. This application name is the name of your API container.
+    
+    ```bash
+    cf login -a https://api.ng.bluemix.net
+    cf push <app_name> -p airline_app
+    ```
+    
+3. To reach the application API Discovery user interface, go to https://<app_name>.mybluemix.net/ibm/api/explorer. Then, use the credentials from your server.xml to login (For this example, the **username** is `admin` and the **password** is `admin`).
+    
+    You should see something like this in your API Discovery user interface.
+    
+    ![discovery](images/discovery.png)
+    
+4. As shown in the following screen capture, you can click the **Try it out** button, which calls your application that runs on Cloud Foundry with your on-premise database.
+
+    ![try it out](images/try-it-out.png)
 
 # Troubleshooting
 
