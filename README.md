@@ -31,11 +31,11 @@ The scenarios are accomplished by using:
 2. [Build sample application to run on-premise and use On-Premise database](#2-build-sample-application-to-run-on-premise-and-use-on-premise-database)
 3. [Run the application and database On-Premise using WebSphere Liberty, CouchDB and Docker](#3-run-the-application-and-database-on-premise-using-websphere-liberty-couchdb-and-docker)
 
-##### Expose Application APIs using API Connect
+##### Expose Application APIs to public using API Connect
 4. [Create an API Connect service in Bluemix](#4-create-an-api-connect-service-in-bluemix)
 5. [Integrate WebSphere Liberty and API Connect: push and pull](#5-integrate-websphere-liberty-and-api-connect-push-and-pull)
-- 5.1 [Push WebSphere Liberty APIs into API Connect](#51-push-websphere-liberty-apis-into-api-connect)
-- 5.2 [Pull WebSphere Liberty APIs from API Connect](#52-pull-websphere-liberty-apis-from-api-connect)
+- 5.1 [Push Application APIs running on WebSphere into API Connect](#51-push-websphere-liberty-apis-into-api-connect)
+- 5.2 [Pull Application APIs running on WebSphere Liberty from API Connect](#52-pull-websphere-liberty-apis-from-api-connect)
 
 ### Scenario Two: Enable your Application on Public Cloud to connect to On-Premise Database
 
