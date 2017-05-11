@@ -64,7 +64,7 @@ In this step, we will use the secure gateway service from Bluemix to create a tu
 
 	![on-premises](images/on-premises.png)
     
-6. Next, put down **127.0.0.1** for your resource hostname and **9443** for your port and click next.
+6. Next, put down **127.0.0.1** for your resource hostname and **9443**(Scenario One) / **5984**(Scenario Two) for your port and click next.
 
 	![hostname](images/hostname.png)
     
