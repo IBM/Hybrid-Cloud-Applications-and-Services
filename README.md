@@ -78,7 +78,7 @@ In this step, we will use the secure gateway service from Bluemix to create a tu
 
 	![cloud-host](images/cloud-host.png)
 	
-    If you are doing Scenario One, continue, else jump to [Scenario 2](#scenario-two-enable-your-application-on-public-cloud-to-connect-to-on-premise-database).
+    If you are doing Scenario One, continue, else jump to [Scenario 2](#4-build-sample-application-to-run-on-public-cloud-and-use-on-premise-database).
 
 # 2. Build sample application to run on-premise and use On-Premise database
 
