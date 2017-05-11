@@ -42,7 +42,7 @@ Since we need [Maven](https://maven.apache.org/install.html) to build our sample
 4. [Build sample application to run on Public Cloud and use On-Premise database](#4-build-sample-application-to-run-on-public-cloud-and-use-on-premise-database)
 5. [Run the application on Public Cloud using Bluemix and database On-Premise using CouchDB and Docker](#5-run-the-application-on-public-cloud-using-bluemix-and-database-on-premise-using-couchdb-and-docker)
 
-##### Expose application APIs to public using API Connect
+### Catalog and publish application APIs to the public using API Connect
 6. [Create an API Connect service in Bluemix](#6-create-an-api-connect-service-in-bluemix)
 7. [Integrate WebSphere Liberty and API Connect: push and pull](#7-integrate-websphere-liberty-and-api-connect-push-and-pull)
 - 7.1 [Push Application APIs running on WebSphere into API Connect](#71-push-websphere-liberty-apis-into-api-connect)
