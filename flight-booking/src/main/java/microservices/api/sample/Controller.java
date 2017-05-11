@@ -26,7 +26,7 @@ public class Controller {
    public static Response getFlights (String date, String airportFrom, String airportTo) {
 	   List<Flight> flights = new ArrayList<Flight>(6);
 
-	   //Flights
+	   //Flight info
 	   for (int i = 0; i < 5; i++) {
 		   flights.add(new Flight(getRandomAirline(), 
 				   				  date + " " + getRandomTime(),
@@ -37,8 +37,8 @@ public class Controller {
 				   				  getRandomPrice())); 
 	   }
 
-	   //Weather
-	   Weather weather = DatabaseAccess.getLocWeather(date,airportTo);
+	   //Weather info
+	   Weather weather = WeatherAPI.getWeather(date,airportTo);
 	   if (weather == null){
 	   	   weather = new Weather();
 	   } 

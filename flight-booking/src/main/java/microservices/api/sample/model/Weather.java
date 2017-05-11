@@ -54,7 +54,7 @@ public class Weather {
 		return city;
 	}
 
-	public String getWeath() {
+	public String getWeather() {
 		return weather;
 	}
 

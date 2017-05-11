@@ -86,7 +86,7 @@ We will also add our own Weather API credential from public Bluemix for the appl
 
 2. Create [Weather API service](https://console.ng.bluemix.net/catalog/services/weather-company-data?taxonomyNavigation=data) in Bluemix. 
 
-3. Go to your **Service credentials** and mark down your username and password. Then go to **flight-booking/src/main/java/microservices/api/sample** folder (`cd flight-booking/src/main/java/microservices/api/sample`). Now, add your username and password credential in the **DatabaseAccess.java** file.
+3. Go to your Weather API's **Service credentials** and mark down your username and password. Then go to *flight-booking/src/main/java/microservices/api/sample* folder (`cd flight-booking/src/main/java/microservices/api/sample`). Now, add your username and password credential in the **WeatherAPI.java** file.
 
 	![credential](images/credentials.png)
 
@@ -144,11 +144,11 @@ In this step, we will add our own Weather API credential for our application and
 2. Create your [Weather API service](https://console.ng.bluemix.net/catalog/services/weather-company-data?taxonomyNavigation=data). The Weather API can provide the airport location and weather condition for clients. 
 
 
-3. Go to your **Service credentials** and mark down your username and password. Then go to **flight-booking/src/main/java/microservices/api/sample** folder (`cd flight-booking/src/main/java/microservices/api/sample`). Now, add your username and password credential in the **DatabaseAccess.java** file.
+3. Go to your Weather API's **Service credentials** and mark down your username and password. Then go to *flight-booking/src/main/java/microservices/api/sample* folder (`cd flight-booking/src/main/java/microservices/api/sample`). Now, add your username and password credential in the **WeatherAPI.java** file.
 
     ![credential](images/credentials.png)
     
-4. You also need to change the database address to your cloud host:port. (e.g. `DATABASE_CORE_ADDRESS = "http://cap-sg-prd-4.integration.ibmcloud.com:17638/";`
+4. You also need to change the database address to your cloud host:port in your **DatabaseAccess.java** file.
 
     ![cloud-host2](images/cloud-host2.png)
 
