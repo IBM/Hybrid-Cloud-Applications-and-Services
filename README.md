@@ -39,8 +39,8 @@ The scenarios are accomplished by using:
 ##### Expose Application APIs to public using API Connect
 6. [Create an API Connect service in Bluemix](#6-create-an-api-connect-service-in-bluemix)
 7. [Integrate WebSphere Liberty and API Connect: push and pull](#7-integrate-websphere-liberty-and-api-connect-push-and-pull)
-- 5.1 [Push Application APIs running on WebSphere into API Connect](#71-push-websphere-liberty-apis-into-api-connect)
-- 5.2 [Pull Application APIs running on WebSphere Liberty from API Connect](#72-pull-websphere-liberty-apis-from-api-connect)
+- 7.1 [Push Application APIs running on WebSphere into API Connect](#71-push-websphere-liberty-apis-into-api-connect)
+- 7.2 [Pull Application APIs running on WebSphere Liberty from API Connect](#72-pull-websphere-liberty-apis-from-api-connect)
 
 [Troubleshooting](#troubleshooting)
 

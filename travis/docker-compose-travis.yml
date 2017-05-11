@@ -1,0 +1,21 @@
+version: "2"
+services:
+  gateway:
+    restart: always
+    image: docker.io/ibmcom/secure-gateway-client
+    links:
+      - airlines:airlines
+    command: $gateway -t $token
+  airlines:
+    restart: always
+    image: hybrid/airlines:latest
+    links:
+      - couchdb:couchdb
+    ports:
+      - "9080:9080"
+      - "9443:9443"
+  couchdb:
+    restart: always
+    image: couchdb:latest
+    ports: 
+      - "5984:5984"
