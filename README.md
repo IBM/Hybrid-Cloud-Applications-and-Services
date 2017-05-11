@@ -54,7 +54,7 @@ In this step, we will use the secure gateway service from Bluemix to create a tu
 
 2. Then, follow this [Getting started with the Secure Gateway](https://console.ng.bluemix.net/docs/services/SecureGateway/secure_gateway.html) tutorial to setup your gateway.
 
-3. When you setup your secure gateway client, install **IBM Installer** and run it on your local machine.
+3. When you setup your secure gateway client, install **IBM Installer** and run it on your private cloud.
 
 	![installer](images/installer.png)
     
@@ -258,7 +258,7 @@ In this step, we will learn about how to use the post request on API discovery t
     
 5. For Scenario Two, we can click the sample JSON file on your right and publish your APIs.
 
-	For Scenario One, since we are running our APIs on our local machine, we do not want to use the sample JSON file because that will set the APIs target URL to our local machine. Instead, we want to change the `<cloud host:port>` part in **target-url** (line 38) from the following JSON file (you can also get it from the **discovery-post.json** file) to your cloud host:port (e.g. `"https://cap-sg-prd-1.integration.ibmcloud.com:16218$(request.path)"`). Then copy and paste it into the body input box.
+	For Scenario One, since we are running our APIs on our private cloud, we do not want to use the sample JSON file because that will set the APIs target URL to our private cloud. Instead, we want to change the `<cloud host:port>` part in **target-url** (line 38) from the following JSON file (you can also get it from the **discovery-post.json** file) to your cloud host:port (e.g. `"https://cap-sg-prd-1.integration.ibmcloud.com:16218$(request.path)"`). Then copy and paste it into the body input box.
 	```JSON
 	{
 	  "product": "1.0.0",
@@ -350,7 +350,7 @@ In this step, we will learn about how to create and manage new APIs and products
     
 3. For Scenario Two, you do not have to do anything.
 
-	For Scenario One, since your APIs are hosted on our local machine, you need to set the APIs target URL to your cloud host. Therefore, after you imported your API, go to **source**. Then go to the bottom of the page (around line 532) and change the **target-url**'s value to `'<cloud host:port>$(request.path)'` (replace `<cloud host:port>` to your own cloud host:port). Then click the **save icon** on the top right corner.
+	For Scenario One, since our APIs are hosted on the private cloud, we need to set the APIs target URL to the cloud host. Therefore, after you imported your API, go to **source**. Then go to the bottom of the page (around line 532) and change the **target-url**'s value to `'<cloud host:port>$(request.path)'` (replace `<cloud host:port>` to your own cloud host:port). Then click the **save icon** on the top right corner.
 
     ![target-url](images/target-url.png)
 
