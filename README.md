@@ -89,14 +89,14 @@ We will also add our own Weather API credential from public Bluemix for the appl
 
 1. Create [Weather API service](https://console.ng.bluemix.net/catalog/services/weather-company-data?taxonomyNavigation=data) in Bluemix. 
 
-2. Go to your Weather API's **Service credentials** and mark down your username and password. Then go to *flight-booking/src/main/java/microservices/api/sample* folder (`cd flight-booking/src/main/java/microservices/api/sample`). Now, add your username and password credential to your **WeatherAPI.java** file.
+2. Go to your Weather API's **Service credentials** and mark down your username and password. Then run `cd flight-booking/src/main/java/microservices/api/sample` to go to the sample directory. Now, add your username and password credential to your **WeatherAPI.java** file.
 
 	![credential](images/credentials.png)
 
-3. Go to the **flight-booking** folder, run `mvn package` to build the .war file.
+3. Go back to the **flight-booking** directory, run `mvn package` to build the .war file.
 
 
-4. Go to the **deployment_artifacts** folder and move your **airlines.war** file to your main directory's **airline_app/apps** folder.
+4. Now, go to the **deployment_artifacts** directory and move your **airlines.war** file to your main directory's **airline_app/apps** folder.
 
 
 # 3. Run the application and database on-premise using WebSphere Liberty, CouchDB and Docker
@@ -145,19 +145,19 @@ In this step, we will add our own Weather API credential for our application and
 1. Create your [Weather API service](https://console.ng.bluemix.net/catalog/services/weather-company-data?taxonomyNavigation=data). The Weather API can provide the airport location and weather condition for clients. 
 
 
-2. Go to your Weather API's **Service credentials** and mark down your username and password. Then go to *flight-booking/src/main/java/microservices/api/sample* folder (`cd flight-booking/src/main/java/microservices/api/sample`). Now, add your username and password credential to your **WeatherAPI.java** file.
+2. Go to your Weather API's **Service credentials** and mark down your username and password. Then run `cd flight-booking/src/main/java/microservices/api/sample` to go to the sample directory. Now, add your username and password credential to your **WeatherAPI.java** file.
 
     ![credential](images/credentials.png)
     
-3. You also need to change the database address to your cloud host:port in your **DatabaseAccess.java** file.
+3. Futhermore, You need to change the database address to your *cloud host:port* in your **DatabaseAccess.java** file.
 
     ![cloud-host2](images/cloud-host2.png)
 
 
-4. Go back to the **flight-booking** folder, run `mvn package` to build your .war file.
+4. Go back to the **flight-booking** directory, run `mvn package` to build your .war file.
 
 
-5. Then go to the **deployment_artifacts** folder and move your **airlines.war** file to your main directory's **airline_app/apps** folder.
+5. Then go to the **deployment_artifacts** directory and move your **airlines.war** file to your main directory's **airline_app/apps** folder.
 
 
 # 5. Run the application on Public Cloud using Bluemix and database On-Premise using CouchDB and Docker
