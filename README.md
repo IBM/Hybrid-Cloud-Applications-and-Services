@@ -9,8 +9,8 @@ We first deploy an on-premise application and database on a local machine. This 
 In the second scenario, we move the sample Airline application to a public cloud, in this case Bluemix, and then show how your application running on public cloud can acccess your on-premise resources like database etc.
 
 ## Scenarios
-- **Scenario One: Enable your Application running On-Premise to be accessed externally outside the corporate firewall, and consume a public cloud service**
-- **Scenario Two: Enable your Application on Public Cloud to connect to On-Premise Database**
+- [Scenario One: Enable your Application running On-Premise to be accessed externally outside the corporate firewall, and consume a public cloud service](#scenario-one-enable-your-application-running-on-premise-to-be-accessed-externally-outside-the-corporate-firewall-and-consume-a-public-cloud-service)
+- [Scenario Two: Enable your Application on Public Cloud to connect to On-Premise Database](#scenario-two-enable-your-application-on-public-cloud-to-connect-to-on-premise-database)
 
 ## Included Components
 The scenarios are accomplished by using:
@@ -56,7 +56,7 @@ In this step, we will use the secure gateway service from Bluemix to create a tu
 
 	![installer](images/installer.png)
     
-4. After you open the secure gateway client with your Gateway ID and Security Token, if you are doing [Scenario One: Application and Database On-Premise](#scenario-one-application-and-database-on-premise), run `acl allow 127.0.0.1:9443` on your secure gateway client to enable access to your application server. If you are doing [Scenario Two: Application on Public Cloud and Database On-Premise](#scenario-two-application-on-public-cloud-and-database-on-premise), run `acl allow 127.0.0.1:5984` to enable access to your database.
+4. After you open the secure gateway client with your Gateway ID and Security Token, if you are doing [Scenario One: Application and Database On-Premise](#scenario-one-enable-your-application-running-on-premise-to-be-accessed-externally-outside-the-corporate-firewall-and-consume-a-public-cloud-service), run `acl allow 127.0.0.1:9443` on your secure gateway client to enable access to your application server. If you are doing [Scenario Two: Application on Public Cloud and Database On-Premise](#scenario-two-enable-your-application-on-public-cloud-to-connect-to-on-premise-database), run `acl allow 127.0.0.1:5984` to enable access to your database.
 	
 5. Create the destination for gateway. First, select **On-Premises** at Guided Setup and click next. 
 
@@ -72,7 +72,7 @@ In this step, we will use the secure gateway service from Bluemix to create a tu
 
 	![cloud-host](images/cloud-host.png)
 	
-    If you are doing Scenario One, continue to [step 2](#2-build-sample-application-to-run-on-premise-and-use-on-premise-database). Otherwise jump to [step 4](#4-build-sample-application-to-run-on-public-cloud-and-use-on-premise-database).
+    If you are doing Scenario One, continue, else jump to [Scenario 2](#scenario-two-enable-your-application-on-public-cloud-to-connect-to-on-premise-database).
 
 # 2. Build sample application to run on-premise and use On-Premise database
 
