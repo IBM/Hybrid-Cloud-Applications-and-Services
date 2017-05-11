@@ -8,11 +8,11 @@ We first deploy an on-premise application and database on a local machine. This 
 
 In the second scenario, we move the sample Airline application to a public cloud, in this case Bluemix, and then show how your application running on public cloud can acccess your on-premise resources like database etc.
 
-![Scenarioos](images/hybrid-cloud.png)
-
 ## Scenarios
 - [Scenario One: Enable your Application running On-Premise to be accessed externally outside the corporate firewall, and consume a public cloud service](#scenario-one-enable-your-application-running-on-premise-to-be-accessed-externally-outside-the-corporate-firewall-and-consume-a-public-cloud-service)
 - [Scenario Two: Enable your Application on Public Cloud to connect to On-Premise Database](#scenario-two-enable-your-application-on-public-cloud-to-connect-to-on-premise-database)
+
+![Scenarios](images/hybrid-cloud.png)
 
 ## Included Components
 The scenarios are accomplished by using:
