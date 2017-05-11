@@ -9,8 +9,8 @@ In this code we have an on-premise Java application using JAX-RS and Swagger ann
 Moving beyond, we move application to a public cloud, and then guide how your application running on public cloud can access on-premise resources like database etc. 
 
 ## Scenarios
-- [Scenario One: Enable your application running in Private Cloud to be accessed externally via Public Cloud](#scenario-one-enable-your-application-running-on-premise-in-private-cloud-to-be-accessed-externally-via-public-cloud)
-- [Scenario Two: Enable your application on Public Cloud to connect to Database running in private cloud](#scenario-two-enable-your-application-on-public-cloud-to-connect-to-database-running-in-private-cloud)
+- [Scenario One: Enable your application running in Private Cloud to be accessed externally via Public Cloud](#scenario-one-enable-your-application-running-in-private-cloud-to-be-accessed-externally-via-public-cloud)
+- [Scenario Two: Enable your application running in Public Cloud to connect to Database running in Private Cloud](#scenario-two-enable-your-application-running-in-public-cloud-to-connect-to-database-running-in-private-cloud)
 
 ![Scenarios](images/hybrid-cloud.png)
 
@@ -37,7 +37,7 @@ Since we need [Maven](https://maven.apache.org/install.html) to build our sample
 2. [Build sample application to run on-premise and use On-Premise database](#2-build-sample-application-to-run-on-premise-and-use-on-premise-database)
 3. [Run the application and database On-Premise using WebSphere Liberty, CouchDB and Docker](#3-run-the-application-and-database-on-premise-using-websphere-liberty-couchdb-and-docker)
 
-### Scenario Two: Scenario Two: Enable your application on Public Cloud to connect to database running in Private Cloud
+### Scenario Two: Enable your application in Public Cloud to connect to database running in Private Cloud
 
 4. [Build sample application to run on Public Cloud and use On-Premise database](#4-build-sample-application-to-run-on-public-cloud-and-use-on-premise-database)
 5. [Run the application on Public Cloud using Bluemix and database On-Premise using CouchDB and Docker](#5-run-the-application-on-public-cloud-using-bluemix-and-database-on-premise-using-couchdb-and-docker)
