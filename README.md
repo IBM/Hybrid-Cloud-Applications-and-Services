@@ -1,29 +1,27 @@
 [![Build Status](https://travis-ci.org/IBM/Hybrid-Cloud-Applications-and-Services.svg?branch=master)](https://travis-ci.org/IBM/Hybrid-Cloud-Applications-and-Services)
 
-
 # Extend your on-premise applications and services to public cloud, and vice versa
 
 A hybrid cloud model blends elements of both the private and the public cloud, and gives users choice and flexibility to run apps and services across on-premises systems and the cloud. In the simplest terms, the hybrid model is primarily a private cloud that allows an organization to tap into a public cloud when and where it makes sense. This code shows you how to expose your on-premise applications and services to public cloud, and vice versa.
 
 We first deploy an on-premise application and database on a local machine. This represents an on-prem environment behind a firewall. Thereafter we leverage public cloud services to create a  secure tunnel and expose your on-premise application outside your coporate firewall. Moving beyond, we show how the on-prem application can leverage public cloud application services. 
 
-We follow the end-to-end process, starting with building your application server and database docker images leveraging WebSphere Liberty and CouchDB, deploying the sample Airline application on-premise. We also show how we can leverage our public Weather service API on Bluemix to be consumed by the on-premise airline application.
-
 In the second scenario, we move the sample Airline application to a public cloud, in this case Bluemix, and then show how your application running on public cloud can acccess your on-premise resources like database etc.
 
+## Scenarios
+- **Scenario One: Application and Database On-Premise:**
+Both application and database run on-premise, and application also consumes a public cloud service.
+- **Scenario Two: Database On-Premise, Application and service on Public Cloud:**
+Database runs on-premise, and application runs on public cloud, and also consumes a public cloud service.
+
 ## Included Components
+The scenarios are accomplished by using:
+- [Cloud Foundry](https://www.cloudfoundry.org/)
 - [CouchDB](http://couchdb.apache.org)
 - [WebSphere Liberty](https://developer.ibm.com/wasdev/websphere-liberty/)
 - [API Connect](http://www-03.ibm.com/software/products/en/api-connect)
 - [Secure Gateway](https://console.ng.bluemix.net/docs/services/SecureGateway/sg_overview.html)
 - [Insights for Weather](https://console.ng.bluemix.net/docs/services/Weather/weather_overview.html#about_weather)
-
-## Scenarios
-
-- **Scenario One: Application and Database On-Premise:**
-Both application and database run on-premise, and application also consumes a public cloud service.
-- **Scenario Two: Database On-Premise, Application and service on Public Cloud:**
-Database runs on-premise, and application runs on public cloud, and also consumes a public cloud service.
 
 ## Steps
 1. [Create a secure tunnel to connect your on-premise environment to public cloud](#1-create-a-secure-tunnel-to-connect-your-on-premise-environment-to-public-cloud)
