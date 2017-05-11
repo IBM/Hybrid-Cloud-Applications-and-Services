@@ -26,7 +26,7 @@ public class DatabaseAccess {
 	}
 
 
-	//Please change your database address to the cloud host if you are hosting your Server on the cloud.
+	//Please change your database address to your cloud host if you are hosting your Server on the cloud.
 	private static String DATABASE_CORE_ADDRESS = "http://couchdb:5984/";
 
 	private static String AIRLINES_DATABASE = DATABASE_CORE_ADDRESS + "airlines";
