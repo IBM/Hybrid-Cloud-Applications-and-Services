@@ -4,7 +4,7 @@
 
 A hybrid cloud model blends elements of both the private and the public cloud, and gives users choice and flexibility to run apps and services across on-premises systems and the cloud. In the simplest terms, the hybrid model is primarily a private cloud that allows an organization to tap into a public cloud when and where it makes sense. This code shows you how to expose your on-premise applications and services to public cloud, and vice versa.
 
-We first deploy an on-premise application and database on a local machine. This represents an on-prem environment behind a firewall. Thereafter we leverage public cloud services to create a  secure tunnel and expose your on-premise application outside your coporate firewall. Moving beyond, we show how the on-prem application can leverage public cloud application services. 
+We first deploy an on-premise application and database in private cloud. This represents an on-prem environment behind a firewall. Thereafter we leverage public cloud services to create a  secure tunnel and expose your on-premise application outside your coporate firewall. Moving beyond, we show how the on-prem application can leverage public cloud application services. 
 
 In the second scenario, we move the sample Airline application to a public cloud, in this case Bluemix, and then show how your application running on public cloud can acccess your on-premise resources like database etc.
 
