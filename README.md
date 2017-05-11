@@ -23,6 +23,10 @@ The scenarios are accomplished by using:
 - [Secure Gateway](https://console.ng.bluemix.net/docs/services/SecureGateway/sg_overview.html)
 - [Insights for Weather](https://console.ng.bluemix.net/docs/services/Weather/weather_overview.html#about_weather)
 
+## Prerequisites
+
+Since we need [Maven](https://maven.apache.org/install.html) to build our sample application and [Docker](https://www.docker.com/community-edition#/download) to run the application and database. Please install [Maven](https://maven.apache.org/install.html) and [Docker](https://www.docker.com/community-edition#/download) before you proceed to [steps](#steps).
+
 ## Steps
 
 ### Connect your On-Premise environment to Public Cloud
@@ -82,18 +86,17 @@ Our sample Airline API application is an airline booking application that demons
 
 We will also add our own Weather API credential from public Bluemix for the application and build a .war file using Maven. The Weather API will provide the weather condition for destination airports selected by clients. 
 
-1. First, install [Maven](https://maven.apache.org/install.html) to build and package our application into *.war* format.
 
-2. Create [Weather API service](https://console.ng.bluemix.net/catalog/services/weather-company-data?taxonomyNavigation=data) in Bluemix. 
+1. Create [Weather API service](https://console.ng.bluemix.net/catalog/services/weather-company-data?taxonomyNavigation=data) in Bluemix. 
 
-3. Go to your Weather API's **Service credentials** and mark down your username and password. Then go to *flight-booking/src/main/java/microservices/api/sample* folder (`cd flight-booking/src/main/java/microservices/api/sample`). Now, add your username and password credential to your **WeatherAPI.java** file.
+2. Go to your Weather API's **Service credentials** and mark down your username and password. Then go to *flight-booking/src/main/java/microservices/api/sample* folder (`cd flight-booking/src/main/java/microservices/api/sample`). Now, add your username and password credential to your **WeatherAPI.java** file.
 
 	![credential](images/credentials.png)
 
-4. Go to the **flight-booking** folder, run `mvn package` to build the .war file.
+3. Go to the **flight-booking** folder, run `mvn package` to build the .war file.
 
 
-5. Go to the **deployment_artifacts** folder and move your **airlines.war** file to your main directory's **airline_app/apps** folder.
+4. Go to the **deployment_artifacts** folder and move your **airlines.war** file to your main directory's **airline_app/apps** folder.
 
 
 # 3. Run the application and database on-premise using WebSphere Liberty, CouchDB and Docker
@@ -102,14 +105,12 @@ In this example, we will use WebSphere Liberty for our application server, and l
 
 At the end of this step, you should able to call your application APIs via localhost. 
 
-1. Install [Docker CLI](https://www.docker.com/community-edition#/download).
-
-2. To deploy the Airline API application, put the **.war** file in **airline_app/apps** folder and configure the **server.xml** file. For this example, we are using airlines API application, but you can also add your own application.
+1. To deploy the Airline API application, put the **.war** file in **airline_app/apps** folder and configure the **server.xml** file. For this example, we are using airlines API application, but you can also add your own application.
 
 	In this main directory, build your server and run it on your local host.
 
     ```bash
-   	docker build -t hybrid/airlines .
+    docker build -t hybrid/airlines .
     docker-compose up
     ```
    	Now you current terminal will execute all the logs from your app.
@@ -120,17 +121,17 @@ At the end of this step, you should able to call your application APIs via local
     bash database_init.sh
     ```
 
-3. To reach the WebSphere Liberty API Discovery user interface, go to `https://localhost:9443/ibm/api/explorer`. Since docker only exposes tcp port and api-connect is using https port, we need to authenticate the website. Then, use the credentials from your server.xml to login (For this example, the **username** is `admin` and the **password** is `admin`).
+2. To reach the WebSphere Liberty API Discovery user interface, go to `https://localhost:9443/ibm/api/explorer`. Since docker only exposes tcp port and api-connect is using https port, we need to authenticate the website. Then, use the credentials from your server.xml to login (For this example, the **username** is `admin` and the **password** is `admin`).
 
 	You should see something like this in your API Discovery user interface.
 
 	![discovery](images/discovery.png)
 
-4. As shown in the following screen capture, you can click the **Try it out** button, which starts the sample Airline application, running on Docker
+3. As shown in the following screen capture, you can click the **Try it out** button, which starts the sample Airline application, running on Docker
 
 	![try it out](images/try-it-out.png)
 	
-5. Now, go to `https://<Cloud Host:Port>/ibm/api/explorer/` and varify your local server interface can be accessed from public 'Cloud Host' gateway server. Remember, 'Cloud Host' is the Secure gateway server information we noted down at the end of [Step 1](#1-create-a-secure-tunnel-to-connect-your-on-premise-enviroment-to-public-cloud), and your default username is **admin** and password is **admin**.
+4. Now, go to `https://<Cloud Host:Port>/ibm/api/explorer/` and varify your local server interface can be accessed from public 'Cloud Host' gateway server. Remember, 'Cloud Host' is the Secure gateway server information we noted down at the end of [Step 1](#1-create-a-secure-tunnel-to-connect-your-on-premise-enviroment-to-public-cloud), and your default username is **admin** and password is **admin**.
 
 Jump to [Step 6](#6-create-an-api-connect-service-in-bluemix) to expose your application APIs via API Connect
 
@@ -140,30 +141,28 @@ Our sample API application is an airline booking application that demonstrates h
 
 In this step, we will add our own Weather API credential for our application and build our own .war file using Maven.
 
-1. First, install [Maven](https://maven.apache.org/install.html) to build and package our application into *.war* format.
+
+1. Create your [Weather API service](https://console.ng.bluemix.net/catalog/services/weather-company-data?taxonomyNavigation=data). The Weather API can provide the airport location and weather condition for clients. 
 
 
-2. Create your [Weather API service](https://console.ng.bluemix.net/catalog/services/weather-company-data?taxonomyNavigation=data). The Weather API can provide the airport location and weather condition for clients. 
-
-
-3. Go to your Weather API's **Service credentials** and mark down your username and password. Then go to *flight-booking/src/main/java/microservices/api/sample* folder (`cd flight-booking/src/main/java/microservices/api/sample`). Now, add your username and password credential to your **WeatherAPI.java** file.
+2. Go to your Weather API's **Service credentials** and mark down your username and password. Then go to *flight-booking/src/main/java/microservices/api/sample* folder (`cd flight-booking/src/main/java/microservices/api/sample`). Now, add your username and password credential to your **WeatherAPI.java** file.
 
     ![credential](images/credentials.png)
     
-4. You also need to change the database address to your cloud host:port in your **DatabaseAccess.java** file.
+3. You also need to change the database address to your cloud host:port in your **DatabaseAccess.java** file.
 
     ![cloud-host2](images/cloud-host2.png)
 
 
-5. Go back to the **flight-booking** folder, run `mvn package` to build your .war file.
+4. Go back to the **flight-booking** folder, run `mvn package` to build your .war file.
 
 
-6. Then go to the **deployment_artifacts** folder and move your **airlines.war** file to your main directory's **airline_app/apps** folder.
+5. Then go to the **deployment_artifacts** folder and move your **airlines.war** file to your main directory's **airline_app/apps** folder.
 
 
 # 5. Run the application on Public Cloud using Bluemix and database On-Premise using CouchDB and Docker
 
-1. Install [Docker CLI](https://www.docker.com/community-edition#/download) and create an on-premise database using Docker. Run the following commands to use the community's CouchDB Docker image.
+1. Create an on-premise database using Docker. Run the following commands to use the community's CouchDB Docker image.
     
     ```bash
     docker pull couchdb:latest
@@ -176,9 +175,9 @@ In this step, we will add our own Weather API credential for our application and
     bash database_init.sh
     ```
 
-1. Now, you can go back to the main directory and push your app to the cloud. For this example, we will push our app to the IBM Cloud Foundry. So we need to install the [Cloud Foundry CLI](https://docs.cloudfoundry.org/cf-cli/install-go-cli.html).
+2. Now, you can go back to the main directory and push your app to the cloud. For this example, we will push our app to the IBM Cloud Foundry. So we need to install the [Cloud Foundry CLI](https://docs.cloudfoundry.org/cf-cli/install-go-cli.html).
 
-2. Use the following commands to login to Cloud Foundry and push your application to the cloud.
+3. Use the following commands to login to Cloud Foundry and push your application to the cloud.
 
     >Note: Replace <app_name> with an unique application name within your Bluemix region. This application name is the name of your API container.
     
