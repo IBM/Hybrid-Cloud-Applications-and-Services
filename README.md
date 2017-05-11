@@ -9,10 +9,8 @@ We first deploy an on-premise application and database on a local machine. This 
 In the second scenario, we move the sample Airline application to a public cloud, in this case Bluemix, and then show how your application running on public cloud can acccess your on-premise resources like database etc.
 
 ## Scenarios
-- **Scenario One: Application and Database On-Premise:**
-Both application and database run on-premise, and application also consumes a public cloud service.
-- **Scenario Two: Database On-Premise, Application and service on Public Cloud:**
-Database runs on-premise, and application runs on public cloud, and also consumes a public cloud service.
+- **Scenario One: Enable your Application running On-Premise to be accessed externally outside the corporate firewall, and consume a public cloud service**
+- **Scenario Two: Enable your Application on Public Cloud to connect to On-Premise Database**
 
 ## Included Components
 The scenarios are accomplished by using:
@@ -28,7 +26,7 @@ The scenarios are accomplished by using:
 ### Connect your On-Premise environment to Public Cloud
 1. [Create a secure tunnel to connect your on-premise environment to public cloud](#1-create-a-secure-tunnel-to-connect-your-on-premise-environment-to-public-cloud)
 
-### Scenario One: Application and Database On-Premise
+### Scenario One: Enable your Application running On-Premise to be accessed externally outside the corporate firewall, and consume a public cloud service
 
 2. [Build sample application to run on-premise and use On-Premise database](#2-build-sample-application-to-run-on-premise-and-use-on-premise-database)
 3. [Run the application and database On-Premise using WebSphere Liberty, CouchDB and Docker](#3-run-the-application-and-database-on-premise-using-websphere-liberty-couchdb-and-docker)
@@ -39,11 +37,10 @@ The scenarios are accomplished by using:
 - 5.1 [Push WebSphere Liberty APIs into API Connect](#51-push-websphere-liberty-apis-into-api-connect)
 - 5.2 [Pull WebSphere Liberty APIs from API Connect](#52-pull-websphere-liberty-apis-from-api-connect)
 
-### Scenario Two: Application on Public Cloud and Database On-Premise
+### Scenario Two: Enable your Application on Public Cloud to connect to On-Premise Database
 
 6. [Build sample application to run on Public Cloud and use On-Premise database](#6-build-sample-application-to-run-on-public-cloud-and-use-on-premise-database)
 7. [Run the application on Public Cloud using Bluemix and database On-Premise using CouchDB and Docker](#7-run-the-application-on-public-cloud-using-bluemix-and-database-on-premise-using-couchdb-and-docker)
-
 
 [Troubleshooting](#troubleshooting)
 
