@@ -251,7 +251,7 @@ In this step, we will learn about how to use the post request on API discovery t
 
 	![parameter](images/parameter.png)
 
-4. You want to publish this API product, not just stage it, so leave the stageOnly parameter as false. The X-APIM-Authorization parameter represents the credentials that Liberty uses to log into API Connect. The description on the right side provides details on the accepted format. The following example uses: apimanager/arthurdm@ca.ibm.com:myPassword.
+4. You want to publish this API product, not just stage it, so leave the stageOnly parameter as false. The X-APIM-Authorization parameter represents the credentials that Liberty uses to log into API Connect. The description on the right side provides details on the accepted format. The following example uses: `apimanager/arthurdm@ca.ibm.com:myBluemixPassword`.
 
 	![mypassword](images/mypassword.png)
     
