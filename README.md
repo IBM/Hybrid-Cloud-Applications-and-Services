@@ -113,7 +113,7 @@ At the end of this step, you should able to call your application APIs via local
     docker build -t hybrid/airlines .
     docker-compose up
     ```
-   	Now you current terminal will execute all the logs from your app.
+   	Now your current terminal will execute all the logs from your app.
     
     If you are running with our example app, after you have your server and database running, run the following commands to initiate couchDB.
     
