@@ -1,7 +1,7 @@
 language: java
 sudo: required
 script:
-- bash travis/install.sh
+- '[ "${TRAVIS_PULL_REQUEST}" = "false" ] && bash travis/install.sh || bash travis/install_pr.sh'
 group: stable
 dist: trusty
 sudo: required
