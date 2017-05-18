@@ -30,7 +30,7 @@ Since we need [Maven](https://maven.apache.org/install.html) to build our sample
 ## Steps
 
 ### Connect your On-Premise environment to Public Cloud
-1. [Create a secure tunnel to connect your on-premise environment to public cloud](#1-create-a-secure-tunnel-to-connect-your-on-premise-environment-to-public-cloud)
+1. [Create a tunnel to connect your on-premise environment to public cloud](#1-create-a-tunnel-to-connect-your-on-premise-environment-to-public-cloud)
 
 ### Scenario One: Enable your application in Private Cloud to be accessed externally via Public Cloud
 
@@ -50,9 +50,9 @@ Since we need [Maven](https://maven.apache.org/install.html) to build our sample
 
 [Troubleshooting](#troubleshooting)
 
-# 1. Create a secure tunnel to connect your on-premise environment to public cloud
+# 1. Create a tunnel to connect your on-premise environment to public cloud
 
-In this step, we will use the secure gateway service from Bluemix to create a tunnel from on-premise environment to public cloud host. 
+In this step, we will use the secure gateway service from Bluemix to create a tunnel from on-premise environment to public cloud host.In this sample, to keep configuration simple, the TCP protocol is used. The Secure Gateway product provides other protocol options (UDP, HTTP, HTTPS, TLS/SSL) that can provide greater security and authentication options for gateway clients. Solutions with production applications and data should be assessed based upon their risk profile to select the correct Secure Gateway access protocol and authentication scheme. More details about Secure Gateway configurations can be found [here](https://console.ng.bluemix.net/docs/services/SecureGateway/sg_overview.html#sg_overview) as well as example for application side and client side TLS setup can be accessed [here](https://console.ng.bluemix.net/docs/services/SecureGateway/sg_023.html#sg_023). Moving forward, we are proceeding with TCP to show the concept.
 
 1. Create your [secure gateway service](https://console.ng.bluemix.net/catalog/services/secure-gateway?taxonomyNavigation=apis) from Bluemix.
 
