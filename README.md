@@ -4,7 +4,7 @@
 
 A hybrid cloud model blends elements of both the private and the public cloud, and gives users choice and flexibility to run apps and services across on-premises systems and the cloud. In the simplest terms, the hybrid model is primarily a private cloud that allows an organization to tap into a public cloud when and where it makes sense. This code shows you how to expose your on-premise applications and services to public cloud, and vice versa.
 
-In this code we have an on-premise Java application using JAX-RS and Swagger annotations, and database using CouchDB, both running in private cloud behind a firewall. We demonstrate how by leveraging public cloud services like Secure Gateway and API Connect we can create a secure tunnel and expose the private cloud application and APIs outside the corporate firewall. 
+In this code we have an on-premise Java application using JAX-RS and Swagger annotations, and database using CouchDB, both running in private cloud behind a firewall. We demonstrate how by leveraging public cloud services like Secure Gateway and API Connect we can create a tunnel and expose the private cloud application and APIs outside the corporate firewall. 
 
 Moving beyond, we move application to a public cloud, and then guide how your application running on public cloud can access on-premise resources like database etc. 
 
