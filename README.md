@@ -25,7 +25,7 @@ The scenarios are accomplished by using:
 
 ## Prerequisites
 
-Since we need [Maven](https://maven.apache.org/install.html) to build our sample application and [Docker](https://www.docker.com/community-edition#/download) to run the application and database. Please install [Maven](https://maven.apache.org/install.html) and [Docker](https://www.docker.com/community-edition#/download) before you proceed to [steps](#steps).
+Since we need [Maven](https://maven.apache.org/install.html) to build our sample application and [Docker](https://www.docker.com/community-edition#/download) to run the application and database. Please install [Maven](https://maven.apache.org/install.html) and [Docker](https://www.docker.com/community-edition#/download) before you proceed to [steps](#steps). If you prefer to use [Vagrant](https://www.vagrantup.com/) to manage temporary environments, a build file that creates an Ubuntu VM with a JDK, Maven, and Docker is in the project home directory.
 
 ## Steps
 
