@@ -4,9 +4,9 @@
 
 A hybrid cloud model blends elements of both the private and the public cloud, and gives users choice and flexibility to run apps and services across on-premises systems and the cloud. In the simplest terms, the hybrid model is primarily a private cloud that allows an organization to tap into a public cloud when and where it makes sense. This code shows you how to expose your on-premise applications and services to public cloud, and vice versa.
 
-In this code we have an on-premise Java application using JAX-RS and Swagger annotations, and database using CouchDB, both running in private cloud behind a firewall. We demonstrate how by leveraging public cloud services like Secure Gateway and API Connect we can create a tunnel and expose the private cloud application and APIs outside the corporate firewall. 
+In this code we have an on-premise Java application using JAX-RS and Swagger annotations, and database using CouchDB, both running in private cloud behind a firewall. We demonstrate how by leveraging public cloud services like Secure Gateway and API Connect we can create a tunnel and expose the private cloud application and APIs outside the corporate firewall.
 
-Moving beyond, we move application to a public cloud, and then guide how your application running on public cloud can access on-premise resources like database etc. 
+Moving beyond, we move application to a public cloud, and then guide how your application running on public cloud can access on-premise resources like database etc.
 
 ## Scenarios
 - [Scenario One: Enable your application in Private Cloud to be accessed externally via Public Cloud](#scenario-one-enable-your-application-in-private-cloud-to-be-accessed-externally-via-public-cloud)
@@ -25,7 +25,7 @@ The scenarios are accomplished by using:
 
 ## Prerequisites
 
-Since we need [Maven](https://maven.apache.org/install.html) to build our sample application and [Docker](https://www.docker.com/community-edition#/download) to run the application and database. Please install [Maven](https://maven.apache.org/install.html) and [Docker](https://www.docker.com/community-edition#/download) before you proceed to [steps](#steps).
+Since we need [Maven](https://maven.apache.org/install.html) to build our sample application and [Docker](https://www.docker.com/community-edition#/download) to run the application and database. Please install [Maven](https://maven.apache.org/install.html) and [Docker](https://www.docker.com/community-edition#/download) before you proceed to [steps](#steps). If you prefer to use [Vagrant](https://www.vagrantup.com/) to manage temporary environments, a build file that creates an Ubuntu VM with a JDK, Maven, and Docker is in the project home directory.
 
 ## Steps
 
@@ -52,7 +52,7 @@ Since we need [Maven](https://maven.apache.org/install.html) to build our sample
 
 # 1. Create a tunnel to connect your on-premise environment to public cloud
 
-In this step, we will use the secure gateway service from Bluemix to create a tunnel from on-premise environment to public cloud host.In this sample, to keep configuration simple, the TCP protocol is used. The Secure Gateway product provides other protocol options (UDP, HTTP, HTTPS, TLS/SSL) that can provide greater security and authentication options for gateway clients. Solutions with production applications and data should be assessed based upon their risk profile to select the correct Secure Gateway access protocol and authentication scheme. More details about Secure Gateway configurations can be found [here](https://console.ng.bluemix.net/docs/services/SecureGateway/sg_overview.html#sg_overview) as well as example for application side and client side TLS setup can be accessed [here](https://console.ng.bluemix.net/docs/services/SecureGateway/sg_023.html#sg_023). Moving forward, we are proceeding with TCP to show the concept.
+In this step, we will use the secure gateway service from Bluemix to create a tunnel from on-premise environment to public cloud host. In this sample, to keep configuration simple, the TCP protocol is used. The Secure Gateway product provides other protocol options (UDP, HTTP, HTTPS, TLS/SSL) that can provide greater security and authentication options for applications using the secure gateway service. Solutions with production applications and data should be assessed based upon their risk profile to select the correct Secure Gateway access protocol and authentication scheme. More details about Secure Gateway configurations can be found [here](https://console.ng.bluemix.net/docs/services/SecureGateway/sg_overview.html#sg_overview) and an example for application side and client side TLS setup can be accessed [here](https://console.ng.bluemix.net/docs/services/SecureGateway/sg_023.html#sg_023). Moving forward, we are proceeding with TCP to show the concept.
 
 1. Create your [secure gateway service](https://console.ng.bluemix.net/catalog/services/secure-gateway?taxonomyNavigation=apis) from Bluemix.
 
@@ -61,33 +61,33 @@ In this step, we will use the secure gateway service from Bluemix to create a tu
 3. When you setup your secure gateway client, install **IBM Installer** and run it on your private cloud.
 
 	![installer](images/installer.png)
-    
-4. After you open the secure gateway client with your Gateway ID and Security Token, if you are doing [Scenario One: Enable your application in Private Cloud to be accessed externally via Public Cloud](#scenario-one-enable-your-application-in-private-cloud-to-be-accessed-externally-via-public-cloud), run `acl allow 127.0.0.1:9443` on your secure gateway client to enable access to your application server. If you are doing [Scenario Two: Enable your application in Public Cloud to connect to resources in Private Cloud](#scenario-two-enable-your-application-in-public-cloud-to-connect-to-resources-in-private-cloud), run `acl allow 127.0.0.1:5984` to enable access to your database.
-	
-5. Now go back to your bluemix's secure gateway page and create your destination. First, select **On-Premises** at Guided Setup and click next. 
+
+4. After you open the secure gateway client with your Gateway ID and Security Token, you need to add access list entries for the on-premises endpoint. If you are doing [Scenario One: Enable your application in Private Cloud to be accessed externally via Public Cloud](#scenario-one-enable-your-application-in-private-cloud-to-be-accessed-externally-via-public-cloud), run `acl allow 127.0.0.1:9443` on your secure gateway client to enable access to your application server. If you are doing [Scenario Two: Enable your application in Public Cloud to connect to resources in Private Cloud](#scenario-two-enable-your-application-in-public-cloud-to-connect-to-resources-in-private-cloud), run `acl allow 127.0.0.1:5984` to enable access to your database.
+
+5. Now go back to your bluemix's secure gateway page and create your destination. First, select **On-Premises** at Guided Setup and click next.
 
 	![on-premises](images/on-premises.png)
-    
+
 6. Next, put down **127.0.0.1** for your resource hostname and **9443**(Scenario One) / **5984**(Scenario Two) for your port and click next.
 
 	![hostname](images/hostname.png)
-    
+
 7. Next, select **TCP** for your protocol and click next. Then, select **None** for your authentication and click next. Then, do not put anything on your IP table rules. Lastly, name your destination and click **Add Destination**.
 
-8. View and note your cloud host by clicking on the **gear icon** on your destination. 
+8. View and note your cloud host by clicking on the **gear icon** on your destination.
 
 	![cloud-host](images/cloud-host.png)
-	
+
     If you are doing Scenario One, continue, else jump to [Scenario 2](#4-build-sample-application-to-run-on-public-cloud-and-use-on-premise-database).
 
 # 2. Build sample application to run on-premise and use On-Premise database
 
-Our sample Airline API application is an airline booking application that demonstrates how API application can store its data using on-prem database. 
+Our sample Airline API application is an airline booking application that demonstrates how API application can store its data using on-prem database.
 
-We will also add our own Weather API credential from public Bluemix for the application and build a .war file using Maven. The Weather API will provide the weather condition for destination airports selected by clients. 
+We will also add our own Weather API credential from public Bluemix for the application and build a .war file using Maven. The Weather API will provide the weather condition for destination airports selected by clients.
 
 
-1. Create [Weather API service](https://console.ng.bluemix.net/catalog/services/weather-company-data?taxonomyNavigation=data) in Bluemix. 
+1. Create [Weather API service](https://console.ng.bluemix.net/catalog/services/weather-company-data?taxonomyNavigation=data) in Bluemix.
 
 2. Go to your Weather API's **Service credentials** and mark down your username and password. Then run `cd flight-booking/src/main/java/microservices/api/sample` to go to the sample directory. Now, add your username and password credential to your **WeatherAPI.java** file.
 
@@ -101,9 +101,9 @@ We will also add our own Weather API credential from public Bluemix for the appl
 
 # 3. Run the application and database on-premise using WebSphere Liberty, CouchDB and Docker
 
-In this example, we will use WebSphere Liberty for our application server, and local CouchDB for our database. We will first build our application server docker image. 
+In this example, we will use WebSphere Liberty for our application server, and local CouchDB for our database. We will first build our application server docker image.
 
-At the end of this step, you should able to call your application APIs via localhost. 
+At the end of this step, you should able to call your application APIs via localhost.
 
 1. To deploy the Airline API application, put the **.war** file in **airline_app/apps** folder and configure the **server.xml** file. For this example, we are using airlines API application, but you can also add your own application.
 
@@ -113,15 +113,15 @@ At the end of this step, you should able to call your application APIs via local
     docker build -t hybrid/airlines .
     docker-compose up
     ```
-   	Now your current terminal will execute all the logs from your app.
-    
-    If you are running with our example app, after you have your server and database running, run the following commands to initiate couchDB.
-    
+   	The application server and database containers will start and the terminal will display all the logs from your app.
+
+    After you have your server and database running, open another terminal and run the following commands to initiate couchDB.
+
     ```bash
     bash database_init.sh
     ```
 
-2. To reach the WebSphere Liberty API Discovery user interface, go to `https://localhost:9443/ibm/api/explorer`. Since docker only exposes tcp port and api-connect is using https port, we need to authenticate the website. Then, use the credentials from your server.xml to login (For this example, the **username** is `admin` and the **password** is `admin`).
+2. To reach the WebSphere Liberty API Discovery user interface, go to `https://localhost:9443/ibm/api/explorer`. Accept any certificate warnings you see about a self-signed certificate. Use the credentials from your server.xml to login (For this example, the **username** is `admin` and the **password** is `admin`).
 
 	You should see something like this in your API Discovery user interface.
 
@@ -130,8 +130,8 @@ At the end of this step, you should able to call your application APIs via local
 3. As shown in the following screen capture, you can click the **Try it out** button, which starts the sample Airline application, running on Docker
 
 	![try it out](images/try-it-out.png)
-	
-4. Now, go to `https://<Cloud Host:Port>/ibm/api/explorer/` and varify your local server interface can be accessed from public 'Cloud Host' gateway server. Remember, 'Cloud Host' is the Secure gateway server information we noted down at the end of [Step 1](#1-create-a-tunnel-to-connect-your-on-premise-enviroment-to-public-cloud), and your default username is **admin** and password is **admin**. Note that since we are using TCP in this sample, being able to reach this URL means that any system on the internet can now connect to the WebSphere Liberty application if they know the name of the Cloud Host and port. In production, you would want to use TLS/SSL for more security.
+
+4. Now, go to `https://<Cloud Host:Port>/ibm/api/explorer/` and verify your local server interface can be accessed from public 'Cloud Host' gateway server. Remember, 'Cloud Host' is the Secure gateway server information we noted down at the end of [Step 1](#1-create-a-tunnel-to-connect-your-on-premise-enviroment-to-public-cloud), and your default username is **admin** and password is **admin**. Note that since we are using TCP in this sample, being able to reach this URL means that any system on the internet can now connect to the WebSphere Liberty application if they know the name of the Cloud Host and port. In production, you would want to use TLS/SSL with [Mutual Authentication](https://console.ng.bluemix.net/docs/services/SecureGateway/sg_023.html#sg_007) for more security.
 
 Jump to [Step 6](#6-create-an-api-connect-service-in-bluemix) to expose your application APIs via API Connect
 
@@ -142,13 +142,13 @@ Our sample API application is an airline booking application that demonstrates h
 In this step, we will add our own Weather API credential for our application and build our own .war file using Maven.
 
 
-1. Create your [Weather API service](https://console.ng.bluemix.net/catalog/services/weather-company-data?taxonomyNavigation=data). The Weather API can provide the airport location and weather condition for clients. 
+1. Create your [Weather API service](https://console.ng.bluemix.net/catalog/services/weather-company-data?taxonomyNavigation=data). The Weather API can provide the airport location and weather condition for clients.
 
 
 2. Go to your Weather API's **Service credentials** and mark down your username and password. Then run `cd flight-booking/src/main/java/microservices/api/sample` to go to the sample directory. Now, add your username and password credential to your **WeatherAPI.java** file.
 
     ![credential](images/credentials.png)
-    
+
 3. Futhermore, You need to change the database address to your *cloud host:port* in your **DatabaseAccess.java** file.
 
     ![cloud-host2](images/cloud-host2.png)
@@ -163,14 +163,14 @@ In this step, we will add our own Weather API credential for our application and
 # 5. Run the application on Public Cloud using Bluemix and database On-Premise using CouchDB and Docker
 
 1. Create an on-premise database using Docker. Run the following commands to use the community's CouchDB Docker image.
-    
+
     ```bash
     docker pull couchdb:latest
     docker run -p 5984:5984 couchdb
     ```
-    
+
     Then, initiate couchDB with the following script.
-    
+
     ```bash
     bash database_init.sh
     ```
@@ -180,18 +180,18 @@ In this step, we will add our own Weather API credential for our application and
 3. Use the following commands to login to Cloud Foundry and push your application to the cloud.
 
     >Note: Replace <app_name> with an unique application name within your Bluemix region. This application name is the name of your API container.
-    
+
     ```bash
     cf login -a https://api.ng.bluemix.net
     cf push <app_name> -p airline_app
     ```
-    
+
 3. To reach the application API Discovery user interface, go to https://<app_name>.mybluemix.net/ibm/api/explorer. Then, use the credentials from your server.xml to login (For this example, the **username** is `admin` and the **password** is `admin`).
-    
+
     You should see something like this in your API Discovery user interface.
-    
+
     ![discovery](images/discovery.png)
-    
+
 4. As shown in the following screen capture, you can click the **Try it out** button, which calls your application that runs on Cloud Foundry with your on-premise database.
 
     ![try it out](images/try-it-out.png)
@@ -213,13 +213,13 @@ In this step, we will setup API Connect service to help us expose our applicatio
 
 5. Click **Portal**, and then under **Portal Configuration**, select **IBM Developer Portal**. A Portal URL is automatically inserted.
 
-6. Take note of the Portal URL, which reveals the target server address and organization that you need later. The URL is broken down into the following three parts, as shown in the following screen capture: 
+6. Take note of the Portal URL, which reveals the target server address and organization that you need later. The URL is broken down into the following three parts, as shown in the following screen capture:
 
 	![portal-url](images/portal-url.png)
 
     - 1 is the catalog's short name, in this case, sb.
     - 2 is your organization ID, in the example, arthurdmcaibmcom-dev.
-    - 3 is the target address of your API Connect instance, for example, https://us.apiconnect.ibmcloud.com. 
+    - 3 is the target address of your API Connect instance, for example, https://us.apiconnect.ibmcloud.com.
 
 7. Click Save at the top right corner. You see the following message:
 
@@ -234,7 +234,7 @@ In this step, we will setup API Connect service to help us expose our applicatio
 	This is where enterprise developers go to find the products (for example, an API or a group of APIs) that are exposed in the API catalog. Developers also can interact with each other through the Blogs and Forums links.
 
 # 7. Integrate WebSphere Liberty and API Connect: push and pull
-> Choose either [push](#71-push-websphere-liberty-apis-into-api-connect) or [pull](#72-pull-websphere-liberty-apis-from-api-connect) WebSphere Liberty APIs from API Connect. Also, push won't work on IBMer's account due to federated reasons.
+> Choose either [push](#71-push-websphere-liberty-apis-into-api-connect) or [pull](#72-pull-websphere-liberty-apis-from-api-connect) WebSphere Liberty APIs from API Connect. Note: push integration won't work for users who have enterprise federated IBMids for access to Bluemix at the current time.
 
 ## 7.1 Push WebSphere Liberty APIs into API Connect
 
@@ -253,8 +253,8 @@ In this step, we will learn about how to use the post request on API discovery t
 4. You want to publish this API product, not just stage it, so leave the stageOnly parameter as false. The X-APIM-Authorization parameter represents the credentials that Liberty uses to log into API Connect. The description on the right side provides details on the accepted format. The following example uses: `apimanager/bluemixAccount@domain.com:myBluemixPassword`.
 
 	![mypassword](images/mypassword.png)
-    
-    
+
+
 5. For Scenario Two, we can click the sample JSON file on your right and publish your APIs.
 
 	For Scenario One, since we are running our APIs on the private cloud, we do not want to use the sample JSON file because that will set the APIs target URL to the private cloud. Instead, we want to change the `<cloud host:port>` part in **target-url** (line 38) from the following JSON file (you can also get it from the **discovery-post.json** file) to your cloud host:port (e.g. `"https://cap-sg-prd-3.integration.ibmcloud.com:16218$(request.path)"`). Then copy and paste it into the body input box.
@@ -329,9 +329,9 @@ In this step, we will learn about how to use the post request on API discovery t
 
 	![result](images/result.png)
 
-Congratulation. You API is published. Now explore the API Connect Developer Portal like consumers of your API do. Go to your **Portal URL** and click **API Products**.
+Congratulations. Your API is published. Now you can explore the API Connect Developer Portal just as consumers of your API would. Go to your **Portal URL** and click **API Products**.
 
-Now you can go to your API and try it at the API Connect Developer Portal. Click any API call and try it using the **call operation** button.
+Select your API Product and try it through the API Connect Developer Portal. Click any API call and try it using the **call operation** button.
 
 ![api-connect](images/api-connect.png)
 
@@ -345,8 +345,8 @@ In this step, we will learn about how to create and manage new APIs and products
 
 2. In the **Import API from a file or URL** window, click **Or import from URL**.
 
-	For the URL, type the Liberty URL that you want to use to import the Swagger document. For this example, you can use `https://<Cloud Host:Port/app_name>/ibm/api/docs/apiconnect`. Remember for this example the username is **admin** and password is **admin**.
-    
+	For the URL, type the Liberty URL that you want to use to import the Swagger document. For this example, you use `https://<Cloud Host:Port/app_name>/ibm/api/docs/apiconnect`. As before, in this example the username is **admin** and password is **admin**.
+
 3. For Scenario Two, you do not have to do anything.
 
 	For Scenario One, since our APIs are hosted on the private cloud, we need to set the APIs target URL to the cloud host. Therefore, after you imported your API, go to **source**. Then go to the bottom of the page (around line 532) and change the **target-url**'s value to `'<cloud host:port>$(request.path)'` (replace `<cloud host:port>` to your own cloud host:port). Then click the **save icon** on the top right corner.
@@ -355,7 +355,7 @@ In this step, we will learn about how to create and manage new APIs and products
 
 4. Click **All APIs** to go back into the main Drafts page, Click **Products**, and then click **Add > New Product**. In the Add a new product window, type in a title (could be anything) and then click **Add**.
 
-5. The design view opens for the Product. Scroll down to the APIs section and click on the + icon. 
+5. The design view opens for the Product. Scroll down to the APIs section and click on the + icon.
 
 	![api](images/api.png)
 
@@ -373,9 +373,9 @@ In this step, we will learn about how to create and manage new APIs and products
 
 10. In the new window that opens, you can edit who can view your APIs and who can subscribe to your API Plans. For this example, use the defaults and click **Publish**.
 
-Congratulation. You API is published. Now explore the API Connect Developer Portal like consumers of your API do. Go to your **Portal URL** and click **API Products**.
+Congratulations. Your API is published. Now you can explore the API Connect Developer Portal just as consumers of your API would. Go to your **Portal URL** and click **API Products**.
 
-Now you can go to your API and try it at the API Connect Developer Portal. Click any API call and try it using the **call operation** button.
+Select your API Product and try it through the API Connect Developer Portal. Click any API call and try it using the **call operation** button.
 
 ![api-connect](images/api-connect.png)
 
