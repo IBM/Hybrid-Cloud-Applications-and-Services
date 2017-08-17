@@ -48,7 +48,7 @@
 - 7.1 [WebSphere에서 실행 중인 애플리케이션 API를 API Connect로 push하기](#71-websphere에서-실행-중인-애플리케이션-api를-api-connect로-push하기)
 - 7.2 [API Connect로 부터 WebSphere에서 실행 중인 애플리케이션 API를 pull하기](#72-api-connect로-부터-websphere에서-실행-중인-애플리케이션-api를-pull하기)
 
-[문제 해결](#troubleshooting)
+[문제 해결](#문제-해결)
 
 # 1. 온-프레미스 환경을 퍼블릭 클라우드에 연결하는 터널 만들기
 
