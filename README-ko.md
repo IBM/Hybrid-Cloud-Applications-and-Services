@@ -1,6 +1,6 @@
 [![Build Status](https://travis-ci.org/IBM/Hybrid-Cloud-Applications-and-Services.svg?branch=master)](https://travis-ci.org/IBM/Hybrid-Cloud-Applications-and-Services)
 
-# 프라이빗 클라우드 애플리케이션 및 서비스를 공용 클라우드로 확장하기 또는 그 반대의 경우
+# 프라이빗 클라우드 애플리케이션 및 서비스를 공용 클라우드로 확장하기 또는 그 반대로 적용하기
 
 하이브리드 클라우드 모델은 프라이빗 및 퍼블릭 클라우드의 요소를 혼합하여 온-프레미스 시스템과 클라우드에서 앱과 서비스를 실행 할 수 있는 선택권과 유연성을 제공합니다. 하이브리드 모델을 가장 단순하게 나타낸다면, 필요 할 때 퍼블릭 클라우드와 연동 가능한 프라이빗 클라우드를 주로 말합니다. 이 코드에서는 온-프레미스 애플리케이션 및 서비스를 퍼블릭 클라우드에 노출하는 방법과 그 반대의 경우를 보여줍니다. 
 
