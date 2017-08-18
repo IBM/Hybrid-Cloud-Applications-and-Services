@@ -46,9 +46,9 @@
 
 ### API Connect를 사용하여 애플리케이션 API를 카탈로그화 하고 공개하기
 6. [Bluemix에서 API Connect 서비스 만들기](#6-bluemix에서-api-connect-서비스-만들기)
-7. [WebSphere Liberty와 API Connect의 통합: push 및 pull](#7-websphere-liberty와-api-connect의-통합-push-및-pull)
-- 7.1 [WebSphere에서 실행 중인 애플리케이션 API를 API Connect로 push하기](#71-websphere에서-실행-중인-애플리케이션-api를-api-connect로-push하기)
-- 7.2 [API Connect에서 WebSphere에서 실행 중인 애플리케이션 API를 pull하기](#72-api-connect에서-websphere에서-실행-중인-애플리케이션-api를-pull하기)
+7. [WebSphere Liberty와 API Connect의 통합: 밀어넣기와 가져오기](#7-websphere-liberty와-api-connect의-통합-밀어넣기와-가져오기)
+- 7.1 [WebSphere에서 실행 중인 애플리케이션 API를 API Connect로 밀어넣기](#71-websphere에서-실행-중인-애플리케이션-api를-api-connect로-밀어넣기)
+- 7.2 [API Connect에서 WebSphere에서 실행 중인 애플리케이션 API를 가져오기](#72-api-connect에서-websphere에서-실행-중인-애플리케이션-api를-가져오기)
 
 [문제 해결](#문제-해결)
 
@@ -175,9 +175,9 @@ API Connect를 통해 애플리케이션 API를 노출하기 위해 [6 단계](#
     bash database_init.sh
     ```
 
-2. 이제, 메인 디렉토리로 돌아가 애플리케이션을 클라우드로 push 하십시오. 이 예제에서는, 애플리케이션을 IBM Cloud Foundry에 push 합니다. 그러므로 [Cloud Foundry CLI](https://docs.cloudfoundry.org/cf-cli/install-go-cli.html)를 설치해야 합니다.
+2. 이제, 메인 디렉토리로 돌아가 애플리케이션을 클라우드로 배포 하십시오. 이 예제에서는, 애플리케이션을 IBM Cloud Foundry에 배포 합니다. 그러므로 [Cloud Foundry CLI](https://docs.cloudfoundry.org/cf-cli/install-go-cli.html)를 설치해야 합니다.
 
-3. Cloud Foundry에 로그인하고 애플리케이션을 클라우드로 push 하기 위해 다음 명령을 사용하십시오.
+3. Cloud Foundry에 로그인하고 애플리케이션을 클라우드로 배포하기 위해 다음 명령을 사용하십시오.
 
     >참고: <app_name>을 Bluemix 지역별 고유한 이름으로 대체 하십시오. 이 애플리케이션의 이름은 API 컨테이너의 이름입니다.
 
@@ -237,12 +237,12 @@ API Connect를 통해 애플리케이션 API를 노출하기 위해 [6 단계](#
 	이곳은 기업 개발자가 API 카탈로그에 노출된 제품 (예를 들면, API나 API 그룹)을 찾기 위한 곳입니다. 또한 개발자는 블로그나 포럼 링크를 통해 서로 상호 작용 할 수도 있습니다.
 	
 
-# 7. WebSphere Liberty와 API Connect의 통합: push 및 pull
-> API Connect에 WebSphere Liberty APIs를 [push](#71-websphere에서-실행-중인-애플리케이션-api를-api-connect로-push하기) 하거나 API Connect에서 WebSphere Liberty APIs를 [pull](#72-api-connect에서-websphere에서-실행-중인-애플리케이션-api를-pull하기) 할지 선택 하십시오. 참고: 현재 Bluemix에 접근하는 기업용 연합 IBMid를 가진 사용자의 경우 push 통합은 사용할 수 없습니다.
+# 7. WebSphere Liberty와 API Connect의 통합: 밀어넣기와 가져오기
+> API Connect로 WebSphere Liberty APIs를 [밀어넣을지](#71-websphere에서-실행-중인-애플리케이션-api를-api-connect로-밀어넣기) API Connect에서 WebSphere Liberty APIs를 [가져올지](#72-api-connect에서-websphere에서-실행-중인-애플리케이션-api를-가져오기) 선택 하십시오. 참고: 현재 Bluemix에 접근하는 기업용 연합 IBMid를 가진 사용자의 경우 밀어넣기 통합은 사용할 수 없습니다.
 
-## 7.1 WebSphere에서 실행 중인 애플리케이션 API를 API Connect로 push하기
+## 7.1 WebSphere에서 실행 중인 애플리케이션 API를 API Connect로 밀어넣기
 
-이 단계에서는, API Connect에 우리 API를 push하기 위해 API discovery에 게시물 요청을 사용하는 방법에 대해 알아 봅니다.
+이 단계에서는, API Connect에 우리 API를 밀어넣기 위해 API Discovery에서 Post 요청을 사용하는 방법에 대해 알아봅니다.
 
 1. `https://<Cloud Host:Port/app_name>/ibm/api/explorer/`로 이동하십시오
 
@@ -339,7 +339,7 @@ API 제품을 선택하고 API Connect 개발자 포털을 통해 사용해 보�
 
 ![api-connect](images/api-connect.png)
 
-## 7.2 API Connect에서 WebSphere에서 실행 중인 애플리케이션 API를 pull하기
+## 7.2 API Connect에서 WebSphere에서 실행 중인 애플리케이션 API를 가져오기
 
 이 단계에서는 API Connect의 UI를 이용하여 API Connect에 새로운 API 및 제품을 만들고 관리하는 방법에 대해 알아 봅니다.
 
