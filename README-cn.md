@@ -386,16 +386,17 @@
 
 要停止您的 Docker-compose 服务，请在这个主目录中运行
 
-
+```bash
 docker-compose down
-
+```
 
 要删除您的 Docker 容器，请运行
 
+```bash
 docker ps --all
 docker kill <container ID> #run this command if your container is still running
 docker rm <container ID>
-
+```
 
 要删除您的 Insights for Weather、API Connect 和 Secure Gateway 服务，请转到您的 IBM Bluemix 仪表板。单击**菜单图标**，然后选择 **Delete Service**。
 
