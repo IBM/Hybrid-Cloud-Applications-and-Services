@@ -190,13 +190,13 @@
     cf push <app_name> -p airline_app
     ```
 
-3.要进入应用程序的 API Discovery 用户界面，请访问 https://<app_name>.mybluemix.net/ibm/api/explorer。然后，使用来自 server.xml 的凭证进行登录（对于本示例，**用户名**为 `admin`，**密码**为 `admin`）。
+4.要进入应用程序的 API Discovery 用户界面，请访问 https://<app_name>.mybluemix.net/ibm/api/explorer。然后，使用来自 server.xml 的凭证进行登录（对于本示例，**用户名**为 `admin`，**密码**为 `admin`）。
 
    您应该在 API Discovery 用户界面中看到类似下图的结果。
 
    ![API Discovery](images/discovery.png)
 
-4.如下面的屏幕截图所示，可以单击 **Try it out** 按钮，这会调用您在 Cloud Foundry 上运行的应用程序和企业内部的数据库。
+5.如下面的屏幕截图所示，可以单击 **Try it out** 按钮，这会调用您在 Cloud Foundry 上运行的应用程序和企业内部的数据库。
 
    ![试用](images/try-it-out.png)
 
