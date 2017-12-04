@@ -185,11 +185,10 @@
 3.使用以下命令登录到 Cloud Foundry，并将您的应用程序推送到这个云。
 
    >备注：将 <app_name> 替换为在您的 Bluemix 区域中唯一的应用程序名称。这个应用程序名称是您的 API 容器的名称。
-
-    ```bash
+ 
     cf login -a https://api.ng.bluemix.net
     cf push <app_name> -p airline_app
-    ```
+   
 
 4.要进入应用程序的 API Discovery 用户界面，请访问 https://<app_name>.mybluemix.net/ibm/api/explorer。然后，使用来自 server.xml 的凭证进行登录（对于本示例，**用户名**为 `admin`，**密码**为 `admin`）。
 
@@ -228,9 +227,8 @@
 
 7.单击右上角的 Save。您会看到以下消息：
 
-    `
     为目录“Sandbox”创建开发者门户可能需要几分钟的时间。 当门户可用时，您将收到一封电子邮件。
-    `
+
 
 8.收到电子邮件后，请访问 **门户 URL**，您会看到类似下图的结果。
 
@@ -264,7 +262,6 @@
 
 对于场景 1，因为我们正在私有云上运行我们的 API，所以不想使用样本 JSON 文件，因为这会将 API 目标 URL 设置为私有云。相反，我们希望将下面的 JSON 文件中的 **target-url**（第 38 行）中的 `<cloud host:port>` 部分（也可以从 **discovery-post.json** 文件获得它）更改为您的云主机:端口（例如 `"https://cap-sg-prd-3.integration.ibmcloud.com:16218$(request.path)"`）。然后将它复制并粘贴到正文输入框中。
 
-	```JSON
 	{
 	  "product": "1.0.0",
 	  "info": {
@@ -324,7 +321,7 @@
 	  "createdAt": "2017-05-01T16:13:05.912Z",
 	  "createdBy": "string"
 	}
-	```
+
 ![json](images/json.png)
 
 6.现在您已准备好发布这些 API。单击 **Try it out!**
@@ -389,17 +386,16 @@
 
 要停止您的 Docker-compose 服务，请在这个主目录中运行
 
-```bash
+
 docker-compose down
-```
+
 
 要删除您的 Docker 容器，请运行
 
-```bash
 docker ps --all
 docker kill <container ID> #run this command if your container is still running
 docker rm <container ID>
-```
+
 
 要删除您的 Insights for Weather、API Connect 和 Secure Gateway 服务，请转到您的 IBM Bluemix 仪表板。单击**菜单图标**，然后选择 **Delete Service**。
 
