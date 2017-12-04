@@ -114,10 +114,10 @@
 
    在这个主目录中，构建您的服务器并在本地主机上运行它。 
   
-    ```bash
+
     docker build -t hybrid/airlines .
     docker-compose up
-    ```
+  
     
    应用服务器和数据库容器将会启动，终端将显示来自您的应用程序的所有日志。
 
