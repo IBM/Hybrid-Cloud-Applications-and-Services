@@ -123,9 +123,9 @@
 
    您的服务器和数据库运行后，打开另一个终端，并运行以下命令来启动 couchDB。
 
-    ```bash
+   
     bash database_init.sh
-    ```
+    
 
 2.要进入 WebSphere Liberty API Discovery 用户界面，请访问 `https://localhost:9443/ibm/api/explorer`。接受您看到的有关自签名证书的任何证书警告。使用来自 server.xml 的凭证进行登录（对于本示例，**用户名**为 `admin`，**密码**为 `admin`）。
 
@@ -169,16 +169,16 @@
 
 1.使用 Docker 创建企业内部的数据库。运行以下命令来使用社区的 CouchDB Docker 映像。
 
-    ```bash
+    
     docker pull couchdb:latest
     docker run -p 5984:5984 couchdb
-    ```
+    
 
    然后，通过以下脚本启动 couchDB。
 
-    ```bash
+    
     bash database_init.sh
-    ```
+   
 
 2.现在，可以返回到主目录并将您的应用程序推送到云。对于本示例，我们将把我们的应用程序推送到 IBM Cloud Foundry。所以我们需要安装 [Cloud Foundry CLI](https://docs.cloudfoundry.org/cf-cli/install-go-cli.html)。
 
