@@ -112,12 +112,13 @@
 
 1.要部署 Airline API 应用程序，请将 **.war** 文件放入 **airline_app/apps** 文件夹中并配置 **server.xml** 文件。对于本示例，我们将使用 Airline API 应用程序，但您也可以添加自己的应用程序。
 
-在这个主目录中，构建您的服务器并在本地主机上运行它。
-
+   在这个主目录中，构建您的服务器并在本地主机上运行它。 
+  
     ```bash
     docker build -t hybrid/airlines .
     docker-compose up
     ```
+    
    应用服务器和数据库容器将会启动，终端将显示来自您的应用程序的所有日志。
 
    您的服务器和数据库运行后，打开另一个终端，并运行以下命令来启动 couchDB。
