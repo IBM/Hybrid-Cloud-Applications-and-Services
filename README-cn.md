@@ -37,15 +37,18 @@
 ### 场景 1：让私有云中的应用程序可通过公有云从外部进行访问
 
 2.[构建在企业内部运行并使用企业内部的数据库的样本应用程序](#2-build-sample-application-to-run-on-premise-and-use-on-premise-database)
+
 3.[使用 WebSphere Liberty、CouchDB 和 Docker 在企业内部运行应用程序和数据库](#3-run-the-application-and-database-on-premise-using-websphere-liberty-couchdb-and-docker)
 
 ### 场景 2：让公有云中的应用程序能连接到私有云中的资源
 
 4.[构建在公有云上运行并使用企业内部的数据库的样本应用程序](#4-build-sample-application-to-run-on-public-cloud-and-use-on-premise-database)
+
 5.[使用 Bluemix 在公有云上运行该应用程序，并使用 CouchDB 和 Docker 在企业内部运行数据库](#5-run-the-application-on-public-cloud-using-bluemix-and-database-on-premise-using-couchdb-and-docker)
 
 ### 使用 API Connect 编目应用程序 API 并向公众发布
 6.[在 Bluemix 中创建 API Connect 服务](#6-create-an-api-connect-service-in-bluemix)
+
 7.[集成 WebSphere Liberty 与 API Connect：推送和拉取](#7-integrate-websphere-liberty-and-api-connect-push-and-pull)
 - 7.1 [将在 WebSphere 上运行的应用程序 API 推送到 API Connect 中](#71-push-websphere-liberty-apis-into-api-connect)
 - 7.2 [从 API Connect 拉取在 WebSphere Liberty 上运行的应用程序 API](#72-pull-websphere-liberty-apis-from-api-connect)
