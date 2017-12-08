@@ -22,7 +22,8 @@
 - [CouchDB](http://couchdb.apache.org)
 - [WebSphere Liberty](https://developer.ibm.com/wasdev/websphere-liberty/)
 - [API Connect](http://www-03.ibm.com/software/products/en/api-connect)
-- [Secure Gateway](https://console.ng.bluemix.net/docs/services/SecureGateway/sg_overview.html)
+- [Secure Gateway](https://console.ng.
+.net/docs/services/SecureGateway/sg_overview.html)
 - [Insights for Weather](https://console.ng.bluemix.net/docs/services/Weather/weather_overview.html#about_weather)
 
 ## 前提条件
@@ -89,7 +90,7 @@
 
 我们的样本 Airline API 应用程序是一个航空公司订票应用程序，用于演示 API 应用程序如何使用企业内部的数据库存储其数据。
 
-我们还会为该应用程序添加来自公共 Bluemix 的 Weather API 凭证，并使用 Maven 构建一个 .war 文件。Weather API 将提供客户选择的目标机场的天气情况。
+我们还会为该应用程序添加来自公共 Cloud 的 Weather API 凭证，并使用 Maven 构建一个 .war 文件。Weather API 将提供客户选择的目标机场的天气情况。
 
 
 1.在 Cloud 中创建 [Weather API 服务](https://console.ng.bluemix.net/catalog/services/weather-company-data?taxonomyNavigation=data)。
@@ -184,7 +185,7 @@
 
 3.使用以下命令登录到 Cloud Foundry，并将您的应用程序推送到这个云。
 
-   >备注：将 <app_name> 替换为在您的 Bluemix 区域中唯一的应用程序名称。这个应用程序名称是您的 API 容器的名称。
+   >备注：将 <app_name> 替换为在您的 Cloud 区域中唯一的应用程序名称。这个应用程序名称是您的 API 容器的名称。
  
     cf login -a https://api.ng.bluemix.net
     cf push <app_name> -p airline_app
@@ -204,7 +205,7 @@
 
 在这一步中，我们将设置 API Connect 服务，以帮助我们向公众公开我们的应用程序 API。
 
-1.要将 API Connect 作为 Cloud 服务添加，请访问 Bluemix [API Connect 服务](https://console.ng.bluemix.net/catalog/services/api-connect?taxonomyNavigation=services)
+1.要将 API Connect 作为 Cloud 服务添加，请访问 Cloud [API Connect 服务](https://console.ng.bluemix.net/catalog/services/api-connect?taxonomyNavigation=services)
 
 
 2.然后，选择 **Essentials plan** 并单击 **Create**。
@@ -237,7 +238,7 @@
 企业开发人员可以在这里找到 API 目录中公开的产品（例如一个或一组 API）。开发人员也可以通过博客和论坛链接来相互交流。
 
 # 7.集成 WebSphere Liberty 与 API Connect：推送和拉取
-> 选择从 API Connect [推送](#71-push-websphere-liberty-apis-into-api-connect) 或[拉取](#72-pull-websphere-liberty-apis-from-api-connect) WebSphere Liberty API。备注：目前，推送集成不适合使用企业联合 IBM ID 访问 Bluemix 的用户。
+> 选择从 API Connect [推送](#71-push-websphere-liberty-apis-into-api-connect) 或[拉取](#72-pull-websphere-liberty-apis-from-api-connect) WebSphere Liberty API。备注：目前，推送集成不适合使用企业联合 IBM ID 访问 Cloud 的用户。
 
 ## 7.1 将 WebSphere Liberty API 推送到 API Connect 中
 
