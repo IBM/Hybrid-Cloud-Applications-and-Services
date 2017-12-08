@@ -44,10 +44,10 @@
 
 4.[构建在公有云上运行并使用企业内部的数据库的样本应用程序](#4-build-sample-application-to-run-on-public-cloud-and-use-on-premise-database)
 
-5.[使用 Bluemix 在公有云上运行该应用程序，并使用 CouchDB 和 Docker 在企业内部运行数据库](#5-run-the-application-on-public-cloud-using-bluemix-and-database-on-premise-using-couchdb-and-docker)
+5.[使用 Cloud 在公有云上运行该应用程序，并使用 CouchDB 和 Docker 在企业内部运行数据库](#5-run-the-application-on-public-cloud-using-bluemix-and-database-on-premise-using-couchdb-and-docker)
 
 ### 使用 API Connect 编目应用程序 API 并向公众发布
-6.[在 Bluemix 中创建 API Connect 服务](#6-create-an-api-connect-service-in-bluemix)
+6.[在 Cloud 中创建 API Connect 服务](#6-create-an-api-connect-service-in-bluemix)
 
 7.[集成 WebSphere Liberty 与 API Connect：推送和拉取](#7-integrate-websphere-liberty-and-api-connect-push-and-pull)
 - 7.1 [将在 WebSphere 上运行的应用程序 API 推送到 API Connect 中](#71-push-websphere-liberty-apis-into-api-connect)
@@ -57,9 +57,9 @@
 
 # 1.创建一个隧道来将您的企业内部环境连接到公有云
 
-在这一步中，我们将使用来自 Bluemix 的 Secure Gateway 服务，创建一个从企业内部环境到公有云主机的隧道。在该样本中，为了保持配置简单，我们使用了 TCP 协议。Secure Gateway 产品提供了其他协议选项（包括 UDP、HTTP、HTTPS、TLS/SSL），这些协议使用 Secure Gateway 服务为应用程序提供更优秀的安全和身份验证选项。对于包含生产应用程序和数据的解决方案，应基于它们的风险概况对它们进行评估，以选择正确的 Secure Gateway 访问协议和身份验证模式。[这里](https://console.ng.bluemix.net/docs/services/SecureGateway/sg_overview.html#sg_overview)提供了 Secure Gateway 配置的更多细节，可在[这里](https://console.ng.bluemix.net/docs/services/SecureGateway/sg_023.html#sg_023)获取应用程序端和客户端 TLS 设置的示例。我们继续使用 TCP 来展示相关概念。
+在这一步中，我们将使用来自 Cloud 的 Secure Gateway 服务，创建一个从企业内部环境到公有云主机的隧道。在该样本中，为了保持配置简单，我们使用了 TCP 协议。Secure Gateway 产品提供了其他协议选项（包括 UDP、HTTP、HTTPS、TLS/SSL），这些协议使用 Secure Gateway 服务为应用程序提供更优秀的安全和身份验证选项。对于包含生产应用程序和数据的解决方案，应基于它们的风险概况对它们进行评估，以选择正确的 Secure Gateway 访问协议和身份验证模式。[这里](https://console.ng.bluemix.net/docs/services/SecureGateway/sg_overview.html#sg_overview)提供了 Secure Gateway 配置的更多细节，可在[这里](https://console.ng.bluemix.net/docs/services/SecureGateway/sg_023.html#sg_023)获取应用程序端和客户端 TLS 设置的示例。我们继续使用 TCP 来展示相关概念。
 
-1.从 Bluemix 创建您的 [Secure Gateway 服务](https://console.ng.bluemix.net/catalog/services/secure-gateway?taxonomyNavigation=apis)。
+1.从 Cloud 创建您的 [Secure Gateway 服务](https://console.ng.bluemix.net/catalog/services/secure-gateway?taxonomyNavigation=apis)。
 
 2.然后，按照 [Secure Gateway 入门](https://console.ng.bluemix.net/docs/services/SecureGateway/secure_gateway.html)教程设置您的网关。
 
@@ -69,7 +69,7 @@
 
 4.使用您的网关 ID 和安全令牌打开 Secure Gateway 客户端后，您需要添加适用于企业内部端点的访问列表条目。如果您在执行[场景 1：让私有云中的应用程序可通过公有云从外部进行访问](#scenario-one-enable-your-application-in-private-cloud-to-be-accessed-externally-via-public-cloud)，可在您的 Secure Gateway 客户端上运行 `acl allow 127.0.0.1:9443` 来允许访问您的应用服务器。如果您在执行[场景 2：让公有云中的应用程序能连接到私有云中的资源](#scenario-two-enable-your-application-in-public-cloud-to-connect-to-resources-in-private-cloud)，可运行 `acl allow 127.0.0.1:5984` 来允许访问您的数据库。
 
-5.现在返回到 Bluemix 的 Secure Gateway 页面，并创建您的目标。首先，在 Guided Setup 上选择 **On-Premises**，并单击 Next。
+5.现在返回到 Cloud 的 Secure Gateway 页面，并创建您的目标。首先，在 Guided Setup 上选择 **On-Premises**，并单击 Next。
 
 ![企业内部](images/on-premises.png)
 
@@ -89,10 +89,10 @@
 
 我们的样本 Airline API 应用程序是一个航空公司订票应用程序，用于演示 API 应用程序如何使用企业内部的数据库存储其数据。
 
-我们还会为该应用程序添加来自公共 Bluemix 的 Weather API 凭证，并使用 Maven 构建一个 .war 文件。Weather API 将提供客户选择的目标机场的天气情况。
+我们还会为该应用程序添加来自公共 Cloud 的 Weather API 凭证，并使用 Maven 构建一个 .war 文件。Weather API 将提供客户选择的目标机场的天气情况。
 
 
-1.在 Bluemix 中创建 [Weather API 服务](https://console.ng.bluemix.net/catalog/services/weather-company-data?taxonomyNavigation=data)。
+1.在 Cloud 中创建 [Weather API 服务](https://console.ng.bluemix.net/catalog/services/weather-company-data?taxonomyNavigation=data)。
 
 2.转到您的 Weather API 的 **Service credentials**，记下您的用户名和密码。然后运行 `cd flight-booking/src/main/java/microservices/api/sample` 来转到 sample 目录。现在，将您的用户名和密码凭证添加到 **WeatherAPI.java** 文件中。
 
@@ -142,7 +142,7 @@
 
 # 4.构建在公有云上运行并使用企业内部的数据库的样本应用程序
 
-我们的样本 API 应用程序是一个航空公司订票应用程序，演示了 API 应用程序如何使用企业内部的数据库存储其数据，并使用 Bluemix 的 Data Analytic 服务增强其 API 特性。
+我们的样本 API 应用程序是一个航空公司订票应用程序，演示了 API 应用程序如何使用企业内部的数据库存储其数据，并使用 Cloud 的 Data Analytic 服务增强其 API 特性。
 
 在这一步中，将为我们的应用程序添加自己的 Weather API 凭证，并使用 Maven 构建我们自己的 .war 文件。
 
@@ -165,7 +165,7 @@
 5.然后转到 **deployment_artifacts** 目录，并将您的 **airlines.war** 文件转移到主目录的 **airline_app/apps** 文件夹中。
 
 
-# 5.使用 Bluemix 在公有云上运行该应用程序，并使用 CouchDB 和 Docker 在企业内部运行数据库
+# 5.使用 Cloud 在公有云上运行该应用程序，并使用 CouchDB 和 Docker 在企业内部运行数据库
 
 1.使用 Docker 创建企业内部的数据库。运行以下命令来使用社区的 CouchDB Docker 映像。
 
@@ -184,7 +184,7 @@
 
 3.使用以下命令登录到 Cloud Foundry，并将您的应用程序推送到这个云。
 
-   >备注：将 <app_name> 替换为在您的 Bluemix 区域中唯一的应用程序名称。这个应用程序名称是您的 API 容器的名称。
+   >备注：将 <app_name> 替换为在您的 Cloud 区域中唯一的应用程序名称。这个应用程序名称是您的 API 容器的名称。
  
     cf login -a https://api.ng.bluemix.net
     cf push <app_name> -p airline_app
@@ -200,11 +200,11 @@
 
    ![试用](images/try-it-out.png)
 
-# 6.在 Bluemix 中创建 API Connect 服务
+# 6.在 Cloud 中创建 API Connect 服务
 
 在这一步中，我们将设置 API Connect 服务，以帮助我们向公众公开我们的应用程序 API。
 
-1.要将 API Connect 作为 Bluemix 服务添加，请访问 Bluemix [API Connect 服务](https://console.ng.bluemix.net/catalog/services/api-connect?taxonomyNavigation=services)
+1.要将 API Connect 作为 Cloud 服务添加，请访问 Cloud [API Connect 服务](https://console.ng.bluemix.net/catalog/services/api-connect?taxonomyNavigation=services)
 
 
 2.然后，选择 **Essentials plan** 并单击 **Create**。
@@ -237,7 +237,7 @@
 企业开发人员可以在这里找到 API 目录中公开的产品（例如一个或一组 API）。开发人员也可以通过博客和论坛链接来相互交流。
 
 # 7.集成 WebSphere Liberty 与 API Connect：推送和拉取
-> 选择从 API Connect [推送](#71-push-websphere-liberty-apis-into-api-connect) 或[拉取](#72-pull-websphere-liberty-apis-from-api-connect) WebSphere Liberty API。备注：目前，推送集成不适合使用企业联合 IBM ID 访问 Bluemix 的用户。
+> 选择从 API Connect [推送](#71-push-websphere-liberty-apis-into-api-connect) 或[拉取](#72-pull-websphere-liberty-apis-from-api-connect) WebSphere Liberty API。备注：目前，推送集成不适合使用企业联合 IBM ID 访问 Cloud 的用户。
 
 ## 7.1 将 WebSphere Liberty API 推送到 API Connect 中
 
@@ -342,7 +342,7 @@
 
 在这一步中，我们将了解如何使用 API Connect 的用户界面，在 API Connect 上创建和管理新的 API 和产品。
 
-1.从 Bluemix 中的主要 API Connect 仪表板，单击菜单图标并选择 **Drafts**。依次单击 **APIs**、**Add**，并选择 **Import API from a file or URL**。
+1.从 Cloud 中的主要 API Connect 仪表板，单击菜单图标并选择 **Drafts**。依次单击 **APIs**、**Add**，并选择 **Import API from a file or URL**。
 
 ![导入](images/import.png)
 
@@ -398,7 +398,7 @@ docker kill <container ID> #run this command if your container is still running
 docker rm <container ID>
 ```
 
-要删除您的 Insights for Weather、API Connect 和 Secure Gateway 服务，请转到您的 IBM Bluemix 仪表板。单击**菜单图标**，然后选择 **Delete Service**。
+要删除您的 Insights for Weather、API Connect 和 Secure Gateway 服务，请转到您的 IBM Cloud 仪表板。单击**菜单图标**，然后选择 **Delete Service**。
 
 # 参考资料
 
