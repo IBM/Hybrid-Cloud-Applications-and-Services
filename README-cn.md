@@ -22,8 +22,7 @@
 - [CouchDB](http://couchdb.apache.org)
 - [WebSphere Liberty](https://developer.ibm.com/wasdev/websphere-liberty/)
 - [API Connect](http://www-03.ibm.com/software/products/en/api-connect)
-- [Secure Gateway](https://console.ng.
-.net/docs/services/SecureGateway/sg_overview.html)
+- [Secure Gateway](https://console.ng.bluemix.net/docs/services/SecureGateway/sg_overview.html)
 - [Insights for Weather](https://console.ng.bluemix.net/docs/services/Weather/weather_overview.html#about_weather)
 
 ## 前提条件
