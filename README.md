@@ -42,10 +42,10 @@ Since we need [Maven](https://maven.apache.org/install.html) to build our sample
 ### Scenario Two: Enable your application in Public Cloud to connect to resources in Private Cloud
 
 4. [Build sample application to run on Public Cloud and use On-Premise database](#4-build-sample-application-to-run-on-public-cloud-and-use-on-premise-database)
-5. [Run the application on Public Cloud using Bluemix and database On-Premise using CouchDB and Docker](#5-run-the-application-on-public-cloud-using-bluemix-and-database-on-premise-using-couchdb-and-docker)
+5. [Run the application on Public Cloud using IBM Cloud and database On-Premise using CouchDB and Docker](#5-run-the-application-on-public-cloud-using-ibm-cloud-and-database-on-premise-using-couchdb-and-docker)
 
 ### Catalog and publish application APIs to the public using API Connect
-6. [Create an API Connect service in Bluemix](#6-create-an-api-connect-service-in-bluemix)
+6. [Create an API Connect service in IBM Cloud](#6-create-an-api-connect-service-in-ibm-cloud)
 7. [Integrate WebSphere Liberty and API Connect: push and pull](#7-integrate-websphere-liberty-and-api-connect-push-and-pull)
 - 7.1 [Push Application APIs running on WebSphere into API Connect](#71-push-websphere-liberty-apis-into-api-connect)
 - 7.2 [Pull Application APIs running on WebSphere Liberty from API Connect](#72-pull-websphere-liberty-apis-from-api-connect)
@@ -54,9 +54,9 @@ Since we need [Maven](https://maven.apache.org/install.html) to build our sample
 
 # 1. Create a tunnel to connect your on-premise environment to public cloud
 
-In this step, we will use the secure gateway service from Bluemix to create a tunnel from on-premise environment to public cloud host. In this sample, to keep configuration simple, the TCP protocol is used. The Secure Gateway product provides other protocol options (UDP, HTTP, HTTPS, TLS/SSL) that can provide greater security and authentication options for applications using the secure gateway service. Solutions with production applications and data should be assessed based upon their risk profile to select the correct Secure Gateway access protocol and authentication scheme. More details about Secure Gateway configurations can be found [here](https://console.ng.bluemix.net/docs/services/SecureGateway/sg_overview.html#sg_overview) and an example for application side and client side TLS setup can be accessed [here](https://console.ng.bluemix.net/docs/services/SecureGateway/sg_023.html#sg_023). Moving forward, we are proceeding with TCP to show the concept.
+In this step, we will use the secure gateway service from IBM Cloud to create a tunnel from on-premise environment to public cloud host. In this sample, to keep configuration simple, the TCP protocol is used. The Secure Gateway product provides other protocol options (UDP, HTTP, HTTPS, TLS/SSL) that can provide greater security and authentication options for applications using the secure gateway service. Solutions with production applications and data should be assessed based upon their risk profile to select the correct Secure Gateway access protocol and authentication scheme. More details about Secure Gateway configurations can be found [here](https://console.ng.bluemix.net/docs/services/SecureGateway/sg_overview.html#sg_overview) and an example for application side and client side TLS setup can be accessed [here](https://console.ng.bluemix.net/docs/services/SecureGateway/sg_023.html#sg_023). Moving forward, we are proceeding with TCP to show the concept.
 
-1. Create your [secure gateway service](https://console.ng.bluemix.net/catalog/services/secure-gateway?taxonomyNavigation=apis) from Bluemix.
+1. Create your [secure gateway service](https://console.ng.bluemix.net/catalog/services/secure-gateway?taxonomyNavigation=apis) from IBM Cloud.
 
 2. Then, follow this [Getting started with the Secure Gateway](https://console.ng.bluemix.net/docs/services/SecureGateway/secure_gateway.html) tutorial to setup your gateway.
 
@@ -66,7 +66,7 @@ In this step, we will use the secure gateway service from Bluemix to create a tu
 
 4. After you open the secure gateway client with your Gateway ID and Security Token, you need to add access list entries for the on-premises endpoint. If you are doing [Scenario One: Enable your application in Private Cloud to be accessed externally via Public Cloud](#scenario-one-enable-your-application-in-private-cloud-to-be-accessed-externally-via-public-cloud), run `acl allow 127.0.0.1:9443` on your secure gateway client to enable access to your application server. If you are doing [Scenario Two: Enable your application in Public Cloud to connect to resources in Private Cloud](#scenario-two-enable-your-application-in-public-cloud-to-connect-to-resources-in-private-cloud), run `acl allow 127.0.0.1:5984` to enable access to your database.
 
-5. Now go back to your bluemix's secure gateway page and create your destination. First, select **On-Premises** at Guided Setup and click next.
+5. Now go back to your secure gateway page and create your destination. First, select **On-Premises** at Guided Setup and click next.
 
 	![on-premises](images/on-premises.png)
 
@@ -86,10 +86,10 @@ In this step, we will use the secure gateway service from Bluemix to create a tu
 
 Our sample Airline API application is an airline booking application that demonstrates how API application can store its data using on-prem database.
 
-We will also add our own Weather API credential from public Bluemix for the application and build a .war file using Maven. The Weather API will provide the weather condition for destination airports selected by clients.
+We will also add our own Weather API credential from public IBM Cloud for the application and build a .war file using Maven. The Weather API will provide the weather condition for destination airports selected by clients.
 
 
-1. Create [Weather API service](https://console.ng.bluemix.net/catalog/services/weather-company-data?taxonomyNavigation=data) in Bluemix.
+1. Create [Weather API service](https://console.ng.bluemix.net/catalog/services/weather-company-data?taxonomyNavigation=data) in IBM Cloud.
 
 2. Go to your Weather API's **Service credentials** and mark down your username and password. Then run `cd flight-booking/src/main/java/microservices/api/sample` to go to the sample directory. Now, add your username and password credential to your **WeatherAPI.java** file.
 
@@ -135,11 +135,11 @@ At the end of this step, you should able to call your application APIs via local
 
 4. Now, go to `https://<Cloud Host:Port>/ibm/api/explorer/` and verify your local server interface can be accessed from public 'Cloud Host' gateway server. Remember, 'Cloud Host' is the Secure gateway server information we noted down at the end of [Step 1](#1-create-a-tunnel-to-connect-your-on-premise-enviroment-to-public-cloud), and your default username is **admin** and password is **admin**. Note that since we are using TCP in this sample, being able to reach this URL means that any system on the internet can now connect to the WebSphere Liberty application if they know the name of the Cloud Host and port. In production, you would want to use TLS/SSL with [Mutual Authentication](https://console.ng.bluemix.net/docs/services/SecureGateway/sg_023.html#sg_007) for more security.
 
-Jump to [Step 6](#6-create-an-api-connect-service-in-bluemix) to expose your application APIs via API Connect
+Jump to [Step 6](#6-create-an-api-connect-service-in-ibm-cloud) to expose your application APIs via API Connect
 
 # 4. Build sample application to run on Public Cloud and use On-Premise database
 
-Our sample API application is an airline booking application that demonstrates how API application can store its data using on-premise database and enhance its API features using Bluemix's Data Analytic Service.
+Our sample API application is an airline booking application that demonstrates how API application can store its data using on-premise database and enhance its API features using IBM Cloud's Data Analytic Service.
 
 In this step, we will add our own Weather API credential for our application and build our own .war file using Maven.
 
@@ -162,7 +162,7 @@ In this step, we will add our own Weather API credential for our application and
 5. Then go to the **deployment_artifacts** directory and move your **airlines.war** file to your main directory's **airline_app/apps** folder.
 
 
-# 5. Run the application on Public Cloud using Bluemix and database On-Premise using CouchDB and Docker
+# 5. Run the application on Public Cloud using IBM Cloud and database On-Premise using CouchDB and Docker
 
 1. Create an on-premise database using Docker. Run the following commands to use the community's CouchDB Docker image.
 
@@ -181,7 +181,7 @@ In this step, we will add our own Weather API credential for our application and
 
 3. Use the following commands to login to Cloud Foundry and push your application to the cloud.
 
-    >Note: Replace <app_name> with an unique application name within your Bluemix region. This application name is the name of your API container.
+    >Note: Replace <app_name> with an unique application name within your IBM Cloud region. This application name is the name of your API container.
 
     ```bash
     cf login -a https://api.ng.bluemix.net
@@ -198,11 +198,11 @@ In this step, we will add our own Weather API credential for our application and
 
     ![try it out](images/try-it-out.png)
 
-# 6. Create an API Connect service in Bluemix
+# 6. Create an API Connect service in IBM Cloud
 
 In this step, we will setup API Connect service to help us expose our application APIs to public.
 
-1. To add API Connect as a Bluemix service, go to the bluemix [API Connect service](https://console.ng.bluemix.net/catalog/services/api-connect?taxonomyNavigation=services)
+1. To add API Connect as a IBM Cloud service, go to the [API Connect service](https://console.ng.bluemix.net/catalog/services/api-connect?taxonomyNavigation=services)
 
 
 2. Then, select the **Essentials plan** and click **Create**.
@@ -236,7 +236,7 @@ In this step, we will setup API Connect service to help us expose our applicatio
 	This is where enterprise developers go to find the products (for example, an API or a group of APIs) that are exposed in the API catalog. Developers also can interact with each other through the Blogs and Forums links.
 
 # 7. Integrate WebSphere Liberty and API Connect: push and pull
-> Choose either [push](#71-push-websphere-liberty-apis-into-api-connect) or [pull](#72-pull-websphere-liberty-apis-from-api-connect) WebSphere Liberty APIs from API Connect. Note: push integration won't work for users who have enterprise federated IBMids for access to Bluemix at the current time.
+> Choose either [push](#71-push-websphere-liberty-apis-into-api-connect) or [pull](#72-pull-websphere-liberty-apis-from-api-connect) WebSphere Liberty APIs from API Connect. Note: push integration won't work for users who have enterprise federated IBMids for access to IBM Cloud at the current time.
 
 ## 7.1 Push WebSphere Liberty APIs into API Connect
 
@@ -341,7 +341,7 @@ Select your API Product and try it through the API Connect Developer Portal. Cli
 
 In this step, we will learn about how to create and manage new APIs and products on API connect using API connect's user interface.
 
-1. From the main API Connect dashboard in Bluemix, click the menu icon and select **Drafts**. Click **APIs**, click **Add**, and select **Import API from a file or URL**.
+1. From the main API Connect dashboard in IBM Cloud, click the menu icon and select **Drafts**. Click **APIs**, click **Add**, and select **Import API from a file or URL**.
 
 	![import](images/import.png)
 
@@ -397,12 +397,7 @@ docker kill <container ID> #run this command if your container is still running
 docker rm <container ID>
 ```
 
-To remove your Insights for Weather, API connect and Secure Gateway service, go to your IBM Bluemix dashboard. Then click the **menu icon** and then select **Delete Service**.
-
-# References
-
-This WebSphere API Connect example is based on this developerWorks [article](https://www.ibm.com/developerworks/library/mw-1609-demagalhaes-bluemix-trs/1609-demagalhaes.html).
-
+To remove your Insights for Weather, API connect and Secure Gateway service, go to your IBM Cloud dashboard. Then click the **menu icon** and then select **Delete Service**.
 
 # License
 
