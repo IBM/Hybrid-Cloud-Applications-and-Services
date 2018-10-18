@@ -4,6 +4,7 @@
     <featureManager>
         <feature>webProfile-7.0</feature>
         <feature>apiDiscovery-1.0</feature>
+	<feature>jndi-1.0</feature>
     </featureManager>
 
     <!-- To access this server from a remote client add a host attribute to the following element, e.g. host="*" -->
@@ -14,6 +15,10 @@
 	<basicRegistry id="basic">
 		<user name="admin" password="admin"/>
 	</basicRegistry>
+
+	<jndiEntry jndiName="weather_user" value="" />
+	<jndiEntry jndiName="weather_password" value="" />
+	<jndiEntry jndiName="dburl" value="http://couchdb:5984/" />
 
 <application id="myWebApp" location="${server.config.dir}/apps/airlines.war" name="airlines" type="war">
    <application-bnd>

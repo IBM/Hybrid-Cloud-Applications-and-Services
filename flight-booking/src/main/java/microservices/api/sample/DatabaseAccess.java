@@ -8,6 +8,8 @@ import java.util.Properties;
 import java.util.Date;
 import java.text.SimpleDateFormat;
 import java.text.DateFormat;
+import java.io.FileInputStream;
+import javax.naming.InitialContext;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.JsonNode;
@@ -27,8 +29,23 @@ public class DatabaseAccess {
 
 
 	//Please change your database address to your cloud host if you are hosting your Server on the cloud.
-	private static String DATABASE_CORE_ADDRESS = "http://couchdb:5984/";
+	private static String DATABASE_CORE_ADDRESS;
 
+	static {
+		Properties prop = new Properties();
+		try {
+			InitialContext ctx;
+			ctx = new InitialContext();
+			Object jndiconstant = ctx.lookup("dburl");
+			DATABASE_CORE_ADDRESS = (String) jndiconstant;
+			System.out.println("Setting database URL to: " + DATABASE_CORE_ADDRESS);
+		} catch (Exception e) {
+			System.err.println("Could not read database URL from JNDI Context " + e.getMessage());
+			System.exit(1);
+
+		}
+	}
+	
 	private static String AIRLINES_DATABASE = DATABASE_CORE_ADDRESS + "airlines";
 	private static String BOOKINGS_DATABASE = DATABASE_CORE_ADDRESS + "bookings";
 	private static final String ALL_QUERY = "/_all_docs";

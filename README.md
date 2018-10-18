@@ -86,20 +86,17 @@ In this step, we will use the secure gateway service from IBM Cloud to create a 
 
 Our sample Airline API application is an airline booking application that demonstrates how API application can store its data using on-prem database.
 
-We will also add our own Weather API credential from public IBM Cloud for the application and build a .war file using Maven. The Weather API will provide the weather condition for destination airports selected by clients.
+We will also add our own Weather API credential from public IBM Cloud for the application. The Weather API will provide the weather condition for destination airports selected by clients.
 
 
 1. Create [Weather API service](https://console.ng.bluemix.net/catalog/services/weather-company-data?taxonomyNavigation=data) in IBM Cloud.
 
-2. Go to your Weather API's **Service credentials** and mark down your username and password. Then run `cd flight-booking/src/main/java/microservices/api/sample` to go to the sample directory. Now, add your username and password credential to your **WeatherAPI.java** file.
+2. Go to your Weather API's **Service credentials** and mark down your username and password. (You may need to go to **New credential** to create a set first.) Then run `cd airline_app` and add your username and password credential to your `server.xml` file (replace `your_user` and `your_password` with the real service credentials):
 
-	![credential](images/credentials.png)
-
-3. Go back to the **flight-booking** directory, run `mvn package` to build the .war file.
-
-
-4. Now, go to the **deployment_artifacts** directory and move your **airlines.war** file to your main directory's **airline_app/apps** folder.
-
+```
+        <jndiEntry jndiName="weather_user" value="your_user" />
+        <jndiEntry jndiName="weather_password" value="your_password" />
+```
 
 # 3. Run the application and database on-premise using WebSphere Liberty, CouchDB and Docker
 
@@ -147,19 +144,16 @@ In this step, we will add our own Weather API credential for our application and
 1. Create your [Weather API service](https://console.ng.bluemix.net/catalog/services/weather-company-data?taxonomyNavigation=data). The Weather API can provide the airport location and weather condition for clients.
 
 
-2. Go to your Weather API's **Service credentials** and mark down your username and password. Then run `cd flight-booking/src/main/java/microservices/api/sample` to go to the sample directory. Now, add your username and password credential to your **WeatherAPI.java** file.
+2. Go to your Weather API's **Service credentials** and mark down your username and password.  (You may need to go to **New credential** to create a set first.) Then run `cd airline_app` and add your username and password credential to your `server.xml` file (replace `your_user` and `your_password` with the real service credentials):
 
-    ![credential](images/credentials.png)
+```
+        <jndiEntry jndiName="weather_user" value="your_user" />
+        <jndiEntry jndiName="weather_password" value="your_password" />
+```
 
-3. Futhermore, You need to change the database address to your *cloud host:port* in your **DatabaseAccess.java** file.
+3. In the Gateway configuration, set the port to 5984 (if you have been following this pattern from the beginning, your port should now be 9443 since the gateway was being used to access the Liberty app in the first part of the pattern.)  Also, run `acl allow 127.0.0.1:5984` in the Gateway client to allow ingress to the on-prem database.
 
-    ![cloud-host2](images/cloud-host2.png)
-
-
-4. Go back to the **flight-booking** directory, run `mvn package` to build your .war file.
-
-
-5. Then go to the **deployment_artifacts** directory and move your **airlines.war** file to your main directory's **airline_app/apps** folder.
+4. Change the database address to your *cloud host:port* in your **server.xml** file, similar to the process used for the Weather service credentials.
 
 
 # 5. Run the application on Public Cloud using IBM Cloud and database On-Premise using CouchDB and Docker
@@ -177,18 +171,34 @@ In this step, we will add our own Weather API credential for our application and
     bash database_init.sh
     ```
 
-2. Now, you can go back to the main directory and push your app to the cloud. For this example, we will push our app to the IBM Cloud Foundry. So we need to install the [Cloud Foundry CLI](https://docs.cloudfoundry.org/cf-cli/install-go-cli.html).
+2. Now, you can go back to the main directory and push your app to the cloud. For this example, we will push our app to the IBM Cloud Foundry. So we need to install the [IBM Cloud CLI](https://console.bluemix.net/docs/cli/index.html#overview)
 
 3. Use the following commands to login to Cloud Foundry and push your application to the cloud.
 
     >Note: Replace <app_name> with an unique application name within your IBM Cloud region. This application name is the name of your API container.
 
     ```bash
-    cf login -a https://api.ng.bluemix.net
-    cf push <app_name> -p airline_app
+    ibmcloud cf login
+    ibmcloud cf push <app_name> -p airline_app
     ```
 
-3. To reach the application API Discovery user interface, go to https://<app_name>.mybluemix.net/ibm/api/explorer. Then, use the credentials from your server.xml to login (For this example, the **username** is `admin` and the **password** is `admin`).
+After the app starts, you will see a URL you can use to access it:
+
+```
+Waiting for app to start...
+
+name:              airlines
+requested state:   started
+instances:         1/1
+usage:             1G x 1 instances
+routes:            airlines.opencloud-cluster.us-south.containers.appdomain.cloud
+last uploaded:     Sat 13 Oct 23:33:40 EDT 2018
+stack:             cflinuxfs2
+buildpack:         Liberty for Java(TM) (SVR-DIR, liberty-18.0.0_1, buildpack-v3.19-20180313-1017, ibmjdk-1.8.0_20180214, env)
+start command:     .liberty/initial_startup.rb
+```
+
+3. To reach the application API Discovery user interface, go to https://<app_name>.opencloud-cluster.us-south.containers.appdomain.cloud/ibm/api/explorer/ (replace with your URL from the `routes` line.) Then, use the credentials from your server.xml to login (For this example, the **username** is `admin` and the **password** is `admin`).
 
     You should see something like this in your API Discovery user interface.
 
