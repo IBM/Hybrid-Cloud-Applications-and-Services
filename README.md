@@ -233,8 +233,12 @@ In this step, we will setup API Connect service to help us expose our applicatio
     - 2 is your organization ID, in the example, arthurdmcaibmcom-dev.
     - 3 is the target address of your API Connect instance, for example, https://us.apiconnect.ibmcloud.com.
 
-7. Click Save at the top right corner. You see the following message:
+7. Click Save (floppy disk icon) at the top right corner.
 
+	![save-changes](images/apisave.png)
+	
+	 You will see the following message:
+	 
     `
     Creating the developer portal for catalog 'Sandbox' may take a few minutes. You will receive an email when the portal is available.
     `
