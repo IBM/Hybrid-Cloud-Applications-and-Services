@@ -363,11 +363,18 @@ In this step, we will learn about how to create and manage new APIs and products
 
 	For the URL, type the Liberty URL that you want to use to import the Swagger document. For this example, you use `https://<Cloud Host:Port/app_name>/ibm/api/docs/apiconnect`. As before, in this example the username is **admin** and password is **admin**.
 
+![import](images/import-url-new.png)
+
+
 3. For Scenario Two, you do not have to do anything.
 
-	For Scenario One, since our APIs are hosted on the private cloud, we need to set the APIs target URL to the cloud host. Therefore, after you imported your API, go to **source**. Then go to the bottom of the page (around line 532) and change the **target-url**'s value to `'<cloud host:port>$(request.path)'` (replace `<cloud host:port>` to your own cloud host:port). Then click the **save icon** on the top right corner.
+After importing the cloud URL, you will see a screen like this
 
-    ![target-url](images/target-url.png)
+![import](images/import-api-airlines.png)
+	
+For Scenario One, since our APIs are hosted on the private cloud, we need to set the APIs target URL to the cloud host. Therefore, after you imported your API, go to **source**. Then go to the bottom of the page (around line 532) and change the **target-url**'s value to `'<cloud host:port>$(request.path)'` (replace `<cloud host:port>` to your own cloud host:port). Then click the **save icon** on the top right corner.
+
+![target-url](images/target-url.png)
 
 4. Click **All APIs** to go back into the main Drafts page, Click **Products**, and then click **Add > New Product**. In the Add a new product window, type in a title (could be anything) and then click **Add**.
 
