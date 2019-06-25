@@ -1,8 +1,5 @@
 language: java
-sudo: required
 script:
 - '[ "${TRAVIS_PULL_REQUEST}" = "false" ] && bash travis/install.sh || bash travis/install_pr.sh'
 group: stable
-dist: trusty
-sudo: required
 os: linux
